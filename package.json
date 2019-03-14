@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server --hot",
     "clean": "rm -rf ./dist",
     "lint": "eslint .",
-    "build-dev": "webpack --mode development ./src/app.js -o ./dist/main-bundle.js",
-    "build-prod": "webpack --mode production ./src/app.js -o ./dist/main-bundle.js"
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -19,7 +20,8 @@
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5"
