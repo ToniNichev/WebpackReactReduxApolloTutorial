@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'MyFont';
+  src:  url('../../fonts/aclonica/aclonica-regular.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+.appWrapper {
+  background: rgb(141, 141, 172);
+  color: white;
+  text-align: center;
+  font-family: MyFont;
+}
