@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot",
+    "start-cli": "webpack-dev-server --hot --history-api-fallback --config webpack.cli.config.js",
+    "start-api": "babel-node server-api.js",
+    "start-middleware": "babel-node server-middleware.js",
     "clean": "rm -rf ./dist",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
@@ -12,6 +14,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.1",
@@ -27,7 +30,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
