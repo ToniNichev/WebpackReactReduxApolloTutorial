@@ -15,7 +15,7 @@ app.use(webpackHotMiddleware(compiler, {
   path: '/__webpack_hmr',
   heartbeat: 10 * 1000,
 }));
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 const server = app.listen(8080, function() {

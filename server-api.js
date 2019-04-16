@@ -5,6 +5,7 @@ import config from './webpack.api.config.js';
 const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, {
   hot: true,
-  publicPath: config.output.publicPath
+  publicPath: config.output.publicPath,
+  historyApiFallback: true
 });
 server.listen(8080, 'localhost', function() {});
