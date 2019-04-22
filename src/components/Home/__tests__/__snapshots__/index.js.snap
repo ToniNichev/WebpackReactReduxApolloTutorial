@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Greetings component renders as expected!!! 1`] = `
+<div>
+  <div>
+    This is my home section!
+  </div>
+</div>
+`;
