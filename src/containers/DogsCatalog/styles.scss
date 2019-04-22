@@ -1,0 +1,23 @@
+.Wrapper {
+    img {
+      width: 100%;
+    }
+    .Buttons {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 8px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;    
+    }
+    .Buttons > button {
+      background: efefef;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+    .Buttons > button:hover {  
+      background: silver;
+      color:white;
+      cursor: pointer;
+    }
+  }
