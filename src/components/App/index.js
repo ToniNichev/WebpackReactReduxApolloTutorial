@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import Home from '../Home';
 import Greetings from '../Greetings';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from '../About';
-import { ApolloProvider, graphql } from 'react-apollo';
+import DogsCatalog from '../../containers/DogsCatalog';
+import Header from '../Header';
+import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import DogsCatalog from '../../containers/DogsCatalog';
-import Header from '../Header';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './styles.scss';
 export default class App extends Component {
   render() {
@@ -22,9 +23,10 @@ export default class App extends Component {
           <Router>
             <Header />
             <Switch>
+              <Route exact path="/home" user="Test" component={Home} />
               <Route exact path="/greetings" user="Test" component={Greetings} />
+              <Route exact path="/dogs-catalog" component={DogsCatalog} />              
               <Route exact path="/about" component={About} />
-              <Route exact path="/dogs" component={DogsCatalog} />
             </Switch>
           </Router>
         </ApolloProvider>
