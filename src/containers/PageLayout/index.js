@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ComponentList from './ComponentList';
+import Loading from '../../components/Loading';
 import query from './query';
 import { graphql } from 'react-apollo';
 const styles = require('./styles.scss');
@@ -10,7 +11,7 @@ class PageLayout extends Component {
   
     render() {
       if(!this.props.data.getPageByUrl) {
-        return(<p>loading ...</p>);
+        return (<Loading />);
       }     
       
       console.log(this.props.data.getPageByUrl);
