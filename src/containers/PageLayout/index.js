@@ -13,6 +13,7 @@ class PageLayout extends Component {
         return(<p>loading ...</p>);
       }     
       
+      console.log(this.props.data.getPageByUrl);
       const allLayout = this.props.data.getPageByUrl.layout.map((layoutList) => {
         const layout = layoutList.components.map((component, id , components) => {
           const componentName = component.name;        
