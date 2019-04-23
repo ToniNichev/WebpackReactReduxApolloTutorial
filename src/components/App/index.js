@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import Home from '../Home';
-import Greetings from '../Greetings';
-import About from '../About';
-import DogsCatalog from '../../containers/DogsCatalog';
-import Header from '../Header';
+import PageLayout from '../../containers/PageLayout';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
@@ -21,12 +17,8 @@ export default class App extends Component {
       <div className={styles.appWrapper}>
         <ApolloProvider client={client}>
           <Router>
-            <Header />
             <Switch>
-              <Route exact path="/home" user="Test" component={Home} />
-              <Route exact path="/greetings" user="Test" component={Greetings} />
-              <Route exact path="/dogs-catalog" component={DogsCatalog} />              
-              <Route exact path="/about" component={About} />
+            <Route exact path="*" component={PageLayout} />  
             </Switch>
           </Router>
         </ApolloProvider>
