@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'module-eval-source-map',
   entry: [
     '@babel/polyfill',    
     './src/index.js',
