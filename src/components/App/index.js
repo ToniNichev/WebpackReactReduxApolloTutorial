@@ -6,6 +6,12 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './styles.scss';
+
+window.store = {
+  userName: "no name",
+  editMode: false
+}
+
 export default class App extends Component {
   render() {
     const GRAPHQL_URL = 'http://localhost:4001/graphql';
