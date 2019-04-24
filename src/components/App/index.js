@@ -5,7 +5,14 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Store from '../../store';
+import Reducers from '../../reducers';
 import styles from './styles.scss';
+
+
+let test = Reducers;
+window.store = Store(Reducers);
+
 export default class App extends Component {
   render() {
     const GRAPHQL_URL = 'http://localhost:4001/graphql';
