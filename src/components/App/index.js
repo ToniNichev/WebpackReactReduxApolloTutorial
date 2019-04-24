@@ -7,9 +7,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Store from '../../store';
 import Reducers from '../../reducers';
+import Provider from '../../containers/Provider';
 import styles from './styles.scss';
 
-window.store = Store(Reducers);
+const store = Store(Reducers);
 
 export default class App extends Component {
   render() {
@@ -20,13 +21,15 @@ export default class App extends Component {
     });  
     return (
       <div className={styles.appWrapper}>
-        <ApolloProvider client={client}>
-          <Router>
-            <Switch>
-            <Route exact path="*" component={PageLayout} />  
-            </Switch>
-          </Router>
-        </ApolloProvider>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Router>
+              <Switch>
+              <Route exact path="*" component={PageLayout} />  
+              </Switch>
+            </Router>
+          </ApolloProvider>
+        </Provider>
       </div>        
     );
   }

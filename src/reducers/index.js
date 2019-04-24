@@ -12,7 +12,6 @@ const initialState = {
       case CHANGE_USERNAME: {
         let newState = {...state};
         newState.userName = action.data;
-        newState.editMode = false;
         return newState;
       }
 
