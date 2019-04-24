@@ -9,8 +9,6 @@ import Store from '../../store';
 import Reducers from '../../reducers';
 import styles from './styles.scss';
 
-
-let test = Reducers;
 window.store = Store(Reducers);
 
 export default class App extends Component {
