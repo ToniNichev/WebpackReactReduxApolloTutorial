@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import connect from '../../containers/Provider/connect';
+import { connect } from 'react-redux';
 
 const styles = require('./styles.scss');
 
@@ -41,10 +41,10 @@ class Greetings extends Component {
   }
 }
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = ( storeState ) => {
   return {  
-    userName: state.userName,
-    editMode: state.editMode
+    userName: storeState.user.userName,
+    editMode: storeState.user.editMode
   }
 }
 

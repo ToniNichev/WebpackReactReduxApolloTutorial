@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import connect from '../../containers/Provider/connect.js';
+import { connect } from 'react-redux';
 
 const CHANGE_USERNAME = 'CHANGE_USERNAME';
 class About extends Component {
@@ -24,7 +24,7 @@ class About extends Component {
 }
 //export default About;
 const mapStateToProps = storeState => ({
-  userName: storeState.userName
+  userName: storeState.user.userName
 }
 );
 const mapDispatchToProps = dispatch => ({

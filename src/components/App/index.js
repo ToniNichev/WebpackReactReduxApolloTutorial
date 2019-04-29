@@ -5,12 +5,13 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Store from '../../store';
-import Reducers from '../../reducers';
-import Provider from '../../containers/Provider';
+import { Provider } from 'react-redux';
+import { createStore} from 'redux';
+import reducers from '../../reducers';
+
 import styles from './styles.scss';
 
-const store = Store(Reducers);
+const store = createStore(reducers, {});
 
 export default class App extends Component {
   render() {
