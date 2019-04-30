@@ -12,10 +12,9 @@ import reducers from '../../reducers';
 import styles from './styles.scss';
 
 const store = createStore(reducers, {});
-
 export default class App extends Component {
   render() {
-    const GRAPHQL_URL = 'http://localhost:4001/graphql';
+    const GRAPHQL_URL = process.env.GRAPHQL_URL;
     const client = new ApolloClient({
       link: new HttpLink({ uri:  GRAPHQL_URL }),
       cache: new InMemoryCache()

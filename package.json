@@ -39,6 +39,8 @@
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",
+    "dotenv": "^7.0.0",
+    "dotenv-expand": "^5.1.0",
     "file-loader": "^3.0.1",
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",

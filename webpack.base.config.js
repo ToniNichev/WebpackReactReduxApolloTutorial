@@ -1,3 +1,6 @@
+import getEnvironmentConstants from './getEnvironmentConstants';
+import webpack from 'webpack';
+
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
@@ -65,5 +68,8 @@ module.exports = {
         use: ['file-loader']
       }                    
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({ 'process.env' : getEnvironmentConstants() } )
+  ]
 };

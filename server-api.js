@@ -1,6 +1,9 @@
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import config from './webpack.api.config.js';
+require('dotenv').config();
+
+console.log(">>>" + process.env.GRAPHQL_URL);
 
 const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, {

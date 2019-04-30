@@ -8,8 +8,6 @@ config.entry = [
   'webpack-dev-server/client?http://localhost:8080/',       
 ];
 
-config.plugins = [
-  new webpack.HotModuleReplacementPlugin(),
-];
+config.plugins = [... [new webpack.HotModuleReplacementPlugin()], ... config.plugins ];
 
 module.exports = config;
