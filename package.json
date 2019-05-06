@@ -10,7 +10,9 @@
     "clean": "rm -rf ./dist",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
-    "build-prod": "webpack --mode production"
+    "build-prod": "webpack --config webpack.prod.config.js",
+    "run-prod-server": "node ./prod.server.js",
+    "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -25,6 +27,7 @@
     "eslint": "^5.15.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
+    "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",

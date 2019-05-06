@@ -1,5 +1,5 @@
-import getEnvironmentConstants from './getEnvironmentConstants';
-import webpack from 'webpack';
+const getEnvironmentConstants = require('./getEnvironmentConstants');
+const webpack =require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -10,7 +10,7 @@ module.exports = {
   ],
   output: {
     filename: '[name]-bundle.js',
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },  
   module: {
     rules: [
