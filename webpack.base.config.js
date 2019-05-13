@@ -27,7 +27,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -71,6 +71,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({ 'process.env' : getEnvironmentConstants() } )
+    new webpack.DefinePlugin({ 'process.env' : getEnvironmentConstants() } ),
+    new MiniCssExtractPlugin({
+      filename: 'style.[chunkhash].css',
+  }),    
   ]
 };

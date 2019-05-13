@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const styles = require('./styles.scss');
+
+
 const Header = ( {title} ) => (
   <div>
     <div className={styles.wrapper}>      

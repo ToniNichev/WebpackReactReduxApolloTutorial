@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore} from 'redux';
 import reducers from '../../reducers';
 
-import styles from './styles.scss';
+const styles = require('./styles.scss');
 
 const store = createStore(reducers, {});
 export default class App extends Component {
@@ -20,7 +20,7 @@ export default class App extends Component {
       cache: new InMemoryCache()
     });  
     return (
-      <div className={styles.appWrapper}>
+      <div test="123" className={styles.appWrapper}>
         <Provider store={store}>
           <ApolloProvider client={client}>
             <Router>

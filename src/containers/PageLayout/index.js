@@ -30,7 +30,11 @@ class PageLayout extends Component {
         });
         return layout;
       });
-      return(allLayout);
+      return(
+        <div className={styles.app}>
+          {allLayout}
+        </div>
+      );
     }
 }
 export default graphql(query, {
