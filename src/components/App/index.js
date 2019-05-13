@@ -20,7 +20,7 @@ export default class App extends Component {
       cache: new InMemoryCache()
     });  
     return (
-      <div test="123" className={styles.appWrapper}>
+      <div className={styles.appWrapper}>
         <Provider store={store}>
           <ApolloProvider client={client}>
             <Router>
