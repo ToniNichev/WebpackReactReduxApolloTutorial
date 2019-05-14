@@ -1,8 +1,11 @@
 const webpack = require('webpack');
 let config = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 config.mode = "production";
 config.devtool = "";
+
 config.entry = [
     './src/index.js', 
 ];
@@ -12,6 +15,7 @@ config.plugins = [ ... [new MiniCssExtractPlugin({
         filename: "[name].css",
         chunkFilename: "[id].css"
     })], 
+    new OptimizeCSSAssetsPlugin({}),  
     ... config.plugins
 ];
 module.exports = config;
