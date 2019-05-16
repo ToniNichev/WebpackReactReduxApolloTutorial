@@ -1,1 +1,810 @@
-!function(e){var t={},r={0:0},n={0:0};function o(r){if(t[r])return t[r].exports;var n=t[r]={i:r,l:!1,exports:{}};return e[r].call(n.exports,n,n.exports,o),n.l=!0,n.exports}o.e=function(t){var a=[];if(r[t]?a.push(r[t]):0!==r[t]&&{1:1,2:1,3:1,4:1}[t]&&a.push(r[t]=new Promise(function(e,n){for(var a=t+".css",i=o.p+a,c=document.getElementsByTagName("link"),u=0;u<c.length;u++){var l=(f=c[u]).getAttribute("data-href")||f.getAttribute("href");if("stylesheet"===f.rel&&(l===a||l===i))return e()}var s=document.getElementsByTagName("style");for(u=0;u<s.length;u++){var f;if((l=(f=s[u]).getAttribute("data-href"))===a||l===i)return e()}var p=document.createElement("link");p.rel="stylesheet",p.type="text/css",p.onload=e,p.onerror=function(e){var o=e&&e.target&&e.target.src||i,a=new Error("Loading CSS chunk "+t+" failed.\n("+o+")");a.code="CSS_CHUNK_LOAD_FAILED",a.request=o,delete r[t],p.parentNode.removeChild(p),n(a)},p.href=i,document.getElementsByTagName("head")[0].appendChild(p)}).then(function(){r[t]=0})),0!==n[t]){var i=require("./"+({}[t]||t)+"-bundle.js"),c=i.modules,u=i.ids;for(var l in c)e[l]=c[l];for(var s=0;s<u.length;s++)n[u[s]]=0}return Promise.all(a)},o.m=e,o.c=t,o.d=function(e,t,r){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(e,t){if(1&t&&(e=o(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(o.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)o.d(r,n,function(t){return e[t]}.bind(null,n));return r},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="/server-build/",o.oe=function(e){process.nextTick(function(){throw e})},o(o.s=13)}([function(e,t){e.exports=require("react")},function(e,t){e.exports=require("react-apollo")},function(e,t){e.exports=require("react-loadable")},function(e,t){e.exports=require("redux")},function(e,t){e.exports=require("express")},function(e,t){e.exports=require("apollo-link-http")},function(e,t){e.exports=require("react-dom/server")},function(e,t){e.exports=require("graphql-tag")},function(e,t){e.exports=require("react-redux")},function(e,t){e.exports=require("react-router-dom")},function(e,t){e.exports=require("apollo-client")},function(e,t){e.exports=require("apollo-cache-inmemory")},function(e,t){e.exports=require("isomorphic-fetch")},function(e,t,r){e.exports=r(17)},function(e,t,r){e.exports={wrapper:"Loading-wrapper"}},function(e,t,r){e.exports={error:"PageLayout-error",wrapper:"PageLayout-wrapper"}},function(e,t,r){e.exports={appWrapper:"App-appWrapper"}},function(e,t,r){"use strict";r.r(t);var n=r(0),o=r.n(n),a=r(4),i=r.n(a),c=r(6),u=r.n(c),l=r(1),s=r(2),f=r.n(s),p=r(14),d=function(e){return e.error?o.a.createElement("div",{className:p.wrapper},o.a.createElement("h3",null,"Error loading component!"),o.a.createElement("p",null,o.a.createElement("b",null,e.error.message)),o.a.createElement("p",null,e.error.stack),o.a.createElement("div",null,o.a.createElement("button",{onClick:e.retry},"Retry"))):o.a.createElement("div",null,"Loading...")},m=f()({loader:function(){return r.e(2).then(r.bind(null,22))},loading:d}),b={Home:f()({loader:function(){return r.e(3).then(r.bind(null,23))},loading:d}),About:f()({loader:function(){return r.e(5).then(r.bind(null,24))},loading:d}),Greetings:f()({loader:function(){return r.e(1).then(r.bind(null,25))},loading:d}),DogsCatalogWithRedux:f()({loader:function(){return r.e(4).then(r.bind(null,26))},loading:d}),Header:m},g=r(7);function y(){var e=function(e,t){t||(t=e.slice(0));return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}(["\nquery getPageByUrl($url: String) \n{\n  getPageByUrl(url: $url) {\n    id\n    url\n    layout {\n      span\n      components {\n        name\n      }        \n    }\n  }\n}\n"]);return y=function(){return e},e}var h=r.n(g)()(y());function v(e){return(v="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function O(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function E(e,t){return!t||"object"!==v(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function x(e){return(x=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function j(e,t){return(j=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var P=r(15),w=function(e){function t(e){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),E(this,x(t).call(this,e))}var r,a,i;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&j(e,t)}(t,n["Component"]),r=t,(a=[{key:"render",value:function(){return console.log(">>>>>> his.props.data: ",this.props.data),console.log(">>>>>> getPageByUrl: ",this.props.data.getPageByUrl),this.props.data.getPageByUrl.layout.map(function(e){return e.components.map(function(e,t){var r=e.name;console.log(">>>>>> componentName: ",r);var n=b[r];return void 0===n?o.a.createElement("div",{key:r+"-"+t,className:P.error},"Can't find `",r,"` component!"):o.a.createElement(n,{key:r+"-"+t})})})}}])&&O(r.prototype,a),i&&O(r,i),t}(),S=Object(l.graphql)(h,{options:function(e){return console.log(">>>>>> location : ",e.location),{variables:{url:e.location}}}})(w),q=r(10),_=r(5),k=r(11),N=r(9),T=r(8),A=r(3);function C(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{},n=Object.keys(r);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(r).filter(function(e){return Object.getOwnPropertyDescriptor(r,e).enumerable}))),n.forEach(function(t){M(e,t,r[t])})}return e}function M(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var R={todos:[],userName:"No Name",editMode:!1},L=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:R,t=arguments.length>1?arguments[1]:void 0;switch(t.type){case"CHANGE_USERNAME":var r=C({},e);return r.userName=t.data,r;case"TOGGLE_EDIT_MODE":var n=C({},e);return n.editMode=!n.editMode,n;default:return e}},B=Object(A.combineReducers)({user:L}),U=r(12),D=r.n(U),H=r(16),G=(Object(A.createStore)(B,{}),function(e){var t=e.req,r=new q.ApolloClient({ssrMode:!0,link:Object(_.createHttpLink)({uri:"http://localhost:4001/graphql",fetch:D.a,credentials:"same-origin",headers:{cookie:t.header("Cookie")}}),cache:new k.InMemoryCache}),n=Object(A.createStore)(B,{});return o.a.createElement("div",{className:H.appWrapper},o.a.createElement(T.Provider,{store:n},o.a.createElement(l.ApolloProvider,{client:r},o.a.createElement(N.StaticRouter,{context:{},location:t.url},o.a.createElement(S,{location:t.url})))))}),W=Object({APP_NAME:"Webpack React Tutorial",GRAPHQL_URL:"http://localhost:4001/graphql"}).PORT||3006,I=i()();I.use(i.a.static("./build")),I.use("/dist",i.a.static("dist")),I.use("/favicon.ico",i.a.static("assets/images/favicon.ico")),I.get("/*",function(e,t){var r=o.a.createElement(G,{req:e});Object(l.getDataFromTree)(r).then(function(){var e=u.a.renderToString(r),n=(client.extract(),o.a.createElement(Html,{content:e,client:client}));t.status(200),t.send("<!doctype html>\n".concat(u.a.renderToStaticMarkup(n))),t.end()},function(e){console.log("ERROR !!!!!",e)})}),I.listen(W,function(){console.log("😎 Server is listening on port ".concat(W))})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded CSS chunks
+/******/ 	var installedCssChunks = {
+/******/ 		"main": 0
+/******/ 	}
+/******/
+/******/ 	// object to store loaded chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// mini-css-extract-plugin CSS loading
+/******/ 		var cssChunks = {"0":1,"1":1,"2":1,"3":1};
+/******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
+/******/ 				var href = "" + chunkId + ".css";
+/******/ 				var fullhref = __webpack_require__.p + href;
+/******/ 				var existingLinkTags = document.getElementsByTagName("link");
+/******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
+/******/ 					var tag = existingLinkTags[i];
+/******/ 					var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
+/******/ 					if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return resolve();
+/******/ 				}
+/******/ 				var existingStyleTags = document.getElementsByTagName("style");
+/******/ 				for(var i = 0; i < existingStyleTags.length; i++) {
+/******/ 					var tag = existingStyleTags[i];
+/******/ 					var dataHref = tag.getAttribute("data-href");
+/******/ 					if(dataHref === href || dataHref === fullhref) return resolve();
+/******/ 				}
+/******/ 				var linkTag = document.createElement("link");
+/******/ 				linkTag.rel = "stylesheet";
+/******/ 				linkTag.type = "text/css";
+/******/ 				linkTag.onload = resolve;
+/******/ 				linkTag.onerror = function(event) {
+/******/ 					var request = event && event.target && event.target.src || fullhref;
+/******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + request + ")");
+/******/ 					err.code = "CSS_CHUNK_LOAD_FAILED";
+/******/ 					err.request = request;
+/******/ 					delete installedCssChunks[chunkId]
+/******/ 					linkTag.parentNode.removeChild(linkTag)
+/******/ 					reject(err);
+/******/ 				};
+/******/ 				linkTag.href = fullhref;
+/******/
+/******/ 				var head = document.getElementsByTagName("head")[0];
+/******/ 				head.appendChild(linkTag);
+/******/ 			}).then(function() {
+/******/ 				installedCssChunks[chunkId] = 0;
+/******/ 			}));
+/******/ 		}
+/******/
+/******/ 		// require() chunk loading for javascript
+/******/
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] !== 0) {
+/******/ 			var chunk = require("./" + ({}[chunkId]||chunkId) + "-bundle.js");
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/server-build/";
+/******/
+/******/ 	// uncaught error handler for webpack runtime
+/******/ 	__webpack_require__.oe = function(err) {
+/******/ 		process.nextTick(function() {
+/******/ 			throw err; // catch this error by using import().catch()
+/******/ 		});
+/******/ 	};
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./html.js":
+/*!*****************!*\
+  !*** ./html.js ***!
+  \*****************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* eslint-disable react/no-danger */
+
+
+var Html = function Html(_ref) {
+  var content = _ref.content,
+      cache = _ref.client.cache;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("html", {
+    lang: "en"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+    charSet: "utf-8"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+    name: "viewport",
+    content: "width=device-width, initial-scale=1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "TONI'S TUTORIAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "root",
+    dangerouslySetInnerHTML: {
+      __html: content
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    charSet: "UTF-8",
+    dangerouslySetInnerHTML: {
+      __html: "window.__APOLLO_STATE__=".concat(JSON.stringify(cache.extract()), ";")
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "dist/main-bundle.js",
+    charSet: "UTF-8"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Html);
+
+/***/ }),
+
+/***/ "./src/components/Loading/index.js":
+/*!*****************************************!*\
+  !*** ./src/components/Loading/index.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var styles = __webpack_require__(/*! ./styles.scss */ "./src/components/Loading/styles.scss");
+/**
+ * HELPER COMPONENT TO DISPLAY LOADING ... AND HANDLE ERRORS WHEN COMPONENTS LOADS DYNAMICALLY 
+ * @param {} props 
+ */
+
+
+var Loading = function Loading(props) {
+  if (props.error) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: styles.wrapper
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Error loading component!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, props.error.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.error.stack), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: props.retry
+    }, "Retry")));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Loading);
+
+/***/ }),
+
+/***/ "./src/components/Loading/styles.scss":
+/*!********************************************!*\
+  !*** ./src/components/Loading/styles.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+module.exports = {"wrapper":"Loading-wrapper"};
+
+/***/ }),
+
+/***/ "./src/containers/PageLayout/ComponentList/index.js":
+/*!**********************************************************!*\
+  !*** ./src/containers/PageLayout/ComponentList/index.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-loadable */ "react-loadable");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Loading */ "./src/components/Loading/index.js");
+
+
+/* Components */
+
+var Header = react_loadable__WEBPACK_IMPORTED_MODULE_0___default()({
+  loader: function loader() {
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../../../components/Header */ "./src/components/Header/index.js"));
+  },
+  loading: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+var Home = react_loadable__WEBPACK_IMPORTED_MODULE_0___default()({
+  loader: function loader() {
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../../components/Home */ "./src/components/Home/index.js"));
+  },
+  loading: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+var About = react_loadable__WEBPACK_IMPORTED_MODULE_0___default()({
+  loader: function loader() {
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../../components/About */ "./src/components/About/index.js"));
+  },
+  loading: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+var Greetings = react_loadable__WEBPACK_IMPORTED_MODULE_0___default()({
+  loader: function loader() {
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../../components/Greetings */ "./src/components/Greetings/index.js"));
+  },
+  loading: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+var DogsCatalog = react_loadable__WEBPACK_IMPORTED_MODULE_0___default()({
+  loader: function loader() {
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../../../containers/DogsCatalog */ "./src/containers/DogsCatalog/index.js"));
+  },
+  loading: _components_Loading__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Home: Home,
+  About: About,
+  Greetings: Greetings,
+  DogsCatalogWithRedux: DogsCatalog,
+  Header: Header
+});
+
+/***/ }),
+
+/***/ "./src/containers/PageLayout/query.js":
+/*!********************************************!*\
+  !*** ./src/containers/PageLayout/query.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\nquery getPageByUrl($url: String) \n{\n  getPageByUrl(url: $url) {\n    id\n    url\n    layout {\n      span\n      components {\n        name\n      }        \n    }\n  }\n}\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var query = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject());
+/* harmony default export */ __webpack_exports__["default"] = (query);
+
+/***/ }),
+
+/***/ "./src/containers/PageLayout/ssr-index.js":
+/*!************************************************!*\
+  !*** ./src/containers/PageLayout/ssr-index.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ComponentList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComponentList */ "./src/containers/PageLayout/ComponentList/index.js");
+/* harmony import */ var _query__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./query */ "./src/containers/PageLayout/query.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-apollo */ "react-apollo");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var styles = __webpack_require__(/*! ./styles.scss */ "./src/containers/PageLayout/styles.scss");
+
+var PageLayout =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PageLayout, _Component);
+
+  function PageLayout(props) {
+    _classCallCheck(this, PageLayout);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PageLayout).call(this, props));
+  }
+
+  _createClass(PageLayout, [{
+    key: "render",
+    value: function render() {
+      console.log(">>>>>> his.props.data: ", this.props.data);
+      console.log(">>>>>> getPageByUrl: ", this.props.data.getPageByUrl);
+      var allLayout = this.props.data.getPageByUrl.layout.map(function (layoutList) {
+        var layout = layoutList.components.map(function (component, id) {
+          var componentName = component.name;
+          console.log(">>>>>> componentName: ", componentName);
+          var ChildComponent = _ComponentList__WEBPACK_IMPORTED_MODULE_1__["default"][componentName];
+
+          if (typeof ChildComponent === 'undefined') {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              key: componentName + '-' + id,
+              className: styles.error
+            }, "Can't find `", componentName, "` component!");
+          }
+
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ChildComponent, {
+            key: componentName + '-' + id
+          });
+        });
+        return layout;
+      });
+      return allLayout;
+    }
+  }]);
+
+  return PageLayout;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_3__["graphql"])(_query__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  options: function options(props) {
+    console.log(">>>>>> location : ", props.location);
+    return {
+      variables: {
+        url: props.location
+      }
+    };
+  }
+})(PageLayout));
+
+/***/ }),
+
+/***/ "./src/containers/PageLayout/styles.scss":
+/*!***********************************************!*\
+  !*** ./src/containers/PageLayout/styles.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+module.exports = {"error":"PageLayout-error","wrapper":"PageLayout-wrapper"};
+
+/***/ }),
+
+/***/ "./src/reducers/index.js":
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./src/reducers/user.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  user: _user__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
+
+/***/ }),
+
+/***/ "./src/reducers/user.js":
+/*!******************************!*\
+  !*** ./src/reducers/user.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var CHANGE_USERNAME = 'CHANGE_USERNAME';
+var TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE';
+var initialState = {
+  todos: [],
+  userName: "No Name",
+  editMode: false
+};
+
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case CHANGE_USERNAME:
+      {
+        var newState = _objectSpread({}, state);
+
+        newState.userName = action.data;
+        return newState;
+      }
+
+    case TOGGLE_EDIT_MODE:
+      {
+        var _newState = _objectSpread({}, state);
+
+        _newState.editMode = !_newState.editMode;
+        return _newState;
+      }
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (reducer);
+
+/***/ }),
+
+/***/ "./ssr-server.js":
+/*!***********************!*\
+  !*** ./ssr-server.js ***!
+  \***********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ "path");
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ "fs");
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! express */ "express");
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom/server */ "react-dom/server");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _src_containers_PageLayout_ssr_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/containers/PageLayout/ssr-index */ "./src/containers/PageLayout/ssr-index.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-apollo */ "react-apollo");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! apollo-client */ "apollo-client");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! apollo-link-http */ "apollo-link-http");
+/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(apollo_link_http__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apollo-cache-inmemory */ "apollo-cache-inmemory");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _html_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./html.js */ "./html.js");
+/* harmony import */ var _src_reducers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./src/reducers */ "./src/reducers/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_15__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var PORT = Object({"APP_NAME":"Webpack React Tutorial","GRAPHQL_URL":"http://localhost:4001/graphql"}).PORT || 3006;
+var app = express__WEBPACK_IMPORTED_MODULE_3___default()();
+app.use(express__WEBPACK_IMPORTED_MODULE_3___default.a["static"]('./build'));
+app.use('/dist', express__WEBPACK_IMPORTED_MODULE_3___default.a["static"]('dist')); // to serve frontent prod static files
+
+app.use('/favicon.ico', express__WEBPACK_IMPORTED_MODULE_3___default.a["static"]('assets/images/favicon.ico'));
+app.get('/*', function (req, res) {
+  var GRAPHQL_URL = "http://localhost:4001/graphql";
+  var client = new apollo_client__WEBPACK_IMPORTED_MODULE_7__["ApolloClient"]({
+    ssrMode: true,
+    link: Object(apollo_link_http__WEBPACK_IMPORTED_MODULE_8__["createHttpLink"])({
+      uri: GRAPHQL_URL,
+      fetch: isomorphic_fetch__WEBPACK_IMPORTED_MODULE_11___default.a,
+      credentials: 'same-origin',
+      headers: {
+        cookie: req.header('Cookie')
+      }
+    }),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_9__["InMemoryCache"]()
+  });
+  var context = {};
+  var store = Object(redux__WEBPACK_IMPORTED_MODULE_14__["createStore"])(_src_reducers__WEBPACK_IMPORTED_MODULE_13__["default"], {});
+  var app = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_15__["Provider"], {
+    store: store
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_6__["ApolloProvider"], {
+    client: client
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["StaticRouter"], {
+    context: context,
+    location: req.url
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_src_containers_PageLayout_ssr_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    location: req.url
+  }))));
+  Object(react_apollo__WEBPACK_IMPORTED_MODULE_6__["getDataFromTree"])(app).then(function () {
+    // We are ready to render for real
+    var content = react_dom_server__WEBPACK_IMPORTED_MODULE_4___default.a.renderToString(app);
+    var initialState = client.extract();
+    var html = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_html_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      content: content,
+      client: client
+    });
+    res.status(200);
+    res.send("<!doctype html>\n".concat(react_dom_server__WEBPACK_IMPORTED_MODULE_4___default.a.renderToStaticMarkup(html)));
+    res.end();
+  }, function (reason) {
+    // rejection
+    console.log("ERROR !!!!!", reason);
+  });
+});
+app.listen(PORT, function () {
+  console.log("\uD83D\uDE0E Server is listening on port ".concat(PORT));
+});
+
+/***/ }),
+
+/***/ 0:
+/*!*****************************!*\
+  !*** multi ./ssr-server.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./ssr-server.js */"./ssr-server.js");
+
+
+/***/ }),
+
+/***/ "apollo-cache-inmemory":
+/*!****************************************!*\
+  !*** external "apollo-cache-inmemory" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-cache-inmemory");
+
+/***/ }),
+
+/***/ "apollo-client":
+/*!********************************!*\
+  !*** external "apollo-client" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-client");
+
+/***/ }),
+
+/***/ "apollo-link-http":
+/*!***********************************!*\
+  !*** external "apollo-link-http" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-link-http");
+
+/***/ }),
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "graphql-tag":
+/*!******************************!*\
+  !*** external "graphql-tag" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("graphql-tag");
+
+/***/ }),
+
+/***/ "isomorphic-fetch":
+/*!***********************************!*\
+  !*** external "isomorphic-fetch" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-fetch");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-apollo":
+/*!*******************************!*\
+  !*** external "react-apollo" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-apollo");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "react-loadable":
+/*!*********************************!*\
+  !*** external "react-loadable" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-loadable");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ })
+
+/******/ });

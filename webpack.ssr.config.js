@@ -1,13 +1,13 @@
 const webpack = require('webpack');
 let config = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const nodeExternals = require('webpack-node-externals');
-const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const path = require('path');
 
-config.mode = "production";
+config.mode = "development";
 config.target = 'node'; // # 1
 config.devtool = "";
 config.externals = [nodeExternals()];
@@ -23,14 +23,14 @@ config.output = {
 };
 
 config.module.rules[1].use[0] = MiniCssExtractPlugin.loader;
-config.plugins = [ ... [
-  new LoadablePlugin(),
-  new MiniCssExtractPlugin({
+
+config.plugins = [ ... [new MiniCssExtractPlugin({
         // these are optional
         filename: "[name].css",
         chunkFilename: "[id].css"
     })], 
-  new OptimizeCSSAssetsPlugin({}),  
+    new LoadablePlugin(),
+    new OptimizeCSSAssetsPlugin({}),  
     ... config.plugins
 ];
 module.exports = config;

@@ -1,1 +1,107 @@
-exports.ids=[4],exports.modules={21:function(e,t,n){e.exports={Wrapper:"DogsCatalog-Wrapper",Buttons:"DogsCatalog-Buttons"}},26:function(e,t,n){"use strict";n.r(t);var r=n(0),o=n.n(r),a=n(1),i=n(7),u=n.n(i);function c(){var e=function(e,t){t||(t=e.slice(0));return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}(["\n  query getDogByBreed($breed: String) \n  {\n    getDogByBreed(breed: $breed) {\n      id\n      breed\n      displayImage\n    }\n  }\n"]);return c=function(){return e},e}var l=u()(c()),s=Object(a.graphql)(l,{justADumFunction:function(e){return{variables:{breed:e.breed}}}})(function(e){return void 0===e.data.getDogByBreed?o.a.createElement("p",null,"Loading ..."):o.a.createElement("div",null,o.a.createElement("span",null,"breed: "),o.a.createElement("span",null,e.data.getDogByBreed.breed),o.a.createElement("br",null),o.a.createElement("img",{src:e.data.getDogByBreed.displayImage}))});function f(){var e=function(e,t){t||(t=e.slice(0));return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}(["\nquery getDogsList\n{\n  getDogsList {\n    id\n    breed\n  }\n}\n"]);return f=function(){return e},e}var p=u()(f());function d(e){return(d="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function b(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function y(e,t){return!t||"object"!==d(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function g(e){return(g=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function m(e,t){return(m=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var v=n(21),h=function(e){function t(e){var n;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),(n=y(this,g(t).call(this,e))).state={breed:"labrador"},n}var n,a,i;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&m(e,t)}(t,r["Component"]),n=t,(a=[{key:"handleClick",value:function(e){this.setState({breed:e})}},{key:"render",value:function(){var e=this;return void 0===this.props.data.getDogsList?o.a.createElement("div",null,"Loading ... "):o.a.createElement("div",{className:v.Wrapper},o.a.createElement("p",null,"Dogs catalog"),o.a.createElement("div",{className:v.Buttons},this.props.data.getDogsList.map(function(t){return o.a.createElement("button",{key:t.id,onClick:function(){e.handleClick(t.breed)}},t.breed)})),o.a.createElement(s,{breed:this.state.breed}))}}])&&b(n.prototype,a),i&&b(n,i),t}();t.default=Object(a.graphql)(p,{})(h)}};
+exports.ids = [4];
+exports.modules = {
+
+/***/ "./src/components/About/index.js":
+/*!***************************************!*\
+  !*** ./src/components/About/index.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var CHANGE_USERNAME = 'CHANGE_USERNAME';
+
+var About =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(About, _Component);
+
+  function About(props) {
+    var _this;
+
+    _classCallCheck(this, About);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(About).call(this, props));
+    _this.state = {
+      userName: _this.props.userName
+    };
+    return _this;
+  }
+
+  _createClass(About, [{
+    key: "handleChange",
+    value: function handleChange() {
+      var userName = document.querySelector('input[name=username]').value;
+      this.setState({
+        userName: userName
+      });
+      this.props.onEdit(userName);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "username",
+        value: this.state.userName,
+        onChange: function onChange() {
+          _this2.handleChange();
+        }
+      })));
+    }
+  }]);
+
+  return About;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); //export default About;
+
+
+var mapStateToProps = function mapStateToProps(storeState) {
+  return {
+    userName: storeState.user.userName
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onEdit: function onEdit(userName) {
+      return dispatch({
+        type: CHANGE_USERNAME,
+        data: userName
+      });
+    }
+  };
+};
+
+var AboutContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(About);
+/* harmony default export */ __webpack_exports__["default"] = (AboutContainer);
+
+/***/ })
+
+};;

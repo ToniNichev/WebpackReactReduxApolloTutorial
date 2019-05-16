@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.30.0",
-  "hash": "55985fe817df30ab8968",
+  "hash": "9d468773a8ca5646fe77",
   "publicPath": "/server-build/",
   "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
   "assetsByChunkName": {
@@ -13,8 +13,26 @@
   },
   "assets": [
     {
+      "name": "0-bundle.js",
+      "size": 10527,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "0.css",
+      "size": 381,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
       "name": "1-bundle.js",
-      "size": 2515,
+      "size": 6277,
       "chunks": [
         1
       ],
@@ -32,7 +50,7 @@
     },
     {
       "name": "2-bundle.js",
-      "size": 731,
+      "size": 2855,
       "chunks": [
         2
       ],
@@ -50,7 +68,7 @@
     },
     {
       "name": "3-bundle.js",
-      "size": 290,
+      "size": 1412,
       "chunks": [
         3
       ],
@@ -68,35 +86,10 @@
     },
     {
       "name": "4-bundle.js",
-      "size": 3073,
+      "size": 4863,
       "chunks": [
         4
       ],
-      "chunkNames": [],
-      "emitted": false
-    },
-    {
-      "name": "4.css",
-      "size": 381,
-      "chunks": [
-        4
-      ],
-      "chunkNames": [],
-      "emitted": false
-    },
-    {
-      "name": "5-bundle.js",
-      "size": 1978,
-      "chunks": [
-        5
-      ],
-      "chunkNames": [],
-      "emitted": false
-    },
-    {
-      "name": "a6360e7167dcb04592dcdd318b7656bf.woff2",
-      "size": 16600,
-      "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
@@ -109,9 +102,9 @@
     },
     {
       "name": "main-bundle.js",
-      "size": 8099,
+      "size": 34669,
       "chunks": [
-        0
+        "main"
       ],
       "chunkNames": [
         "main"
@@ -120,9 +113,9 @@
     },
     {
       "name": "main.css",
-      "size": 459,
+      "size": 234,
       "chunks": [
-        0
+        "main"
       ],
       "chunkNames": [
         "main"
@@ -134,7 +127,7 @@
   "entrypoints": {
     "main": {
       "chunks": [
-        0
+        "main"
       ],
       "assets": [
         "main.css",
@@ -147,7 +140,7 @@
   "namedChunkGroups": {
     "main": {
       "chunks": [
-        0
+        "main"
       ],
       "assets": [
         "main.css",
@@ -169,7 +162,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -181,42 +174,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
-          ],
-          "assets": [
-            "*"
-          ],
-          "children": {},
-          "childAssets": {}
-        }
-      },
-      "children": [],
-      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/App/styles.scss"
-    },
-    {
-      "errors": [],
-      "warnings": [],
-      "publicPath": "/server-build/",
-      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
-      "assetsByChunkName": {},
-      "assets": [],
-      "filteredAssets": 0,
-      "entrypoints": {
-        "mini-css-extract-plugin": {
-          "chunks": [
-            0
-          ],
-          "assets": [
-            "*"
-          ],
-          "children": {},
-          "childAssets": {}
-        }
-      },
-      "namedChunkGroups": {
-        "mini-css-extract-plugin": {
-          "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -239,7 +197,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -251,7 +209,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -274,7 +232,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -286,7 +244,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -309,7 +267,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -321,7 +279,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -344,7 +302,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -356,7 +314,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -379,7 +337,7 @@
       "entrypoints": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
@@ -391,7 +349,7 @@
       "namedChunkGroups": {
         "mini-css-extract-plugin": {
           "chunks": [
-            0
+            "mini-css-extract-plugin"
           ],
           "assets": [
             "*"
