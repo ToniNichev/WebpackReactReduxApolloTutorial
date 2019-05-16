@@ -1,0 +1,407 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.30.0",
+  "hash": "55985fe817df30ab8968",
+  "publicPath": "/server-build/",
+  "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+  "assetsByChunkName": {
+    "main": [
+      "main.css",
+      "main-bundle.js"
+    ]
+  },
+  "assets": [
+    {
+      "name": "1-bundle.js",
+      "size": 2515,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "1.css",
+      "size": 150,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "2-bundle.js",
+      "size": 731,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "2.css",
+      "size": 373,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "3-bundle.js",
+      "size": 290,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "3.css",
+      "size": 81,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "4-bundle.js",
+      "size": 3073,
+      "chunks": [
+        4
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "4.css",
+      "size": 381,
+      "chunks": [
+        4
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "5-bundle.js",
+      "size": 1978,
+      "chunks": [
+        5
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "a6360e7167dcb04592dcdd318b7656bf.woff2",
+      "size": 16600,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "images/b5c0108b6972494511e73ad626d1852f-home.png",
+      "size": 21931,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "main-bundle.js",
+      "size": 8099,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "main.css",
+      "size": 459,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.css",
+        "main-bundle.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.css",
+        "main-bundle.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/App/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/Greetings/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/Header/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/Home/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/components/Loading/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/containers/DogsCatalog/styles.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/server-build/",
+      "outputPath": "/Users/toninichev/Cloud/workspace/nodeJS/Examples/WebpackReactReduxApolloTutorial/server-build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--5-1!node_modules/postcss-loader/src/index.js??ref--5-2!node_modules/sass-loader/lib/loader.js??ref--5-3!src/containers/PageLayout/styles.scss"
+    }
+  ]
+}

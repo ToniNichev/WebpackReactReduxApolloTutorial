@@ -7,14 +7,15 @@
     "start-cli": "webpack-dev-server --hot --history-api-fallback --config webpack.cli.config.js",
     "start-api": "babel-node server-api.js",
     "start-middleware": "babel-node server-middleware.js",
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./dist ./server-build",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --config webpack.prod.config.js",
     "run-prod-server": "node ./prod.server.js",
     "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server",
     "build-ssr": "webpack --config webpack.ssr.config.js",
-    "run-ssr-server": "node ./server-build/main-bundle.js"
+    "run-ssr-server": "node ./server-build/main-bundle.js",
+    "build-and-run-ssr-server": "yarn clean && yarn build-ssr && yarn run-ssr-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@loadable/webpack-plugin": "^5.7.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",
@@ -50,6 +52,7 @@
     "file-loader": "^3.0.1",
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
@@ -57,6 +60,7 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }

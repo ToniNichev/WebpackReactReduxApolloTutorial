@@ -41,7 +41,7 @@ export default graphql(query, {
     options(props) {
       return {
         variables: {
-          url: props.history.location.pathname
+          url: typeof window == 'undefined' ? props.location : props.history.location.pathname
         },
       };
     },

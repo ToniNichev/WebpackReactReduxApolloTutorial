@@ -1,0 +1,1 @@
+.DogsCatalog-Wrapper img{width:100%}.DogsCatalog-Wrapper .DogsCatalog-Buttons{display:grid;grid-template-columns:repeat(6,1fr);grid-gap:8px;max-width:1200px;width:100%;margin:0 auto}.DogsCatalog-Wrapper .DogsCatalog-Buttons>button{background:efefef;border-radius:5px;transition:.5s}.DogsCatalog-Wrapper .DogsCatalog-Buttons>button:hover{background:silver;color:#fff;cursor:pointer}

@@ -1,0 +1,1 @@
+exports.ids=[3],exports.modules={19:function(e,r,t){e.exports={wrapper:"Home-wrapper"}},23:function(e,r,t){"use strict";t.r(r);var n=t(0),s=t.n(n),a=t(19);r.default=function(){return s.a.createElement("div",null,s.a.createElement("div",{className:a.wrapper},"This is my home section!"))}}};

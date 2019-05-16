@@ -3,6 +3,8 @@ let config = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const nodeExternals = require('webpack-node-externals');
+const LoadablePlugin = require('@loadable/webpack-plugin');
+
 const path = require('path');
 
 config.mode = "production";
@@ -21,12 +23,14 @@ config.output = {
 };
 
 config.module.rules[1].use[0] = MiniCssExtractPlugin.loader;
-config.plugins = [ ... [new MiniCssExtractPlugin({
+config.plugins = [ ... [
+  new LoadablePlugin(),
+  new MiniCssExtractPlugin({
         // these are optional
         filename: "[name].css",
         chunkFilename: "[id].css"
     })], 
-    new OptimizeCSSAssetsPlugin({}),  
+  new OptimizeCSSAssetsPlugin({}),  
     ... config.plugins
 ];
 module.exports = config;
