@@ -4,8 +4,7 @@ const webpack =require('webpack');
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: [
-    '@babel/polyfill',    
+  entry: [ 
     './src/index.js',
   ],
   output: {
@@ -24,8 +23,9 @@ module.exports = {
 
       // SCSS
       {
-        test: /\.scss$/,
+        test:/\.(s*)css$/, 
         use: [
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -34,12 +34,6 @@ module.exports = {
               localIdentName: '[folder]-[local]',
               sourceMap: true
             }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')()],
-            },
           },
           {
             loader: 'sass-loader',

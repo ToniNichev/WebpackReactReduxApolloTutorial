@@ -16,6 +16,28 @@ config.entry = [
     './ssr-server.js', 
 ];
 
+config.module.rules[1] =       {
+  test:/\.(s*)css$/, 
+  use: [
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        importLoaders: 2,
+        localIdentName: '[folder]-[local]',
+        sourceMap: true
+      }
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        outputStyle: 'expanded',
+        sourceMap: true
+      }
+    }
+  ],
+}
+
 config.output = {
   path: path.resolve('server-build'),
   filename: '[name]-bundle.js',
