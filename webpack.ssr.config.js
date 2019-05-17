@@ -22,15 +22,11 @@ config.output = {
   publicPath: '/server-build/',
 };
 
-config.module.rules[1].use[0] = MiniCssExtractPlugin.loader;
 
-config.plugins = [ ... [new MiniCssExtractPlugin({
-        // these are optional
-        filename: "[name].css",
-        chunkFilename: "[id].css"
-    })], 
+config.plugins = [ ... [
     new LoadablePlugin(),
-    new OptimizeCSSAssetsPlugin({}),  
+    new OptimizeCSSAssetsPlugin({})],  
     ... config.plugins
 ];
+
 module.exports = config;
