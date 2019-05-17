@@ -15,7 +15,8 @@
     "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server",
     "build-ssr": "webpack --config webpack.ssr.config.js",
     "run-ssr-server": "node ./server-build/main-bundle.js",
-    "build-and-run-ssr-server": "yarn clean && yarn build-ssr && yarn run-ssr-server"
+    "build-and-run-ssr-server": "yarn clean && yarn build-ssr && yarn run-ssr-server",
+    "run-all": "yarn clean && yarn build-prod && yarn build-ssr && yarn run-ssr-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
