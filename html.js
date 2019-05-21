@@ -7,6 +7,7 @@ const Html = ({ content, client: { cache } }) => (
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" type="text/css" href="./dist/main.css" />
       <title>TONI'S TUTORIAL</title>
     </head>
     <body>

@@ -23,7 +23,7 @@ const app = express();
 
 app.use(express.static('./build'));
 app.use('/dist', express.static('dist')); // to serve frontent prod static files
-app.use('/favicon.ico', express.static('assets/images/favicon.ico'));
+app.use('/favicon.ico', express.static('./src/images/favicon.ico'));
 
 app.get('/*', (req, res) => {
 
@@ -68,7 +68,7 @@ app.get('/*', (req, res) => {
     res.end();
   },(reason) => {
     // rejection
-    console.log("ERROR !!!!!", reason)
+    console.log("ERROR in [getDataFromTree] !!!!!", reason)
   });  
  
 });
