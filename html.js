@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Html = ({ content, client: { cache } }) => (
+const Html = ({ content }) => (
   <html lang="en">
     <head>
       <meta charSet="utf-8" />

@@ -5,7 +5,7 @@ import Html from './html.js';
 import App from './src/components/App';
 
 
-const PORT = process.env.PORT || 3006;
+const PORT = 3006;
 const app = express();
 
 app.use('/server-build', express.static('./server-build'));
@@ -15,7 +15,7 @@ app.use('/favicon.ico', express.static('./src/images/favicon.ico'));
 app.get('/*', (req, res) => {
 
   const mainApp = (
-    <App req={req} client={client} />
+    <App req={req} />
   );    
 
  
