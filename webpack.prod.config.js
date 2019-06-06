@@ -1,13 +1,18 @@
+const webpack =require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const path = require('path');
+
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
-  entry: [
-    '@babel/polyfill',    
+  devtool: 'eval-source-map',
+  entry: [ 
     './src/index.js',
   ],
   output: {
+    path: path.resolve('dist'),
     filename: '[name]-bundle.js',
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },  
   module: {
     rules: [
@@ -21,9 +26,15 @@ module.exports = {
 
       // SCSS
       {
-        test: /\.scss$/,
+        test:/\.(s*)css$/, 
         use: [
-          'style-loader',
+          {
+            loader:ExtractCssChunks.loader,
+            options: {
+              hot: true, // if you want HMR - we try to automatically inject hot reloading but if it's not working, add it to the config
+              reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
+            }
+          },  
           {
             loader: 'css-loader',
             options: {
@@ -32,12 +43,6 @@ module.exports = {
               localIdentName: '[folder]-[local]',
               sourceMap: true
             }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')()],
-            },
           },
           {
             loader: 'sass-loader',
@@ -65,5 +70,17 @@ module.exports = {
         use: ['file-loader']
       }                    
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({ 'process.env' : 'development' } ),  
+    new ExtractCssChunks(
+      {
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: "[name].css",
+        chunkFilename: "[id].css",
+        orderWarning: true, // Disable to remove warnings about conflicting order between imports
+      }
+    )    
+  ]
 };

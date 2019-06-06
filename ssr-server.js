@@ -2,7 +2,7 @@ import React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import Html from './html.js';
-import App from './src/components/App';
+import App from './src/components/App/ssr-index';
 
 
 const PORT = 3006;

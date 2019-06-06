@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start-api": "babel-node server-api.js",
     "clean": "rm -rf ./dist;rm -rf ./server-build",
+    "start-api": "babel-node server-api.js",
+    "build-prod": "webpack --config webpack.prod.config.js",
     "build-ssr": "webpack --config webpack.server.config.js",
-    "run-ssr-server": "node ./server-build/main-bundle.js"
+    "run-server": "node ./server-build/main-bundle.js",
+    "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -36,6 +38,7 @@
     "file-loader": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "url-loader": "^1.1.2",
     "webpack-node-externals": "^1.7.2"
   }
