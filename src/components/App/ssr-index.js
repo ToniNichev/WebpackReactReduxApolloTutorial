@@ -4,17 +4,16 @@ import { StaticRouter,  Route, Switch } from 'react-router-dom';
 
 import styles from './styles.scss';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className={styles.appWrapper}>
-        <h1>React is running</h1>
-        <StaticRouter>
-          <Switch>
-            <Route exact path="*" component={PageLayout} />  
-          </Switch>            
-        </StaticRouter>
-      </div>
-    );
-  }
+export default ( {req} ) => {
+  const context = {};
+  return (
+    <div className={styles.appWrapper}>
+      <h1>React is running</h1>
+      <StaticRouter location={ req.url } context={context}>
+        <Switch>
+          <Route exact path="*" component={PageLayout} />  
+        </Switch>            
+      </StaticRouter>
+    </div>
+  );
 }

@@ -43,6 +43,20 @@
   color: black;
 }
 
+.Loading-wrapper {
+  background: #8d8dac;
+  padding-bottom: 10px;
+}
+
+.Loading-wrapper h3 {
+  background: red;
+  text-align: center;
+}
+
+.Loading-wrapper div {
+  text-align: center;
+}
+
 .PageLayout-error {
   background: red;
   color: white;
