@@ -19,7 +19,7 @@ class PageLayout extends Component {
       super(props);      
 
       const url = props.location.pathname;
-
+      console.log("constructor >>>", url);
       const componentsList = this.getComponentsList(url);
       this.state = {
         url: url,
@@ -29,8 +29,8 @@ class PageLayout extends Component {
     } 
 
     componentWillReceiveProps(nextProps) {
-      console.log("@#@#@#");
-      const url = typeof window == 'undefined' ? nextProps.location : nextProps.history.location.pathname;
+      console.log("componentWillReceiveProps");
+      const url = nextProps.location.pathname;
       const componentsList = this.getComponentsList(url);
       this.setComponents(componentsList);
       this.setState({ url: url, componentsList: componentsList });
@@ -41,6 +41,7 @@ class PageLayout extends Component {
     }
 
     setComponents(componentsList) {
+      console.log("setComponents >>>>", componentsList);
       componentsList.map((componentName, id , components) => {
         const componentPath = ComponentList[componentName];
         this.setState({components: []});
@@ -52,30 +53,12 @@ class PageLayout extends Component {
       });
     }
 
-    componentWillMount() {
+    componentDidMount() {
+      console.log("componentDidMount");
       this.setComponents(this.state.componentsList);
     }
 
     render() {
-
-      /*
-      const allLayout = this.state.componentsList.map((componentName, id , components) => {
-
-        let componentPath =  ComponentList[componentName];
-
-        import('../../components/Header').then( Header => {
-          return (
-            <div key={id}>
-              <h1>12345</h1>
-              <header.default title="TEST" key={id} />
-            </div>              
-          );
-        });        
-      });
-      */
-
-     
-
       const allComponents = this.state.components.map( (component, id, components) => {
         return component;
       });
