@@ -1,8 +1,11 @@
 import React from 'react';
+import ShowText from '../ShowText';
+
 const styles = require('./styles.scss');
-const Home = () => (
+
+export default ( {text} ) => (
   <div>
-    <div className={styles.wrapper}>This is my home section!</div>
+    <div className={styles.wrapper}>Home<ShowText text="Test1234" /></div>
   </div>
 )
-export default Home;
+ 
