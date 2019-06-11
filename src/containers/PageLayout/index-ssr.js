@@ -48,14 +48,10 @@ class PageLayout extends Component {
         const componentPath = ComponentList[componentName]; 
 
 
-
-          // splits the bundle but doesn't render components on SSR 
-          import( '../../components/' + componentPath).then( component => {
-            let components = this.state.components;
-            components.push(<component.default key={id} />);
-            this.setState({components: components});
-          });
-
+        // works on SSR but doesn't split the bundle
+        let component = require('../../components/' + componentPath);
+        components.push(<component.default key={id} />);
+        this.setState({components: components});
         
       });
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PageLayout from '../../containers/PageLayout';
+import PageLayout from '../../containers/PageLayout/index-ssr';
 import { StaticRouter,  Route, Switch } from 'react-router-dom';
 
 import styles from './styles.scss';
