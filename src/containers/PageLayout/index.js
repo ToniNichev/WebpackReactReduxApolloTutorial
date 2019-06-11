@@ -19,7 +19,6 @@ class PageLayout extends Component {
       super(props);      
 
       const url = props.location.pathname;
-      console.log("constructor >>>", url);
       const componentsList = this.getComponentsList(url);
       this.state = {
         url: url,
@@ -29,11 +28,12 @@ class PageLayout extends Component {
     } 
 
     componentWillReceiveProps(nextProps) {
-      console.log("componentWillReceiveProps");
       const url = nextProps.location.pathname;
       const componentsList = this.getComponentsList(url);
+      this.state.components = []; // force changing the state right away otherwise react will queue the request and we will end up with duplicate components
+      this.setState({ components: [], url: url, componentsList: componentsList });      
       this.setComponents(componentsList);
-      this.setState({ url: url, componentsList: componentsList });
+
     }
   
     getComponentsList(url) {
@@ -41,13 +41,10 @@ class PageLayout extends Component {
     }
 
     setComponents(componentsList) {
-      console.log("setComponents >>>>", componentsList);
-      this.setState({components: []});      
+  
       let components = this.state.components;
       componentsList.map((componentName, id , allLomponents) => {
-        const componentPath = ComponentList[componentName];
-
-
+        const componentPath = ComponentList[componentName]; 
         let component = require('../../components/' + componentPath);
         components.push(<component.default key={id} />);
         this.setState({components: components});
@@ -61,11 +58,9 @@ class PageLayout extends Component {
         });
         */       
       });
-      console.log(">###########", this.state.components);
     }
 
     componentDidMount() {
-      console.log("componentDidMount");
       this.setComponents(this.state.componentsList);
     }
 
@@ -77,8 +72,6 @@ class PageLayout extends Component {
         return component;
       });
 
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-      console.log(this.state.components);
       return(
         <div className={styles.app}>
           {allComponents}
