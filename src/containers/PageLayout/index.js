@@ -49,7 +49,8 @@ class PageLayout extends Component {
 
 
 
-          // splits the bundle but doesn't render components on SSR 
+          // splits the bundle but doesn't render components on SSR since 'import' is asynchronous and by the time the
+          // promise is fulfilled the component is already rendered on the SSR.
           import( '../../components/' + componentPath).then( component => {
             let components = this.state.components;
             components.push(<component.default key={id} />);

@@ -47,8 +47,9 @@ class PageLayout extends Component {
       componentsList.map((componentName, id , allLomponents) => {
         const componentPath = ComponentList[componentName]; 
 
-
-        // works on SSR but doesn't split the bundle
+        // works on SSR but doesn't split the bundle since webpack is considering all files necessary to load.
+        // this creates `server-build/main-bundle.js` that will have the JS code for all components, which we are NOT going to use.
+        // We just need the components source code on the server side.
         let component = require('../../components/' + componentPath);
         components.push(<component.default key={id} />);
         this.setState({components: components});
