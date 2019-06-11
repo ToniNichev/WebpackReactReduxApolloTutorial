@@ -42,15 +42,26 @@ class PageLayout extends Component {
 
     setComponents(componentsList) {
       console.log("setComponents >>>>", componentsList);
-      componentsList.map((componentName, id , components) => {
+      this.setState({components: []});      
+      let components = this.state.components;
+      componentsList.map((componentName, id , allLomponents) => {
         const componentPath = ComponentList[componentName];
-        this.setState({components: []});
+
+
+        let component = require('../../components/' + componentPath);
+        components.push(<component.default key={id} />);
+        this.setState({components: components});
+
+
+        /*
         import( '../../components/' + componentPath).then( component => {
           let components = this.state.components;
           components.push(<component.default key={id} />);
           this.setState({components: components});
-        });       
+        });
+        */       
       });
+      console.log(">###########", this.state.components);
     }
 
     componentDidMount() {
@@ -59,10 +70,15 @@ class PageLayout extends Component {
     }
 
     render() {
+
+      if(typeof window == 'undefined')
+        this.setComponents(this.state.componentsList);
       const allComponents = this.state.components.map( (component, id, components) => {
         return component;
       });
 
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+      console.log(this.state.components);
       return(
         <div className={styles.app}>
           {allComponents}
