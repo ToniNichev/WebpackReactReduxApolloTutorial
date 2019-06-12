@@ -7,4 +7,4 @@ const Home = () => (
     <div className={styles.wrapper}>This is my <ShowText textToShow="HOME"/> section!</div>
   </div>
 )
-export default Home;
+ 
