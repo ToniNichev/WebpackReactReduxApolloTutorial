@@ -1,17 +1,23 @@
 const webpack =require('webpack');
+let config = require('./webpack.base.config.js');
+const nodeExternals = require('webpack-node-externals');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  target: 'node',
+  devtool: 'eval-source-map',
+  externals: [nodeExternals()],
   entry: [ 
-    './src/index.js',
+    './ssr-server.js',
   ],
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('server-build'),
     filename: '[name]-bundle.js',
-    publicPath: '/dist/',
-  }, 
+    publicPath: '/server-build/',
+  },  
   module: {
     rules: [
       {
@@ -43,10 +49,16 @@ module.exports = {
             }
           },
           {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [require('autoprefixer')()],
+            },
+          },          
+          {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true
+              sourceMap: false
             }
           }
         ],
@@ -70,7 +82,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({ 'process.env' : 'development' } ),  
+    new webpack.DefinePlugin({ 'process.env' : 'development' } ),        
+    new OptimizeCSSAssetsPlugin({}),  
     new ExtractCssChunks(
       {
         // Options similar to the same options in webpackOptions.output
@@ -78,7 +91,10 @@ module.exports = {
         filename: "[name].css",
         chunkFilename: "[id].css",
         orderWarning: true, // Disable to remove warnings about conflicting order between imports
-      }
-    )    
+      },     
+    ),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }),          
   ]
 };

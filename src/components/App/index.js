@@ -6,7 +6,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore} from 'redux';
+import { createStore } from 'redux';
 import reducers from '../../reducers';
 
 const styles = require('./styles.scss');
