@@ -42,18 +42,14 @@ class PageLayout extends Component {
     }
 
     setComponents(componentsList) {
-  
       let components = this.state.components;
       componentsList.map((componentName, id , allLomponents) => {
         const componentPath = ComponentList[componentName]; 
-
-
-
           // splits the bundle but doesn't render components on SSR since 'import' is asynchronous and by the time the
           // promise is fulfilled the component is already rendered on the SSR.
           import( '../../components/' + componentPath).then( component => {
             let components = this.state.components;
-            components.push(<component.default key={id} />);
+            components.push(<component.default key={`wrapper-${id}`} />);
             this.setState({components: components});
           });
 
@@ -66,10 +62,7 @@ class PageLayout extends Component {
     }
 
     render() {
-
-      if(typeof window == 'undefined')
-        this.setComponents(this.state.componentsList);
-      const allComponents = this.state.components.map( (component, id, components) => {
+      const allComponents = this.state.components.map( (component) => {
         return component;
       });
 

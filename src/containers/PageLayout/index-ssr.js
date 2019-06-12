@@ -13,11 +13,11 @@ export default (props) => {
 
   function getComponents(componentsList) {  
     let components = componentsList.map((componentName, id , allLomponents) => {
-      // works on SSR but doesn't split the bundle since webpack is considering all files necessary to load.
+      // This works on SSR but doesn't split the bundle since webpack is considering all files necessary to load.
       // this creates `server-build/main-bundle.js` that will have the JS code for all components, which we are NOT going to use.
       // We just need the components source code on the server side.
-      let component = require('../../components/' + componentName);
-      const componentWithWrapper = <component.default key={id} />;
+      let component = require(`../../components/${componentName}`);
+      const componentWithWrapper = <component.default key={`wrapper-${id}`} />;
       return componentWithWrapper;
       
     });
