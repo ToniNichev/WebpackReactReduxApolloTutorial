@@ -2,7 +2,7 @@ const webpack =require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const LoadablePlugin = require('@loadable/webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -33,11 +33,7 @@ module.exports = {
         test:/\.(s*)css$/, 
         use: [
           {
-            loader:ExtractCssChunks.loader,
-            options: {
-              hot: true, // if you want HMR - we try to automatically inject hot reloading but if it's not working, add it to the config
-              reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
-            }
+            loader:ExtractCssChunks.loader
           },  
           {
             loader: 'css-loader',
@@ -83,7 +79,6 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env' : 'development' } ),        
-    new LoadablePlugin(),
     new OptimizeCSSAssetsPlugin({}),  
     new ExtractCssChunks(
       {
