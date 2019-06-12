@@ -3,6 +3,7 @@ let config = require('./webpack.base.config.js');
 const nodeExternals = require('webpack-node-externals');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const getEnvironmentConstants = require('./getEnvironmentConstants');
 const path = require('path');
 
 module.exports = {
@@ -96,5 +97,6 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),          
+    new webpack.DefinePlugin({ 'process.env' : getEnvironmentConstants() } ),  
   ]
 };
