@@ -5,8 +5,13 @@
   font-style: normal;
 }
 .appWrapper {
+  padding:5px;
   background: rgb(141, 141, 172);
   color: white;
   text-align: center;
   font-family: MyFont;
+  h1 {
+    font-size:18px;
+  }  
 }
+

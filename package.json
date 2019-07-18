@@ -7,12 +7,15 @@
     "start-cli": "webpack-dev-server --hot --history-api-fallback --config webpack.cli.config.js",
     "start-api": "babel-node server-api.js",
     "start-middleware": "babel-node server-middleware.js",
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./dist;rm -rf ./server-build",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --config webpack.prod.config.js",
     "run-prod-server": "node ./prod.server.js",
-    "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server"
+    "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server",
+    "build-ssr": "webpack --config webpack.server.config.js",
+    "run-server": "node ./server-build/server-bundle.js",
+    "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -27,6 +30,7 @@
     "eslint": "^5.15.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
+    "extract-css-chunks-webpack-plugin": "^4.5.6",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -55,6 +59,7 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }

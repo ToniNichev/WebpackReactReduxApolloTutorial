@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import PageLayout from '../../containers/PageLayout';
-import { BrowserRouter,  Route, Switch } from 'react-router-dom';
+import { StaticRouter,  Route, Switch } from 'react-router-dom';
 import styles from './styles.scss';
 
-export default ( {req, client} ) => {
+
+export default ( {req} ) => {
+  const context = {};
   return (
     <div className={styles.appWrapper}>
       <h1>React is running</h1>
-      <BrowserRouter>
+      <StaticRouter location={ req.url } context={context}>
         <Switch>
           <Route exact path="*" component={PageLayout} />  
         </Switch>            
-      </BrowserRouter>
+      </StaticRouter>
     </div>
   );
-
 }
