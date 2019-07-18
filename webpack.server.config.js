@@ -6,7 +6,7 @@ const nodeExternals = require('webpack-node-externals');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 config.target = 'node';
-config.mode = "production";
+config.mode = "development";
 config.devtool = "";
 
 config.entry = { 
