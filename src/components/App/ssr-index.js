@@ -17,8 +17,10 @@ import styles from './styles.scss';
 export default ( {req} ) => {
   const store = createStore(reducers, {});
   const context = {};
+  
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
   const client = new ApolloClient({
+    ssrMode: true,
     link: new HttpLink({ uri:  GRAPHQL_URL }),
     cache: new InMemoryCache()
   });  
