@@ -41,8 +41,9 @@ app.get('/*', (req, res) => {
     </Loadable.Capture>    
   );
 
+  // Execute all queries and fetch the results before continue
   getDataFromTree(mainApp).then(() => {        
-    // Execute all queries and fetch the results before continue
+    // Once we have the data back, this will render the components with the appropriate GraphQL data.
     renderToStringWithData(<App req={req} client={client} />).then( (HTML_content) => {
       // Extract CSS and JS bundles
       const bundles = getBundles(manifest, modules); 
