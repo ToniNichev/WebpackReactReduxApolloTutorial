@@ -7,11 +7,9 @@ import { createStore} from 'redux';
 import reducers from '../../reducers';
 import fetch from 'isomorphic-fetch';
 
-
 import styles from './styles.scss';
 
 const store = createStore(reducers, {});
-
 
 export default ( {req, client} ) => {
 

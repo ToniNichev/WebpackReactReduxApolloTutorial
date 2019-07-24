@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PageLayout from '../../containers/PageLayout';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
