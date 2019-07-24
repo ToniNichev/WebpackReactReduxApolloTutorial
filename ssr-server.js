@@ -10,11 +10,8 @@ import { renderToStringWithData } from "react-apollo"
 import { createHttpLink } from 'apollo-link-http';
 import { getBundles } from 'react-loadable/webpack';
 
-
 const PORT = process.env.PROD_SERVER_PORT;
 const app = express();
-
-
 
 app.use('/server-build', express.static('./server-build'));
 app.use('/dist', express.static('dist')); // to serve frontent prod static files
@@ -44,10 +41,9 @@ app.get('/*', (req, res) => {
     </Loadable.Capture>    
   );
 
-  // Execute all queries and fetch the results before continue
-  renderToStringWithData(<App req={req} client={client} />).then( (HTML_content) => {
-    // Get list of all JS and CSS files
-    getDataFromTree(mainApp).then(() => {        
+  getDataFromTree(mainApp).then(() => {        
+    // Execute all queries and fetch the results before continue
+    renderToStringWithData(<App req={req} client={client} />).then( (HTML_content) => {
       // Extract CSS and JS bundles
       const bundles = getBundles(manifest, modules); 
       const cssBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'css');
