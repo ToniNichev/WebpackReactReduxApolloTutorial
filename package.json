@@ -7,12 +7,13 @@
     "start-cli": "webpack-dev-server --hot --history-api-fallback --config webpack.cli.config.js",
     "start-api": "babel-node server-api.js",
     "start-middleware": "babel-node server-middleware.js",
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./dist ./server-build",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --config webpack.prod.config.js",
-    "run-prod-server": "node ./prod.server.js",
-    "build-and-run-prod-server": "yarn clean && yarn build-prod && yarn run-prod-server"
+    "build-ssr": "webpack --config webpack.server.config.js",
+    "run-server": "node ./server-build/server-bundle.js",
+    "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -36,7 +37,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
