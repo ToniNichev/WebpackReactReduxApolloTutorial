@@ -11,6 +11,7 @@ config.entry = [
     './src/index.js', 
 ];
 config.module.rules[1].use[0] = MiniCssExtractPlugin.loader;
+
 config.plugins = [ 
     ... config.plugins,
     ... [
