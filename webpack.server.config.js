@@ -4,7 +4,6 @@ const nodeExternals = require('webpack-node-externals');
 let config = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const Loadable  = require('react-loadable/webpack');
 
 config.mode = "production";
 config.devtool = "";

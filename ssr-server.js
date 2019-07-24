@@ -5,15 +5,16 @@ import Loadable from 'react-loadable';
 import manifest from './dist/loadable-manifest.json';
 import { getDataFromTree } from "react-apollo";
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo"
 import { createHttpLink } from 'apollo-link-http';
 import { getBundles } from 'react-loadable/webpack';
 
 
-const PORT = 3006;
+const PORT = process.env.PROD_SERVER_PORT;
 const app = express();
+
+
 
 app.use('/server-build', express.static('./server-build'));
 app.use('/dist', express.static('dist')); // to serve frontent prod static files
@@ -22,7 +23,6 @@ app.use('/favicon.ico', express.static('./src/images/favicon.ico'));
 app.get('/*', (req, res) => {
 
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
-
   const client = new ApolloClient({
     ssrMode: true,
     link: createHttpLink({
@@ -50,7 +50,6 @@ app.get('/*', (req, res) => {
     getDataFromTree(mainApp).then(() => {        
       // Extract CSS and JS bundles
       const bundles = getBundles(manifest, modules); 
-      //console.log(bundles);
       const cssBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'css');
       const jsBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'js');
     
