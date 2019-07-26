@@ -26,7 +26,7 @@ export default ( {req} ) => {
         <ApolloProvider client={client}>
           <Router>
             <Switch>
-            <Route exact path="*" component={PageLayout} />  
+              <Route exact path="*" component={PageLayout} />  
             </Switch>
           </Router>
         </ApolloProvider>

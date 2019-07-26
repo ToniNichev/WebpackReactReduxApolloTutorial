@@ -5,7 +5,7 @@ let config = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-config.mode = "production";
+config.mode = "development";
 config.devtool = "";
 config.target = "node";
 config.externals = [nodeExternals()];

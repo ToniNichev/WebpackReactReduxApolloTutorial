@@ -9,6 +9,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo"
 import { createHttpLink } from 'apollo-link-http';
 import { getBundles } from 'react-loadable/webpack';
+import ReactDOMServer from 'react-dom/server';
+import Html from './html.js';
 
 const PORT = process.env.PROD_SERVER_PORT;
 const app = express();
@@ -50,50 +52,10 @@ app.get('/*', (req, res) => {
       const cssBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'css');
       const jsBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'js');
     
+      const html = <Html content={HTML_content} cssBundles={cssBundles} jsBundles={jsBundles} apolloClient={client} />;
+
       res.status(200);
-      res.send(`<!doctype html>
-      <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Server Side Rendering and Bundle Splitting</title>
-        <link
-        href="/dist/main.css"
-        rel="stylesheet"
-        as="style"
-        media="screen, projection"
-        type="text/css"
-        charSet="UTF-8"
-      />
-        <!-- Page specific CSS bundle chunks -->      
-        ${
-          cssBundles.map( (bundle) => (`
-            <link
-              href="${bundle.publicPath}"
-              rel="stylesheet"
-              as="style"
-              media="screen, projection"
-              type="text/css"
-              charSet="UTF-8"
-            />`)).join('\n')
-        }
-        <!-- Page specific JS bundle chunks -->
-        ${jsBundles
-          .map(({ file }) => `<script src="/dist/${file}"></script>`)
-          .join('\n')}
-        <!-- =========================== -->
-      </head>
-      <body cz-shortcut-listen="true">
-        <div id="root"/>
-          ${HTML_content}
-        </div>
-        <script>
-        window.__APOLLO_STATE__=${JSON.stringify(client.cache.extract())};
-        </script>
-      
-        <script src="/dist/main-bundle.js"></script>
-      </body>
-    </html>`);
+      res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`);
       res.end(); 
     });    
 
