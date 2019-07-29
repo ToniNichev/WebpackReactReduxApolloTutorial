@@ -18,20 +18,18 @@ const Html = ({ content, cssBundles, jsBundles, apolloClient }) => (
   />
 
     {
-      cssBundles.map( (bundle) => (`
-        <link
-          href="${bundle.publicPath}"
+      cssBundles.map( (bundle) => 
+        (<link
+          href={`${bundle.publicPath}`}
           rel="stylesheet"
           as="style"
           media="screen, projection"
           type="text/css"
           charSet="UTF-8"
-        />`)).join('\n')
+        />))
     }
 
-    {jsBundles
-      .map( ( {file}, id) => (<script src="/dist/">{file}</script>) )
-    }
+    {jsBundles.map( ( {file}) => (<script src={`/dist/${file}`}>{file}</script>) )}
   </head>
   <body cz-shortcut-listen="true">
     <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
