@@ -14,6 +14,8 @@ class PageLayout extends Component {
         return (<Loading />);
       }     
 
+      const subDomain = this.props.subDomain;
+
       const allLayout = this.props.data.getPageByUrl.layout.map((layoutList) => {
         const layout = layoutList.components.map((component, id , components) => {
           const componentName = component.name;        
@@ -24,7 +26,7 @@ class PageLayout extends Component {
             );
           }
           return (
-              <ChildComponent key={componentName} />
+              <ChildComponent key={componentName} subDomain={subDomain}  />
           );
         });
         return layout;

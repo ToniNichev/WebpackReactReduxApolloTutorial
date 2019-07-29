@@ -13,20 +13,21 @@ const styles = require('./styles.scss');
 
 const store = createStore(reducers, {});
 
-export default ( {req} ) => {
+export default () => {
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
   const client = new ApolloClient({
     link: new HttpLink({ uri:  GRAPHQL_URL }),
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   }); 
   
+  const subDomain = window.location.host.split('.')[0];
   return (
     <div className={styles.appWrapper}>
       <Provider store={store}>
         <ApolloProvider client={client}>
           <Router>
             <Switch>
-              <Route exact path="*" component={PageLayout} />  
+            <Route exact path="*" render={(props) => <PageLayout {...props} subDomain={subDomain} />} />
             </Switch>
           </Router>
         </ApolloProvider>

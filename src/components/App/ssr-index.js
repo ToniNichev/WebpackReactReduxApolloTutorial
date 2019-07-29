@@ -13,6 +13,7 @@ const store = createStore(reducers, {});
 
 export default ( {req, client} ) => {
 
+  const subDomain = req.headers.host.split('.')[0];
   const context = {};
   return (
     <div className={styles.appWrapper}>
@@ -20,7 +21,7 @@ export default ( {req, client} ) => {
         <ApolloProvider client={client}>            
           <StaticRouter location={ req.url } context={context}>
             <Switch>
-              <Route exact path="*" component={PageLayout} />  
+              <Route exact path="*" render={(props) => <PageLayout {...props} subDomain={subDomain} />} />  
             </Switch>            
           </StaticRouter>
         </ApolloProvider>
