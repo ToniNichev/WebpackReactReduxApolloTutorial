@@ -17,14 +17,6 @@ const components = {
   two: Two
 }
 
-const Renderer = () => {
-  return (
-    <div>
-      <div className={styles.wrapper}>This is my home section!</div>
-    </div>
-  );
-}
-
 const Home = ( {subDomain} ) => {
 
   const Component = components[subDomain];
