@@ -20,7 +20,7 @@ export default () => {
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   }); 
   
-  const subDomain = window.location.host.split('.')[0];
+  const subDomain = window.location.host.split('.').length == 1 ? process.env.DEFAULT_BRAND : window.location.host.split('.')[0];
   return (
     <div className={styles.appWrapper}>
       <Provider store={store}>

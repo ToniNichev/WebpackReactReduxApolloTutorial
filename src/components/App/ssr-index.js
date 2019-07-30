@@ -13,7 +13,7 @@ const store = createStore(reducers, {});
 
 export default ( {req, client} ) => {
 
-  const subDomain = req.headers.host.split('.')[0];
+  const subDomain = req.headers.host.split('.').length == 1 ? process.env.DEFAULT_BRAND : req.headers.host.split('.')[0];
   const context = {};
   return (
     <div className={styles.appWrapper}>
