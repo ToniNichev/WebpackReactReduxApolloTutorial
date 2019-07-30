@@ -1,12 +1,36 @@
 import React from 'react';
+import Loadable from 'react-loadable';
+import Loading from '../Loading';
 
+const One = Loadable({
+  loader: () => import ('./brands/one'),
+  loading: Loading
+});
 
-const Home = ( {subDomain} ) => {
-  const styles = require(`./brands/${subDomain}/styles.scss`);
+const Two = Loadable({
+  loader: () => import ('./brands/two'),
+  loading: Loading
+});
 
+const components = {
+  one: One,
+  two: Two
+}
+
+const Renderer = () => {
   return (
     <div>
       <div className={styles.wrapper}>This is my home section!</div>
+    </div>
+  );
+}
+
+const Home = ( {subDomain} ) => {
+
+  const Component = components[subDomain];
+  return (
+    <div>
+      <Component />
     </div>
   )
 }
