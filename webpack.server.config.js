@@ -24,7 +24,8 @@ config.plugins = [
     ... config.plugins,
     ... [
         new MiniCssExtractPlugin({
-            filename: "[name].css"
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         }), 
         new OptimizeCSSAssetsPlugin({}),  
         // on the server we still need one bundle

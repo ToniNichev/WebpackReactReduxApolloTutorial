@@ -7,7 +7,8 @@ const dotenvFiles = [
 const frontendConstants = [
   'APP_NAME',
   'GRAPHQL_URL',
-  'PROD_SERVER_PORT'
+  'PROD_SERVER_PORT',
+  'BRANDS'
 ];
 function getEnvironmentConstants() {
   
