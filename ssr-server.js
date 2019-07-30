@@ -48,7 +48,8 @@ app.get('/*', (req, res) => {
     // Once we have the data back, this will render the components with the appropriate GraphQL data.
     renderToStringWithData(<App req={req} client={client} />).then( (HTML_content) => {
       // Extract CSS and JS bundles
-      const bundles = getBundles(manifest, modules); 
+      const bundles = getBundles(manifest, modules);
+      console.log(bundles);
       const cssBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'css');
       const jsBundles = bundles.filter(bundle => bundle && bundle.file.split('.').pop() === 'js');
     
