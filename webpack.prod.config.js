@@ -19,6 +19,12 @@ config.plugins = [
             filename: './dist/loadable-manifest.json',
           }),  
         new MiniCssExtractPlugin({
+          minimize: {
+            safe: true
+          },
+          modules: true,
+          importLoaders: true,
+          localIdentName: '[name]__[local]___[hash:base64]',          
             // these are optional
             filename: "[name].css",
             chunkFilename: "[id].css"

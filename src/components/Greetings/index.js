@@ -5,12 +5,12 @@ import Loading from '../Loading';
 
 
 const one = Loadable({
-  loader: () => import ('./brands/greetings-one'),
+  loader: () => import ('./brands/one'),
   loading: Loading
 });
 
 const two = Loadable({
-  loader: () => import ('./brands/greetings-two'),
+  loader: () => import ('./brands/two'),
   loading: Loading
 });
 
