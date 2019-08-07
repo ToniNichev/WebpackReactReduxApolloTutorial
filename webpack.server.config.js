@@ -24,12 +24,6 @@ config.plugins = [
     ... config.plugins,
     ... [
         new MiniCssExtractPlugin({
-          minimize: {
-            safe: true
-          },
-          modules: true,
-          importLoaders: true,
-          localIdentName: '[name]__[local]___[hash:base64]',          
             filename: "[name].css",
             chunkFilename: "[id].css"
         }), 
