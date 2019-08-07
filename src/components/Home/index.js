@@ -14,14 +14,16 @@ const two = Loadable({
   loading: Loading
 });
 
+const components = {
+  one,
+  two
+}
 
 const Home = ( {subDomain} ) => {
 
   const Component = components[subDomain];
   return (
-    <div>
       <Component />
-    </div>
   )
 }
 export default Home;
