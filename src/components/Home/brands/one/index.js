@@ -4,7 +4,7 @@ import Renderer from '../../renderer.js'
 
 const One = () => {
   return (
-    <Renderer styles={styles} />
+    <Renderer styles={styles} title="This is Home component, rendered for One brand" />
   )
 }
 
