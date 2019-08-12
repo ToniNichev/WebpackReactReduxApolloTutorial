@@ -2,8 +2,6 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import Loading from '../Loading';
 
-
-
 const one = Loadable({
   loader: () => import ('./brands/one'),
   loading: Loading
