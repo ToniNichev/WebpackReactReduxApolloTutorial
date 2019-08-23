@@ -3,12 +3,12 @@ import Loadable from 'react-loadable';
 import Loading from '../Loading';
 
 const one = Loadable({
-  loader: () => import ('./brands/one'),
+  loader: () => import ('./brands/OneHome'),
   loading: Loading
 });
 
 const two = Loadable({
-  loader: () => import ('./brands/two'),
+  loader: () => import ('./brands/TwoHome'),
   loading: Loading
 });
 
