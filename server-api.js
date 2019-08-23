@@ -9,6 +9,7 @@ const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, {
   hot: true,
   publicPath: config.output.publicPath,
-  historyApiFallback: true
+  historyApiFallback: true,
+  disableHostCheck: true,
 });
 server.listen(8080, 'localhost', function() {});
