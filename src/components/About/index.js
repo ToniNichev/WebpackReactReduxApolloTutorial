@@ -1,40 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-const CHANGE_USERNAME = 'CHANGE_USERNAME';
-class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: this.props.userName,
-    };    
+
+const AboutContainer = (state) => {
+  const [co, setCount] = useState(0);
+  const [ready, setReady] = useState(false);
+  
+
+  useEffect(() => {
+    if( ready === true) {
+      return;
+    }
+    // Update the document title using the browser API
+    console.log("count:", co);
+    setCount(co + 1);
+    setReady(true);
+  });
+
+  function clicked() {
+    setCount(co + 1);
   }
-  handleChange() {
-    const userName = document.querySelector('input[name=username]').value;
-    this.setState( { userName: userName } );
-    this.props.onEdit(userName);
-  }
-  render() {
-    return (
-      <div>
-        <p>This is <input type="text" name="username" value={this.state.userName} onChange={() => { this.handleChange()}} /></p>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {state.userName}
+       <hr/>
+       <a role="button" tabIndex={0} onClick={() => clicked()}>TEST: {co}</a>
+    </div>
+  );
 }
+
 //export default About;
 const mapStateToProps = storeState => ({
   userName: storeState.user.userName
 }
 );
 const mapDispatchToProps = dispatch => ({
+  dispatch: (action) => {
+    dispatch(action);
+  },  
   onEdit: (userName) => dispatch({
     type: CHANGE_USERNAME,
     data: userName
   })
 });
-const AboutContainer = connect(
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(About);
-export default AboutContainer;
+)(AboutContainer);
