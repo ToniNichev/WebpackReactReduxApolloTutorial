@@ -13,25 +13,40 @@
     "build-prod": "webpack --config webpack.prod.config.js",
     "build-ssr": "webpack --config webpack.server.config.js",
     "run-server": "node ./server-build/server-bundle.js",
-    "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server"
+    "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server",
+    "test": "jest"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  },   
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.3.4",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^5.15.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "react-test-renderer": "^16.12.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
