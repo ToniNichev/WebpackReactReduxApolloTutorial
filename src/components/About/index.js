@@ -7,16 +7,6 @@ const AboutContainer = (state) => {
   const [co, setCount] = useState(0);
   const [ready, setReady] = useState(false);
 
-
-  /*
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: this.props.userName,
-    };    
-  }
-  */
-
   function handleChange() {
     const userName = document.querySelector('input[name=username]').value;
     state.onEdit(userName);
@@ -29,7 +19,7 @@ const AboutContainer = (state) => {
   );
 
 }
-//export default About;
+
 const mapStateToProps = storeState => ({
   userName: storeState.user.userName
 }
