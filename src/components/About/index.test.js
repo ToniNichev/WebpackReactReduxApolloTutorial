@@ -14,6 +14,10 @@ describe('Testing About component', () => {
         <About userName="Toni" />
       </Provider>
     );
+    // expect to match the snapshot
    expect(toJson(wrapper)).toMatchSnapshot();
+   // expect to have state.userName set to 'John'
+   wrapper.setState({userName: "John"});
+   expect(wrapper.state('userName')).toEqual("John");
  });
 });
