@@ -1,19 +1,19 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Provider } from 'react-redux';
 import reducers from '../../reducers';
 import { createStore} from 'redux';
 import Component from './renderer';
 
 const store = createStore(reducers, {});
+let wrapper;
 describe('Testing Greetings component', () => {
 
-  const wrapper = mount(
-    <Provider store={store}>
-      <Component styles={{}} />
-    </Provider>
-  );
+  beforeEach(() => {
+    wrapper = mount(
+        <Component styles={{}} store={store} />
+    );
+  });
 
   it('renders as expected', () => {
     // to snapshot test

@@ -7,17 +7,24 @@ import { createStore} from 'redux';
 import About from './index.js';
 
 const store = createStore(reducers, {});
+let wrapper;
 describe('Testing About component', () => {
-  it('renders as expected!!!', () => {
-    const wrapper = mount(
+
+  beforeEach(() => {
+    // Runs a function before each of the tests in this file runs
+    wrapper = mount(
       <Provider store={store}>
         <About userName="Toni" />
       </Provider>
     );
-    // expect to match the snapshot
+  });
+
+  it('renders as expected', () => {
    expect(toJson(wrapper)).toMatchSnapshot();
-   // expect to have state.userName set to 'John'
+  });
+
+  it('expect to have state.userName set to John', () => {   
    wrapper.setState({userName: "John"});
    expect(wrapper.state('userName')).toEqual("John");
- });
+  });  
 });
