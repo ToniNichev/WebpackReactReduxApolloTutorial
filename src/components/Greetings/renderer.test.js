@@ -26,7 +26,9 @@ describe('Testing Greetings component', () => {
 
   it('textbox exists after h2 click', () => {  
     // simulate click on the h2 tag trigering props change and visualizing the input text box
+    console.log(">>>"+ wrapper.find('h2').html() + "<<<");
     wrapper.find('h2').simulate('click');
+    console.log(">>>"+ wrapper.find('h2').html() + "<<<");
     expect(wrapper.find('input').exists()).toBe(true);
   });    
 

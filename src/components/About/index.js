@@ -4,17 +4,23 @@ import { connect } from 'react-redux';
 const CHANGE_USERNAME = 'CHANGE_USERNAME';
 
 const AboutContainer = (state) => {
-  const [co, setCount] = useState(0);
-  const [ready, setReady] = useState(false);
+  const [which, setWhich] = useState(false);
 
   function handleChange() {
     const userName = document.querySelector('input[name=username]').value;
     state.onEdit(userName);
   }
 
+  function switchComponents() {
+    setWhich(!which);
+  }
+
+  let componentA = (<p>This is <input type="text" name="username" value={state.userName} onChange={() => { handleChange() }} /></p>);
+  let componentB = (<p>Another component</p>)
   return (
     <div>
-      <p>This is <input type="text" name="username" value={state.userName} onChange={() => { handleChange() }} /></p>
+      {!which ? componentA : componentB}
+      <button onClick={ () => {switchComponents() } }>TEST</button>
     </div>
   );
 
