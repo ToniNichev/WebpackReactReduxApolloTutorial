@@ -9,11 +9,14 @@ import Component from './renderer';
 const store = createStore(reducers, {});
 describe('Testing Greetings component', () => {
 
-  const wrapper = mount(
-    <Provider store={store}>
-      <Component styles={{}} />
-    </Provider>
-  );
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <Component styles={{}} />
+      </Provider>
+    );
+  });
 
   it('renders as expected', () => {
     // to snapshot test
