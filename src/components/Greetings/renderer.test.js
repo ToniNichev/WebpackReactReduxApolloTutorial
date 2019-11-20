@@ -9,9 +9,18 @@ const store = createStore(reducers, {});
 let wrapper;
 describe('Testing Greetings component', () => {
 
+<<<<<<< HEAD
   beforeEach(() => {
     wrapper = mount(
         <Component styles={{}} store={store} />
+=======
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <Component styles={{}} />
+      </Provider>
+>>>>>>> 6e17888c591d28acac720d168a60602f471d57d6
     );
   });
 
