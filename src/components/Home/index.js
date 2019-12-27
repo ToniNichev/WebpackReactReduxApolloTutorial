@@ -1,6 +1,6 @@
 import React from 'react';
-import Facebook from '../SocialShare/Buttons/Facebook.js'
-import Twitter from '../SocialShare/Buttons/Twitter.js'
+import Facebook from '../SocialShare/Buttons/Facebook.js';
+import Twitter from '../SocialShare/Buttons/Twitter.js';
 
 const Home = ( {subDomain} ) => {
   const styles = require(`./brands/${subDomain}/styles.scss`);
