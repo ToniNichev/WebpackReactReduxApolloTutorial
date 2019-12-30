@@ -7,7 +7,7 @@ const backgroundColor = "#007BB5";
 
 
 export default props =>
-<svg {...props} enable-fillColor="new 0 0 32 32" height="32px" width="32px" id="Layer_1" version="1.0" viewBox="0 0 32 32"  xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
+<svg {...props} height="32px" width="32px" id="Layer_1" version="1.0" viewBox="0 0 32 32"  xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
     <g>
         <path d="M32,30c0,1.104-0.896,2-2,2H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h28c1.104,0,2,0.896,2,2V30z" fill={backgroundColor}/>
         <g>
