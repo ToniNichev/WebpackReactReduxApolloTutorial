@@ -8,7 +8,7 @@ const frontendConstants = [
   'APP_NAME',
   'GRAPHQL_URL',
   'PROD_SERVER_PORT',
-  'DEFAULT_BRAND'
+  'BRANDS'
 ];
 function getEnvironmentConstants() {
   

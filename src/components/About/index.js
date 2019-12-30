@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 const CHANGE_USERNAME = 'CHANGE_USERNAME';
-class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: this.props.userName,
-    };    
-  }
-  handleChange() {
+
+const AboutContainer = (state) => {
+  const [which, setWhich] = useState(false);
+
+  function handleChange() {
     const userName = document.querySelector('input[name=username]').value;
-    this.setState( { userName: userName } );
-    this.props.onEdit(userName);
+    state.onEdit(userName);
   }
-  render() {
-    return (
-      <div>
-        <p>This is <input type="text" name="username" value={this.state.userName} onChange={() => { this.handleChange()}} /></p>
-      </div>
-    );
+
+  function switchComponents() {
+    setWhich(!which);
   }
+
+  let componentA = (<p>This is <input type="text" name="username" value={state.userName} onChange={() => { handleChange() }} /></p>);
+  let componentB = (<p>Another component</p>)
+  return (
+    <div>
+      {!which ? componentA : componentB}
+      <button onClick={ () => {switchComponents() } }>TEST</button>
+    </div>
+  );
+
 }
-//export default About;
+
 const mapStateToProps = storeState => ({
   userName: storeState.user.userName
 }
@@ -33,8 +36,8 @@ const mapDispatchToProps = dispatch => ({
     data: userName
   })
 });
-const AboutContainer = connect(
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(About);
-export default AboutContainer;
+)(AboutContainer);
