@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../Tools/SharingButton';
-import FacebookIcon from '../Icons/Facebook';
+import LinkedinIcon from '../Icons/Linkedin';
+
 
 const Facebook = (props) => {
   const text = props.text || 'Linkedin';
@@ -12,7 +13,7 @@ const Facebook = (props) => {
       type="linkedin"
       link={link}
       onClick={props.onClick}
-      icon={FacebookIcon}
+      icon={LinkedinIcon}
       text={text}
       windowWidth="900"
       onPopupClose={() => { console.log("Share Popup Closed!") }}
