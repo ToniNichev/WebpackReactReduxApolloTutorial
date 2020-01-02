@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Header component renders as expected!!! 1`] = `
+<div>
+  <div>
+    <h2>
+      Title test
+       
+       
+    </h2>
+    <ul>
+      <li>
+        <Link
+          to="/home"
+        >
+          HOME
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/greetings"
+        >
+          GREETINGS
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/dogs-catalog"
+        >
+          DOGS CATALOG
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/about"
+        >
+          ABOUT
+        </Link>
+      </li>
+      <li>
+        <Facebook
+          url="https://www.toni-develops.com/2019/12/17/check-if-string-has-all-unique-characters/"
+        />
+        <Twitter />
+        <Facebook
+          url="https://www.toni-develops.com/2019/12/17/check-if-string-has-all-unique-characters/"
+        />
+      </li>
+    </ul>
+  </div>
+</div>
+`;

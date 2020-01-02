@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ShareWindow from './ShareWindow';
-const styles = require('./SharingButton.scss');
+import ShareWindow from '../ShareWindow';
+const styles = require('./styles.scss');
 
 
 const SharingButtonPopup = props => {

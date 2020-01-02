@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SharingButton from '../Tools/SharingButton';
+import SharingButton from '../ShareButton';
 import TwitterIcon from '../Icons/Twitter';
 
 const findHeadline = () => {
@@ -13,8 +13,6 @@ const Twitter = (props) => {
   const url = props.url || window.location.href;
   const shareText = props.shareText || findHeadline();
   const link = `https://twitter.com/intent/tweet/?text=${shareText}&url=${url}`;
-
-
 
   return (
     <SharingButton

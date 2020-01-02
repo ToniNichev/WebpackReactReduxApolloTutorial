@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Greetings component renders as expected 1`] = `
+<Connect(Greetings)
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  styles={Object {}}
+>
+  <Greetings
+    changeUserName={[Function]}
+    editMode={false}
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+    styles={Object {}}
+    toggleLogInPopup={[Function]}
+    userName="No Name"
+  >
+    <div>
+      <div>
+        <h2
+          onClick={[Function]}
+        >
+          Hello:  
+          No Name
+        </h2>
+      </div>
+    </div>
+  </Greetings>
+</Connect(Greetings)>
+`;

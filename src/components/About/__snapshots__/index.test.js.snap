@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing About component renders as expected 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(AboutContainer)
+    userName="Toni"
+  >
+    <AboutContainer
+      onEdit={[Function]}
+      userName="No Name"
+    >
+      <div>
+        <p>
+          This is 
+          <input
+            name="username"
+            onChange={[Function]}
+            type="text"
+            value="No Name"
+          />
+        </p>
+        <button
+          onClick={[Function]}
+        >
+          TEST
+        </button>
+      </div>
+    </AboutContainer>
+  </Connect(AboutContainer)>
+</Provider>
+`;

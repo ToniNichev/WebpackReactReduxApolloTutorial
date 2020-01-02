@@ -2,8 +2,14 @@
     color: blue;
     display:inline-flex;
     cursor: pointer;
+    border: 1px solid silver;
 }
 
+/* button specific overrides */
 .facebookWrapper {
     border: 2px solid silver;
+}
+
+.linkedinWrapper {
+  border: 2px solid yellow;
 }
