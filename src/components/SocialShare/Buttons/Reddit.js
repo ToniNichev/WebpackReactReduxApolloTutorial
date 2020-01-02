@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
-import FacebookIcon from '../Icons/Facebook';
+import RedditIcon from '../Icons/Reddit';
 
 const Facebook = (props) => {
-  const text = typeof props.text === 'undefined' ? 'Facebook' : props.text;
+  const text = props.text || 'Facebook';
   const url = props.url || window.location.href;
-  const link = `https://facebook.com/sharer/sharer.php?u=${url}`;
-  const popupClose = typeof props.popupCloded === 'undefined' ? () => {} : props.popupCloded;
+  const link = `https://reddit.com/submit/?url=${url}`;
   return (
     <SharingButton
-      type="facebook"
+      type="reddit"
       link={link}
       onClick={props.onClick}
-      icon={FacebookIcon}
+      icon={RedditIcon}
       text={text}
       windowWidth="900"
-      onPopupClose={() => {popupClose()} }
+      onPopupClose={() => { console.log("Share Popup Closed!") }}
     />
   )
 }

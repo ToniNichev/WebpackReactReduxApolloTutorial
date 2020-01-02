@@ -10,7 +10,7 @@ const SharingButtonPopup = props => {
   
   return (
     <div className={styles.wrapper + ' ' + styles[`${type}Wrapper`] } onClick={() => { ShareWindow(props)} }>
-      {props.icon({ className: 'custom-share-icon-classes' })}
+      {props.icon({ className: styles.customShareIconClasses })}
       <span className="sharing-btn">
         {props.text}
       </span>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import LinkedinIcon from '../Icons/Linkedin';
 
-
 const Facebook = (props) => {
   const text = props.text || 'Linkedin';
   const url = props.url || window.location.href;

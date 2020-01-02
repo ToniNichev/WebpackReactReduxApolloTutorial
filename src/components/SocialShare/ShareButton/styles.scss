@@ -1,15 +1,24 @@
 .wrapper {
-    color: blue;
-    display:inline-flex;
+    color: #666;
     cursor: pointer;
-    border: 1px solid silver;
+    display: inline-grid;
+    border-bottom: 1px solid silver;
+}
+
+.customShareIconClasses {
+  fill: #8d8dac;
+}
+
+.customShareIconClasses:hover {
+  fill: #0505f2;
 }
 
 /* button specific overrides */
 .facebookWrapper {
-    border: 2px solid silver;
+    border-bottom: 1px solid blue;
 }
 
 .linkedinWrapper {
   border: 2px solid yellow;
 }
+

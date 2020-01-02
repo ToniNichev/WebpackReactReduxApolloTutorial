@@ -7,11 +7,4 @@ const backgroundColor = "#007BB5";
 
 
 export default props =>
-<svg {...props} height="32px" width="32px" id="Layer_1" version="1.0" viewBox="0 0 32 32"  xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
-    <g>
-        <path d="M32,30c0,1.104-0.896,2-2,2H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h28c1.104,0,2,0.896,2,2V30z" fill={backgroundColor}/>
-        <g>
-            <rect fill={fillColor} height="14" width="4" x="7" y="11"/>
-            <path d="M20.499,11c-2.791,0-3.271,1.018-3.499,2v-2h-4v14h4v-8c0-1.297,0.703-2,2-2c1.266,0,2,0.688,2,2v8h4v-7    C25,14,24.479,11,20.499,11z" fill={fillColor}/>
-            <circle cx="9" cy="8" fill={fillColor} r="2"/>
-            </g></g><g/><g/><g/><g/><g/><g/></svg>
+  <svg {...props} height="24px" width="24px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn icon</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
