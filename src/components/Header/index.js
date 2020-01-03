@@ -19,7 +19,7 @@ const Header = ( {title} ) => (
         <li><Link to='/about'>ABOUT</Link></li>
         <li>
           <Facebook 
-            text='123' 
+            text='FACEBOOK' 
             windowWidth={950}
             url={baseUrl} 
             onClick={()=>{ console.log('FB icon clicked!') }}

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const windowOpen = (url, { height = 400, width = 550, ...configRest }, onClose) => {
   const config = {
-    height,
     width,
+    height,
     location: 'no',
     toolbar: 'no',
     status: 'no',
@@ -17,10 +17,11 @@ const windowOpen = (url, { height = 400, width = 550, ...configRest }, onClose) 
     ...configRest,
   };
 
+  const paramsAsString = Object.keys(config).map( (key) => { return `${key}=${config[key]}` } ).join(', ');
   const shareDialog = window.open(
     url,
     '',
-    Object.keys(config).map(key => `${key}=${config[key]}`).join(', '),
+    paramsAsString,
   );
 
   if (onClose) {
@@ -31,11 +32,9 @@ const windowOpen = (url, { height = 400, width = 550, ...configRest }, onClose) 
           onClose(shareDialog);
         }
       } catch (e) {
-        /* eslint-disable no-console */
-        console.error(e);
-        /* eslint-enable no-console */
+        console.error("Error clonsing popup with message:", e);
       }
-    }, 1000);
+    }, 900);
   }
 
   return shareDialog;

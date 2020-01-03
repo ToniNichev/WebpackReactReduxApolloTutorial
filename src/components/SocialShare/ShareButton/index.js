@@ -9,12 +9,13 @@ const SharingButtonPopup = props => {
   const overrideStyles = props.styles;
   const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindow(props)} : () => { props.onClick();ShareWindow(props) }
   
+  const overrideClass = typeof styles[`${type}Wrapper`] == 'undefined' ? '' : styles[`${type}Wrapper`];
   return (
-    <div className={styles.wrapper + ' ' + styles[`${type}Wrapper`] } onClick={onIconClicked}>
+    <div className={styles.wrapper + ' ' + overrideClass } onClick={onIconClicked}>
       {props.icon({ className: styles.customShareIconClasses })}
-      <span className="sharing-btn">
+      <div className="sharing-btn">
         {props.text}
-      </span>
+      </div>
     </div>
   );
 }
