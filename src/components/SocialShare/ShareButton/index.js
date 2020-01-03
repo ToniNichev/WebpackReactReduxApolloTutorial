@@ -7,9 +7,10 @@ const styles = require('./styles.scss');
 const SharingButtonPopup = props => {
   const type = props.type;
   const overrideStyles = props.styles;
+  const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindow(props)} : () => { props.onClick();ShareWindow(props) }
   
   return (
-    <div className={styles.wrapper + ' ' + styles[`${type}Wrapper`] } onClick={() => { ShareWindow(props)} }>
+    <div className={styles.wrapper + ' ' + styles[`${type}Wrapper`] } onClick={onIconClicked}>
       {props.icon({ className: styles.customShareIconClasses })}
       <span className="sharing-btn">
         {props.text}

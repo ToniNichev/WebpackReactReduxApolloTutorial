@@ -7,6 +7,7 @@ import Tumblr from '../SocialShare/Buttons/Tumblr.js';
 import Reddit from '../SocialShare/Buttons/Reddit.js';
 const styles = require('./styles.scss');
 
+const baseUrl = process.env.SITE_BASE_URL;
 const Header = ( {title} ) => (
   <div>
     <div className={styles.wrapper}>      
@@ -17,11 +18,17 @@ const Header = ( {title} ) => (
         <li><Link to='/dogs-catalog'>DOGS CATALOG</Link></li>
         <li><Link to='/about'>ABOUT</Link></li>
         <li>
-          <Facebook text='123' popupCloded={ () => {console.log('FB popup closed!')} } url={process.env.SITE_BASE_URL} />
-          <Twitter url={process.env.SITE_BASE_URL} />
-          <Linkedin url={process.env.SITE_BASE_URL} />          
-          <Tumblr url={process.env.SITE_BASE_URL} />
-          <Reddit url={process.env.SITE_BASE_URL} />
+          <Facebook 
+            text='123' 
+            windowWidth={950}
+            url={baseUrl} 
+            onClick={()=>{ console.log('FB icon clicked!') }}
+            onPopupClose={ () => {console.log('FB popup closed!')} } />
+
+          <Twitter url={baseUrl} />
+          <Linkedin url={baseUrl} />          
+          <Tumblr url={baseUrl} />
+          <Reddit url={baseUrl} />
         </li>
       </ul>
     </div>
