@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ShareWindow from '../ShareWindow';
+
 const styles = require('./styles.scss');
 
 
 const SharingButtonPopup = props => {
   const type = props.type;
-  const overrideStyles = props.styles;
   const ShareWindowAction = props.type === 'Email' ? () => { window.location.href = props.link; } : () => ShareWindow(props);
   const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindowAction(props)} : () => { props.onClick();ShareWindowAction(props) }
   
