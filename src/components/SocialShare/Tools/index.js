@@ -1,5 +1,6 @@
 const getPageUrl = () => {
-  return document.window.location.href;
+  const url = typeof window === 'undefined' ? 'no-window-object' : window.location.href;
+  return url;
 }
 
 export default {

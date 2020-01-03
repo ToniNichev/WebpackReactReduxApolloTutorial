@@ -22,7 +22,6 @@ const Header = ( {title} ) => (
           <Facebook 
             text='FACEBOOK' 
             windowWidth={950}
-            url={baseUrl} 
             onClick={()=>{ console.log('FB icon clicked!') }}
             onPopupClose={ () => {console.log('FB popup closed!')} } />
 
