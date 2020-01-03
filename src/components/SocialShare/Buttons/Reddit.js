@@ -2,28 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import RedditIcon from '../Icons/Reddit';
+import Tools from '../Tools'
 
-const Facebook = (props) => {
-  const text = props.text || 'Facebook';
-  const url = props.url || window.location.href;
-  const link = `https://reddit.com/submit/?url=${url}`;
-  return (
-    <SharingButton
-      type="reddit"
-      link={link}
-      onClick={props.onClick}
-      icon={RedditIcon}
-      text={text}
-      windowWidth="900"
-      onPopupClose={() => { console.log("Share Popup Closed!") }}
-    />
-  )
+const Reddit = (props) => {
+  const link = Tools.getRedditUrl(props.url);
+  let result = SharingButton({type:'Reddit', link, icon:RedditIcon, ...props });
+  return result;
 }
 
-Facebook.propTypes = {
+Reddit.propTypes = {
   text: PropTypes.string,
   url: PropTypes.string,
+  windowWidth: PropTypes.number,
+  windowHeight: PropTypes.number,
+  windowPosition: PropTypes.string,
+  onPopupClose: PropTypes.func,
   onClick: PropTypes.func,
 }
 
-export default Facebook;
+Reddit.defaultProps = {
+  windowWidth:550,
+  windowHeight: 400
+}
+
+export default Reddit;

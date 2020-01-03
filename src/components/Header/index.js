@@ -5,6 +5,7 @@ import Twitter from '../SocialShare/Buttons/Twitter.js';
 import Linkedin from '../SocialShare/Buttons/Linkedin.js';
 import Tumblr from '../SocialShare/Buttons/Tumblr.js';
 import Reddit from '../SocialShare/Buttons/Reddit.js';
+import Email from '../SocialShare/Buttons/Email';
 const styles = require('./styles.scss');
 
 const baseUrl = process.env.SITE_BASE_URL;
@@ -25,10 +26,11 @@ const Header = ( {title} ) => (
             onClick={()=>{ console.log('FB icon clicked!') }}
             onPopupClose={ () => {console.log('FB popup closed!')} } />
 
-          <Twitter url={baseUrl} />
+          <Twitter shareText="test123" url={baseUrl} />
           <Linkedin url={baseUrl} />          
           <Tumblr url={baseUrl} />
           <Reddit url={baseUrl} />
+          <Email url={baseUrl} />
         </li>
       </ul>
     </div>

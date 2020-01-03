@@ -7,7 +7,8 @@ const styles = require('./styles.scss');
 const SharingButtonPopup = props => {
   const type = props.type;
   const overrideStyles = props.styles;
-  const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindow(props)} : () => { props.onClick();ShareWindow(props) }
+  const ShareWindowAction = props.type === 'Email' ? () => { window.location.href = props.link; } : () => ShareWindow(props);
+  const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindowAction(props)} : () => { props.onClick();ShareWindowAction(props) }
   
   const overrideClass = typeof styles[`${type}Wrapper`] == 'undefined' ? '' : styles[`${type}Wrapper`];
   return (

@@ -2,35 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import TwitterIcon from '../Icons/Twitter';
+import Tools from '../Tools'
 
-const findHeadline = () => {
-  let headline = document.querySelectorAll('h1').length > 0 ? document.querySelectorAll('h1')[0].innerText : "Enter headline";
-  return headline;
-}
-
-const Twitter = (props) => {  
-  const text = props.text || 'Twitter';
-  const url = props.url || window.location.href;
-  const shareText = props.shareText || findHeadline();
-  const link = `https://twitter.com/intent/tweet/?text=${shareText}&url=${url}`;
-
-  return (
-    <SharingButton
-      type="twitter"
-      link={link}
-      onClick={props.onClick}
-      icon={TwitterIcon}
-      text={text}
-      windowWidth="900"
-      onPopupClose={() => { console.log("Share Popup Closed!") }}
-    />
-  )
+const Twitter = (props) => {
+  const link = Tools.getTwitterUrl(props.shareText, props.url);
+  let result = SharingButton({type:'Twitter', link, icon:TwitterIcon, ...props });
+  return result;
 }
 
 Twitter.propTypes = {
   text: PropTypes.string,
   url: PropTypes.string,
+  windowWidth: PropTypes.number,
+  windowHeight: PropTypes.number,
+  windowPosition: PropTypes.string,
+  onPopupClose: PropTypes.func,
   onClick: PropTypes.func,
 }
 
-export default Twitter
+Twitter.defaultProps = {
+  windowWidth:550,
+  windowHeight: 400
+}
+
+export default Twitter;

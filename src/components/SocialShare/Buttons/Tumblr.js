@@ -2,33 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import TumblrIcon from '../Icons/Tumblr';
+import Tools from '../Tools'
 
-const Facebook = (props) => {  
-  const text = props.text || 'Facebook';
-  const url = props.url || window.location.href;
-  const title = props.title || 'enter title';
-  const caption = props.caption || 'enter caption';
-  const content = props.content || 'enter content';
-  const link = `https://www.tumblr.com/widgets/share/tool?posttype=link&title=${title}&caption=${caption}&content=${content}&canonicalUrl=${url}&shareSource=tumblr_share_button`;
-
-
-  return (
-    <SharingButton
-      type="tumblr"
-      link={link}
-      onClick={props.onClick}
-      icon={TumblrIcon}
-      text={text}
-      windowWidth="900"
-      onPopupClose={() => { console.log("Share Popup Closed!") }}
-    />
-  )
+const Tumblr = (props) => {
+  const link = Tools.getTumblrUrl(props.url);
+  let result = SharingButton({type:'Tumblr', link, icon:TumblrIcon, ...props });
+  return result;
 }
 
-Facebook.propTypes = {
+Tumblr.propTypes = {
   text: PropTypes.string,
   url: PropTypes.string,
+  windowWidth: PropTypes.number,
+  windowHeight: PropTypes.number,
+  windowPosition: PropTypes.string,
+  onPopupClose: PropTypes.func,
   onClick: PropTypes.func,
 }
 
-export default Facebook;
+Tumblr.defaultProps = {
+  windowWidth:550,
+  windowHeight: 400
+}
+
+export default Tumblr;

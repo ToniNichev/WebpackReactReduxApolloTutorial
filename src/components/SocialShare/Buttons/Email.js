@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
-import LinkedinIcon from '../Icons/Linkedin';
+import EmailIcon from '../Icons/Email';
 import Tools from '../Tools'
 
-const Linkedin = (props) => {
-  const link = Tools.getLinkedinUrl(props.url);
-  let result = SharingButton({type:'Linkedin', link, icon:LinkedinIcon, ...props });
+const Email = (props) => {
+  const link = Tools.getEmailUrl(props.url);
+  let result = SharingButton({type:'Email', link, icon:EmailIcon, ...props });
   return result;
 }
 
-Linkedin.propTypes = {
+Email.propTypes = {
   text: PropTypes.string,
   url: PropTypes.string,
   windowWidth: PropTypes.number,
@@ -20,9 +20,9 @@ Linkedin.propTypes = {
   onClick: PropTypes.func,
 }
 
-Linkedin.defaultProps = {
+Email.defaultProps = {
   windowWidth:550,
   windowHeight: 400
 }
 
-export default Linkedin;
+export default Email;
