@@ -1,5 +1,5 @@
 const getPageUrl = () => {
-  return window.location.href;
+  return document.window.location.href;
 }
 
 export default {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Facebook from '../SocialShare/Buttons/Facebook.js';
-import Twitter from '../SocialShare/Buttons/Twitter.js';
-import Linkedin from '../SocialShare/Buttons/Linkedin.js';
-import Tumblr from '../SocialShare/Buttons/Tumblr.js';
-import Reddit from '../SocialShare/Buttons/Reddit.js';
+import Facebook from '../SocialShare/Buttons/Facebook';
+import Twitter from '../SocialShare/Buttons/Twitter';
+import Linkedin from '../SocialShare/Buttons/Linkedin';
+import Tumblr from '../SocialShare/Buttons/Tumblr';
+import Reddit from '../SocialShare/Buttons/Reddit';
 import Email from '../SocialShare/Buttons/Email';
 const styles = require('./styles.scss');
 
