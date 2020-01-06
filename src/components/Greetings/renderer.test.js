@@ -16,6 +16,8 @@ describe('Testing Greetings component', () => {
   });
 
   it('renders as expected', () => {
+    console.log("!!!!!!!!!!!!!!");
+    console.log(wrapper.find('h2').html());
     // to snapshot test
     expect(toJson(wrapper)).toMatchSnapshot();
   });

@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+}
+
+.wrapper::before {
+  font-weight: 600;
+  content: 'Share';
+  display: block;
+  color: #7b7b7b;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 7px;
+}  

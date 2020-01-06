@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import EmailIcon from '../Icons/Email';
@@ -6,7 +5,7 @@ import Tools from '../Tools'
 
 const Email = (props) => {
   const link = Tools.getEmailUrl(props.url);
-  let result = SharingButton({type:'Email', link, icon:EmailIcon, ...props });
+  let result = SharingButton( { id:6, type:'email', link, icon:EmailIcon, ...props } );
   return result;
 }
 

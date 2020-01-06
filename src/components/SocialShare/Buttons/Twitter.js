@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import TwitterIcon from '../Icons/Twitter';
@@ -6,7 +5,7 @@ import Tools from '../Tools'
 
 const Twitter = (props) => {
   const link = Tools.getTwitterUrl(props.shareText, props.url);
-  let result = SharingButton({type:'Twitter', link, icon:TwitterIcon, ...props });
+  let result = SharingButton( { id:2, type:'twitter', link, icon:TwitterIcon, ...props } );
   return result;
 }
 

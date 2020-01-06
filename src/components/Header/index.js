@@ -6,6 +6,7 @@ import Linkedin from '../SocialShare/Buttons/Linkedin';
 import Tumblr from '../SocialShare/Buttons/Tumblr';
 import Reddit from '../SocialShare/Buttons/Reddit';
 import Email from '../SocialShare/Buttons/Email';
+import SocialShare from '../SocialShare';
 const styles = require('./styles.scss');
 
 const baseUrl = process.env.SITE_BASE_URL;
@@ -19,17 +20,7 @@ const Header = ( {title} ) => (
         <li><Link to='/dogs-catalog'>DOGS CATALOG</Link></li>
         <li><Link to='/about'>ABOUT</Link></li>
         <li>
-          <Facebook 
-            text='FACEBOOK' 
-            windowWidth={950}
-            onClick={()=>{ console.log('FB icon clicked!') }}
-            onPopupClose={ () => {console.log('FB popup closed!')} } />
-
-          <Twitter shareText="test123" url={baseUrl} />
-          <Linkedin url={baseUrl} />          
-          <Tumblr url={baseUrl} />
-          <Reddit url={baseUrl} />
-          <Email url={baseUrl} />
+          <SocialShare url="toni-test.com" />
         </li>
       </ul>
     </div>

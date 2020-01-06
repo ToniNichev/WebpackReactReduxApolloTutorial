@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import LinkedinIcon from '../Icons/Linkedin';
@@ -6,7 +5,7 @@ import Tools from '../Tools'
 
 const Linkedin = (props) => {
   const link = Tools.getLinkedinUrl(props.url);
-  let result = SharingButton({type:'Linkedin', link, icon:LinkedinIcon, ...props });
+  let result = SharingButton({ id:3, type:'linkedin', link, icon:LinkedinIcon, ...props } );
   return result;
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import FacebookIcon from '../Icons/Facebook';
@@ -6,7 +5,7 @@ import Tools from '../Tools'
 
 const Facebook = (props) => {
   const link = Tools.getFacebookUrl(props.url);
-  let result = SharingButton({type:'facebook', link, icon:FacebookIcon, ...props });
+  let result = SharingButton({ id:1, type:'facebook', link, icon:FacebookIcon, ...props } );
   return result;
 }
 

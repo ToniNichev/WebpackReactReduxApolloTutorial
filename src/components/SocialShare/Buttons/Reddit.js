@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import SharingButton from '../ShareButton';
 import RedditIcon from '../Icons/Reddit';
@@ -6,7 +5,7 @@ import Tools from '../Tools'
 
 const Reddit = (props) => {
   const link = Tools.getRedditUrl(props.url);
-  let result = SharingButton({type:'Reddit', link, icon:RedditIcon, ...props });
+  let result = SharingButton({ id: 4, type:'reddit', link, icon:RedditIcon, ...props } );
   return result;
 }
 

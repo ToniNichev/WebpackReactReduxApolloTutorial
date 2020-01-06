@@ -4,28 +4,30 @@ import ShareWindow from '../ShareWindow';
 
 const styles = require('./styles.scss');
 
+console.log("styles", styles);
 
-const SharingButtonPopup = props => {
-  const type = props.type;
+const SharingButton = ( {index, type, ...props} ) => {
   const ShareWindowAction = props.type === 'Email' ? () => { window.location.href = props.link; } : () => ShareWindow(props);
   const onIconClicked = typeof props.onClick == 'undefined' ? () => {ShareWindowAction(props)} : () => { props.onClick();ShareWindowAction(props) }
+  const overrideClassName = type.toLowerCase();
+  const overrideClass = typeof styles[`${overrideClassName}Wrapper`] === 'undefined' ? '' : styles[`${overrideClassName}Wrapper`];
   
-  const overrideClass = typeof styles[`${type}Wrapper`] == 'undefined' ? '' : styles[`${type}Wrapper`];
   return (
-    <div className={styles.wrapper + ' ' + overrideClass } onClick={onIconClicked}>
+    <div role="button" key={type} tabIndex={index} className={`${styles.wrapper} ${overrideClass}`} onClick={onIconClicked}>      
       {props.icon({ className: styles.customShareIconClasses })}
-      <div className="sharing-btn">
+      <div className={styles.sharingBtn}>
         {props.text}
       </div>
     </div>
   );
 }
 
-SharingButtonPopup.propTypes = {
+SharingButton.propTypes = {
+  index: PropTypes.number.isRequired,  
   type: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
   link: PropTypes.string.isRequired,
   onPopupClose: PropTypes.func,
 }
 
-export default SharingButtonPopup
+export default SharingButton
