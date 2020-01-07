@@ -11,7 +11,7 @@ const styles = require('./styles.scss');
 const SocialShare = props => {
 
   const services = [
-    Facebook(props),
+    Facebook( { windowWidth:900, ...props } ),
     Twitter(props),
     Linkedin(props),
     Email(props),

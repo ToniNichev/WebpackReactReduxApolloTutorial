@@ -53,7 +53,7 @@ const getPopupPositionOnScreenCenter = (width, height) => ({
 });
 
 
-const openShareWindow = props => {  
+const openShareWindow = ( { link, ...props} ) => {  
   const windowWidth = props.windowWidth || 550;
   const windowHeight = props.windowHeight || 400;
   const windowPosition = props.windowPosition || 'windowCenter';
@@ -67,9 +67,15 @@ const openShareWindow = props => {
       : getPopupPositionOnScreenCenter(windowWidth, windowHeight)
     ),
   };  
-
-  const link = props.link;
   windowOpen(link, windowConfig, onPopupClose);    
+}
+
+openShareWindow.propTypes = {
+  link : PropTypes.string.isRequired,
+  windowWidth: PropTypes.number,
+  windowHeight: PropTypes.number,
+  windowPosition: PropTypes.string,
+  onPopupClose: PropTypes.func,
 }
 
 export default openShareWindow;
