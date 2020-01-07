@@ -1,3 +1,5 @@
+const SHARE_TEXT='share something';
+
 const getPageUrl = () => {
   const url = typeof window === 'undefined' ? 'no-window-object' : window.location.href;
   return url;
@@ -6,6 +8,11 @@ const getPageUrl = () => {
 const encodeUrl = url => (
   url === '' ?  '' : encodeURI(url)
 )
+
+const getPageHeadline = () => {
+  const headline = typeof document === 'undefined' ? SHARE_TEXT : document.querySelector('H1');
+  return headline === null ? SHARE_TEXT : headline.textContent;
+}
 
 export default {
   getEmailUrl(overrideUrl) {
@@ -34,13 +41,13 @@ export default {
 
   getTwitterUrl(shareText, overrideUrl) {
     const url = encodeUrl(overrideUrl || getPageUrl());
-    const share = encodeUrl(shareText || 'share text');
+    const share = encodeUrl(shareText || getPageHeadline());
     const link = `https://twitter.com/intent/tweet/?text=${share}&url=${url}`;
     return link;
   },
     
   getTumblrUrl(title, caption, content, shareText, overrideUrl) {
-    const Title = encodeUrl(title || 'Title');
+    const Title = encodeUrl(title || getPageHeadline());
     const Caption = encodeUrl(caption || 'Caption');
     const Content = encodeUrl(content || 'content');
     const url = encodeUrl(overrideUrl || getPageUrl());

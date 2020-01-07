@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const windowOpen = (url, { height = 400, width = 550, ...configRest }, onClose) => {
@@ -52,7 +51,7 @@ const getPopupPositionOnScreenCenter = (width, height) => ({
 });
 
 
-const openShareWindow = ( { link, ...props} ) => {  
+const openShareWindow = ( { link, ...props } ) => {  
   const windowWidth = props.windowWidth || 550;
   const windowHeight = props.windowHeight || 400;
   const windowPosition = props.windowPosition || 'windowCenter';
