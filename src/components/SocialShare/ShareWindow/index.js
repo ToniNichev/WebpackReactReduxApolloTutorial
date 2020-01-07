@@ -70,7 +70,7 @@ const openShareWindow = ( { link, ...props} ) => {
 }
 
 openShareWindow.propTypes = {
-  link : PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
   windowWidth: PropTypes.number,
   windowHeight: PropTypes.number,
   windowPosition: PropTypes.string,
