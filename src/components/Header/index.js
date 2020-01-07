@@ -20,7 +20,7 @@ const Header = ( {title} ) => (
         <li><Link to='/dogs-catalog'>DOGS CATALOG</Link></li>
         <li><Link to='/about'>ABOUT</Link></li>
         <li>
-          <SocialShare url="toni-test.com" />
+          <SocialShare url={baseUrl} />
         </li>
       </ul>
     </div>
