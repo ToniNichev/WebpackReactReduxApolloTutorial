@@ -36,7 +36,6 @@ const windowOpen = (url, { height = 400, width = 550, ...configRest }, onClose) 
       }
     }, 900);
   }
-
   return shareDialog;
 }
 
