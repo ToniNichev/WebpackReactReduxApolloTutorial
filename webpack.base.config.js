@@ -24,16 +24,17 @@ module.exports = {
 
       // SCSS
       {
-        test: /\.scss$/,
+        test: /\.(s)?css$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: true,
               importLoaders: 2,
-              localIdentName: '[folder]-[local]--[hash:base64:5]',
-              sourceMap: true
+              sourceMap: true,              
+              modules: {
+                localIdentName: '[folder]-[local]--[hash:base64:5]',
+              }
             }
           },
           {
@@ -45,7 +46,6 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              outputStyle: 'expanded',
               sourceMap: true
             }
           }
