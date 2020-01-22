@@ -28,7 +28,7 @@ export default () => {
         <ApolloProvider client={client}>
           <Router>
             <Switch>
-            <Route exact path="*" render={(props) => <PageLayout {...props} subDomain={subDomain} />} />
+              <Route exact path="*" render={(props) => <PageLayout {...props} subDomain={subDomain} />} />
             </Switch>
           </Router>
         </ApolloProvider>

@@ -1,5 +1,6 @@
 const getEnvironmentConstants = require('./getEnvironmentConstants');
 const webpack =require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -26,7 +27,12 @@ module.exports = {
       {
         test: /\.(s)?css$/,
         use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+            }
+          },          
           {
             loader: 'css-loader',
             options: {
@@ -71,5 +77,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env' : getEnvironmentConstants() } ),  
+    new MiniCssExtractPlugin({
+      chunkFilename: '[id].css',
+      filename: '[name].css',
+    }),    
   ]
 };
