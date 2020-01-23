@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore} from 'redux';
 import reducers from '../../reducers';
-import './index.css';
 
 const styles = require('./styles.scss');
 
