@@ -30,9 +30,10 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[folder]-[local]--[hash:base64:5]',
+              modules: {
+                localIdentName: '[folder]-[local]--[hash:base64:5]',
+              },
+              importLoaders: 2,              
               sourceMap: true
             }
           },
@@ -45,10 +46,6 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              sourceMap: true
-            }
           }
         ],
       },
