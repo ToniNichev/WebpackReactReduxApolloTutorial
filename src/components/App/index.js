@@ -4,7 +4,7 @@ import { BrowserRouter,  Route, Switch } from 'react-router-dom';
 
 import styles from './styles.scss';
 
-export default ( {req, client} ) => {
+export default ( {req} ) => {
   return (
     <div className={styles.appWrapper}>
       <h1>React is running</h1>
