@@ -11,7 +11,6 @@ class PageLayout extends Component {
       super(props);      
 
       const url = props.location.pathname;
-
       const componentsList = this.getComponentsList(url);
       this.state = {
         url: url,
@@ -19,11 +18,7 @@ class PageLayout extends Component {
       }
     } 
 
-    componentWillReceiveProps(nextProps) {
-      const url = typeof window == 'undefined' ? nextProps.location : nextProps.history.location.pathname;
-      const componentsList = this.getComponentsList(url);
-      this.setState({ url: url, componentsList: componentsList });
-    }
+
   
     getComponentsList(url) {
       return PagesLayoutData[url];

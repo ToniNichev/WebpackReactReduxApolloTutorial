@@ -8,7 +8,7 @@
     "start-api": "babel-node server-api.js",
     "build-prod": "webpack --config webpack.prod.config.js",
     "build-ssr": "webpack --config webpack.server.config.js",
-    "run-server": "node ./server-build/main-bundle.js",
+    "run-server": "node --inspect ./server-build/main-bundle.js",
     "start": "yarn clean; yarn build-prod; yarn build-ssr; yarn run-server"
   },
   "devDependencies": {

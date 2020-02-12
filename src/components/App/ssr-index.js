@@ -8,7 +8,7 @@ export default ( {req} ) => {
   return (
     <div className={styles.appWrapper}>
       <h1>React is running</h1>
-      <StaticRouter>
+      <StaticRouter location={ req.url }>
         <Switch>
           <Route exact path="*" component={PageLayout} />  
         </Switch>            

@@ -20,6 +20,7 @@ app.get('/*', (req, res) => {
 
  
     const content = ReactDOMServer.renderToString(mainApp);
+    console.log("content", content);
     const html = <Html content={content} />;
   
     res.status(200);
