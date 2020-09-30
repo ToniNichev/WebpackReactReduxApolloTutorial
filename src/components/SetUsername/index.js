@@ -1,5 +1,5 @@
 import React from 'react';
-import { UsersContextConsumer } from "../../usersContext";
+import UsersContext from "../../UsersContext";
 
 import styles from './styles.scss';
 
@@ -7,17 +7,17 @@ function SetUsername() {
 
   function inputChanged(context) {
     const newUserName = document.querySelector('#root > div > div:nth-child(3) > input[type=text]').value;
-    context.setUsername(newUserName)
+    context.username = newUserName;
   }
 
   return(
-    <UsersContextConsumer>
+    <UsersContext.Consumer>
       {context => (    
         <div className={styles.wrapper}>
           user:<input type="text" onChange={ () => { inputChanged(context) } } />
         </div>
       )}
-    </UsersContextConsumer>
+    </UsersContext.Consumer>
   );      
 }
 export default SetUsername;

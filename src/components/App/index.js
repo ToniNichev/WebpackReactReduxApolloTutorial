@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Greetings from '../Greetings';
-import { UsersContextProvider } from "../../usersContext";
+import UsersContext from "../../UsersContext";
 import SetUsername from "../SetUsername";
 import styles from './styles.scss';
 
 export default class App extends Component {
   render() {
     return (
-      <UsersContextProvider>
+      <UsersContext.Provider value={ {"name": "no name"} }>
         <div className={styles.appWrapper}>
           <h1>React is running</h1>
-          <Greetings user="John" />
+          <Greetings />
           <SetUsername />
         </div>
-      </UsersContextProvider>
+      </UsersContext.Provider>
     );
   }
 }
