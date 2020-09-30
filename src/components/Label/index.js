@@ -1,19 +1,19 @@
 import React from 'react';
 import styles from './styles.scss';
-import { ThemeContextConsumer } from "../../themeContext";
+import { UsersContextConsumer } from "../../usersContext";
 
 function Label(props) {
   return(
-    <ThemeContextConsumer>
+    <UsersContextConsumer>
       {context => (
         <div className={styles.wrapper}>
-            <h2>{context.theme}</h2>
+            <h2>{context.username}</h2>
         </div>
       )}
-    </ThemeContextConsumer>
+    </UsersContextConsumer>
     );     
 }
 
-Label.contextType = ThemeContextConsumer;
+Label.contextType = UsersContextConsumer;
 
 export default Label;

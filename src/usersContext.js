@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 const { Provider, Consumer } = React.createContext();
 
-class ThemeContextProvider extends Component {
+class UsersContextProvider extends Component {
   state = {
-    theme: "Day"
+    username: "no username"
   };
 
-  toggleTheme = () => {
+  setUsername = (newUsername) => {
     this.setState(prevState => {
       return {
-        theme: prevState.theme === "Day" ? "Night" : "Day"
+        username: newUsername
       };
     });
   };
@@ -17,7 +17,7 @@ class ThemeContextProvider extends Component {
   render() {
     return (
       <Provider
-        value={{ theme: this.state.theme, toggleTheme: this.toggleTheme }}
+        value={{ username: this.state.username, setUsername: this.setUsername }}
       >
         {this.props.children}
       </Provider>
@@ -25,4 +25,4 @@ class ThemeContextProvider extends Component {
   }
 }
 
-export { ThemeContextProvider, Consumer as ThemeContextConsumer };
+export { UsersContextProvider, Consumer as UsersContextConsumer };
