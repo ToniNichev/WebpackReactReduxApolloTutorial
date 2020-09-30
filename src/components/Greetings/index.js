@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './styles.scss';
+import Label from '../Label';
 
 function Greetings(props) {
   return(<div className={styles.wrapper}>
-          <h2>Hello, {props.user}</h2>
+          <Label user={props.user} />
         </div>);
 }
 export default Greetings;
