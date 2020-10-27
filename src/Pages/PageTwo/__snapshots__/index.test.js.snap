@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Header component renders as expected!!! 1`] = `
+<PageTwo>
+  <div>
+    no data
+    <hr />
+    <input
+      placeholder="no data"
+      type="text"
+    />
+    <button
+      onClick={[Function]}
+    >
+      TEST
+    </button>
+    <ul>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          ONE
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          TWO
+        </a>
+      </li>
+    </ul>
+  </div>
+</PageTwo>
+`;

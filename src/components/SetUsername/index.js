@@ -6,7 +6,7 @@ import styles from './styles.scss';
 function SetUsername() {
 
   function inputChanged(context) {
-    const newUserName = document.querySelector('#root > div > div:nth-child(3) > input[type=text]').value;
+    const newUserName = document.querySelector('div.SetUsername-wrapper > input[type=text]').value;
     context.setUsername(newUserName)
   }
 

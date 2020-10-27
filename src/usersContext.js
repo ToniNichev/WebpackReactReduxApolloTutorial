@@ -3,7 +3,7 @@ const { Provider, Consumer } = React.createContext();
 
 class UsersContextProvider extends Component {
   state = {
-    username: "no username"
+    username: "no username!"
   };
 
   setUsername = (newUsername) => {
