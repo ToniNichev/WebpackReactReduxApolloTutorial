@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Header component renders as expected!!! 1`] = `
+exports[`Testing Header component renders as the snapshot 1`] = `
 <PageTwo>
-  <div>
+  <div
+    data-text="no data"
+  >
     no data
     <hr />
     <input
