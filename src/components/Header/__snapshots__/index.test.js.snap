@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Header component renders as expected!!! 1`] = `
+<div>
+  <div>
+    <h2>
+      Title test
+       
+       
+    </h2>
+    <ul>
+      <li>
+        <Link
+          to="/page-one"
+        >
+          PAGE-ONE
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/page-two"
+        >
+          PAGE-TWO
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/page-three"
+        >
+          PAGE-THREEE
+        </Link>
+      </li>
+    </ul>
+  </div>
+  ∑
+</div>
+`;

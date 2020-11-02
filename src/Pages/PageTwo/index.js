@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../../components/Header';
 import styles from './styles.scss';
 
 
@@ -12,6 +13,7 @@ function PageTwo(props) {
   }
 
   return(<div data-text={labelData} className={styles.wrapper}>
+          <Header title="Page-Two" />
           {labelData}
           <hr />
           <input type="text" placeholder={labelData} />

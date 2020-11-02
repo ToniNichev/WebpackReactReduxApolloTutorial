@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>SHARE-BUTTON</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SHARE-BUTTON">
+            <g transform="translate(3.000000, 1.000000)">
+                <path d="M13.5,12.5 L6,12.5 L6,-1.77635684e-15 L13.5,0 L13.5,12.5 Z M9.75,20 L1,12.5 L18.5,12.5 L9.75,20 Z" id="Combined-Shape" fill="#3F98DC"></path>
+                <path d="M1,23.25 L18.5,23.25" id="Line" stroke="#3F98DC" stroke-width="2" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

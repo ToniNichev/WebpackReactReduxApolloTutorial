@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PageOne from "../../Pages/PageOne";
 import PageTwo from "../../Pages/PageTwo";
+import PageThree from "../../Pages/PageThree";
 import styles from './styles.scss';
 
 export default class App extends Component {
@@ -13,6 +14,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/page-one" component={PageOne}/>
             <Route exact path="/page-two" component={PageTwo}/>
+            <Route exact path="/page-three" component={PageThree}/>
           </Switch>
         </Router>
       </div>
