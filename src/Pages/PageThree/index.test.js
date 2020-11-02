@@ -17,9 +17,7 @@ describe('Testing Header component', () => {
       <PageThree />
      );
 
-     wrapper.find('button').simulate('click');     
-
-     console.log(">>>>", wrapper.html() );
+     
      //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());     
      //wrapper.find('button').simulate('click');
      //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());
