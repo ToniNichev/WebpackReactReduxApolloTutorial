@@ -6,9 +6,6 @@ import CnbcLogo from '../../../images/cnbc-logo-transp-for-light-bg.png';
 import $ from "jquery";
 import styles from './styles.scss';
 
-
-// const quoteData = window.quoteData.quoteData[0];
-
 const config = {
   canvas: {
     width: 670,
@@ -78,8 +75,11 @@ const draw = {
   y: 0
 };
 
+let chartCanvas;
+
 const DownloadChart = (props) => {
-  const { quoteData, chartCanvas } = props;
+  const { quoteData, timeSpan } = props;
+  chartCanvas = props.chartCanvas;
 
   const captureGraphState = () => {
     const page2 = $('#shareChartContainerHiddenCanvas1')[0].getContext('2d');
@@ -250,7 +250,7 @@ const DownloadChart = (props) => {
     ctx.drawImage(source, 0, 0, w, h);
     return (c);
   };
-
+ 
   /**
    * generateChartShareImage
    */
@@ -354,14 +354,33 @@ const DownloadChart = (props) => {
         txt = `Close | ${quoteData.ExtendedMktQuote.last_timedate}`;
         drawText(txt, pos.x, config.canvas.extendedHours);
       }
+
+      // Time span label
+      const globaltimespan = timeSpan;
+      let selector = globaltimespan;
+      // let counter = 0;
+      const lengtharr = [];
+
+      if (selector.indexOf('D') > -1 && selector.length < 3)
+        selector = `${selector[0]} Day`;
+      else if ( selector.indexOf('M') > -1 )
+        selector = `${selector[0]} Month`;
+      else if (selector.indexOf('Y') > -1 && selector.length < 3)
+        selector = `${selector[0]} Year`;
+      else
+        selector = selector.toUpperCase();
+
+      lengtharr.push(selector.length);
+      // draw time range
+      drawText(selector, pos.x, config.canvas.timeSpan);
     }
-  };
+  };  
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.downloadChartModal}>
         <p className={styles.closeBtnWrapper}>
-          <div className={styles.closeBtn}><button onClick={() => { props.sendData(); }}>×</button></div>
+          <span className={styles.closeBtn}><button onClick={() => { props.sendData(); }}>×</button></span>
         </p>
         <span className={styles.personalMesage}>
           <p>

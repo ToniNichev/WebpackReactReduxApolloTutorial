@@ -4,9 +4,6 @@ exports[`Testing Header component renders as the snapshot 1`] = `
 <div
   data-text="no data"
 >
-  <Header
-    title="Page-Two"
-  />
   no data
   <hr />
   <input

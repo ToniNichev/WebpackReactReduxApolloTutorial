@@ -1,0 +1,29 @@
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import PageThree from './';
+import toJson from 'enzyme-to-json';
+
+describe('Testing Header component', () => {
+
+    it('renders as the snapshot', () => {
+      const wrapper = mount(
+        <PageThree />
+      );
+     expect(toJson(wrapper)).toMatchSnapshot();
+   });  
+
+   it('button click adds window.location.hash', () => {
+     const wrapper = mount(
+      <PageThree />
+     );
+
+     wrapper.find('button').simulate('click');     
+
+     console.log(">>>>", wrapper.html() );
+     //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());     
+     //wrapper.find('button').simulate('click');
+     //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());
+     
+     //expect(wrapper.find('.DownloadChartPopup-downloadChartModal')).toBe('one');
+   });   
+});

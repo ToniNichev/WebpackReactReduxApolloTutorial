@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DownloadChartButton from '../../components/ChartModules/DownloadChartButton';
 import DownloadChartPopup from '../../components/ChartModules/DownloadChartPopup';
-import Header from '../../components/Header';
 import Chart from '../../images/chart.png';
 import styles from './styles.scss';
 
@@ -22,6 +21,8 @@ function PageThree() {
   
   useEffect(() => {
     chartCanvas = document.getElementById('chartCanvas');
+    if(chartCanvas === null)
+      return;
     const canvasContext = chartCanvas.getContext('2d');
     var image = new Image();
     image.src = Chart;
@@ -34,10 +35,13 @@ function PageThree() {
 
   return(
     <div className={styles.wrapper}>
-      <Header title="Page-Three"  />
       <DownloadChartButton sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} />
       <canvas height="350" width="678" id="chartCanvas" className={styles.canvas}/>
-      { downloadImagePopupVisible && <DownloadChartPopup quoteData={quoteData} chartCanvas={chartCanvas} sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} /> }
+      { downloadImagePopupVisible && <DownloadChartPopup 
+                                      quoteData={quoteData} 
+                                      chartCanvas={chartCanvas} 
+                                      timeSpan="1D"
+                                      sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} /> }
     </div>);
 }
 export default PageThree;

@@ -50,7 +50,7 @@
       "./src/setupTests.js"
     ],
     "moduleNameMapper": {
-      "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+      "\\.(css|less|scss|jpg|jpeg|svg|ttf|woff|woff2|png)$": "<rootDir>/src/__mocks__/styleMock.js"
     },
     "setupFiles": ["<rootDir>/src/setupTests.js"],
     "testRegex": "/*.test.js$",

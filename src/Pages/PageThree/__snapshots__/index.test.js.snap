@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Header component renders as the snapshot 1`] = `
+<PageThree>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      TEST
+    </button>
+    <canvas
+      height="350"
+      id="chartCanvas"
+      width="678"
+    />
+  </div>
+</PageThree>
+`;
