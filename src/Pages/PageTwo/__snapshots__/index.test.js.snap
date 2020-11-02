@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Header component renders as the snapshot 1`] = `
+<div
+  data-text="no data"
+>
+  <Header
+    title="Page-Two"
+  />
+  no data
+  <hr />
+  <input
+    placeholder="no data"
+    type="text"
+  />
+  <button
+    onClick={[Function]}
+  >
+    TEST
+  </button>
+  <ul>
+    <li>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        ONE
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        TWO
+      </a>
+    </li>
+  </ul>
+</div>
+`;

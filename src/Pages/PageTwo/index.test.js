@@ -5,14 +5,14 @@ import toJson from 'enzyme-to-json';
 describe('Testing Header component', () => {
 
     it('renders as the snapshot', () => {
-      const wrapper = mount(
+      const wrapper = shallow(
         <PageTwo />
       );
      expect(toJson(wrapper)).toMatchSnapshot();
    });
    
    it('button click adds window.location.hash', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <PageTwo />
     );
     wrapper.find('button').simulate('click');
@@ -25,6 +25,14 @@ describe('Testing Header component', () => {
     );
     wrapper.find('li > a').at(0).simulate('click');
     expect(wrapper.find('input').props().placeholder).toBe('one');
-   });      
+   }); 
+   
+   it('clicking on LI > A sets `input` placeholder to `two`', () => {
+    const wrapper = shallow(
+      <PageTwo />
+    );
+    wrapper.find('li > a').at(1).simulate('click');
+    expect(wrapper.find('input').props().placeholder).toBe('two');
+   });    
 
 });

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "test": "jest"
+    "test": "jest --coverage --watchAll=false"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -52,6 +52,8 @@
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
     },
+    "setupFiles": ["<rootDir>/src/setupTests.js"],
+    "testRegex": "/*.test.js$",
     "verbose": true,
     "collectCoverage": true,
     "coverageDirectory": "coverage",
@@ -59,7 +61,16 @@
       "json",
       "lcov",
       "text"
-    ],    
+    ],   
+    "moduleDirectories": ["node_modules", "src"], 
+    "coverageThreshold": {
+        "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },    
     "coveragePathIgnorePatterns": [
       "/node_modules",
       "assets",
