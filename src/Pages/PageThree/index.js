@@ -5,9 +5,17 @@ import Chart from '../../images/chart.png';
 import styles from './styles.scss';
 
 const quoteData =  {
+  //curmktstatus: 'POST_MKT',
+  curmktstatus: 'REG_MKT',
   ExtendedMktQuote: {
+    last: '115.80',
     last_timedate: "7:59 PM EDT",
+    change: '+10.5',
+    change_pct: '+12.4'
   },
+  last: '110.78',
+  change: "+1.34",
+  change_pct: "+1.23",
   name: "Apple Inc",
   symbol: "AAPL",
   exchange: "NASDAQ",
@@ -15,12 +23,13 @@ const quoteData =  {
   last_timedate: "4:00 PM EDT",
 }
 
-let chartCanvas;
+const chartContainer = 'chartContainer';
+const chartTimeIntervalSelected = 'chartTimeIntervalSelected';
 
 function PageThree() {
   
   useEffect(() => {
-    chartCanvas = document.getElementById('chartCanvas');
+    const chartCanvas = document.getElementById('chartCanvas');
     if(chartCanvas === null)
       return;
     const canvasContext = chartCanvas.getContext('2d');
@@ -35,12 +44,13 @@ function PageThree() {
 
   return(
     <div className={styles.wrapper}>
+      <div className={chartTimeIntervalSelected}>1D</div>
       <DownloadChartButton sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} />
-      <canvas height="350" width="678" id="chartCanvas" className={styles.canvas}/>
+      <div className={chartContainer}>
+        <canvas height="350" width="678" id="chartCanvas" className={styles.canvas}/>
+      </div>        
       { downloadImagePopupVisible && <DownloadChartPopup 
                                       quoteData={quoteData} 
-                                      chartCanvas={chartCanvas} 
-                                      timeSpan="1D"
                                       sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} /> }
     </div>);
 }

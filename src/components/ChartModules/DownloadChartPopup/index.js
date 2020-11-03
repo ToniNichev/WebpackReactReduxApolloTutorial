@@ -1,10 +1,20 @@
 /* eslint-disable no-use-before-define, radix */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+// import CnbcWatermark from 'assets/images/quotePage/CNBC_logo_grey.png';
+// import CnbcLogo from 'assets/images/quotePage/cnbc-logo-transp-for-light-bg.png';
+
+/* remove this */
 import CnbcWatermark from '../../../images/CNBC_logo_grey.png';
 import CnbcLogo from '../../../images/cnbc-logo-transp-for-light-bg.png';
 import $ from "jquery";
+/* ---------- */
+
+
 import styles from './styles.scss';
+
+
+// const quoteData = window.quoteData.quoteData[0];
 
 const config = {
   canvas: {
@@ -75,17 +85,74 @@ const draw = {
   y: 0
 };
 
-let chartCanvas;
+const captureGraphState = () => {
+  const page2 = $('#shareChartContainerHiddenCanvas1')[0].getContext('2d');
+  const destCanvas = $('#shareChartContainerCanvas')[0];
+  page2.drawImage(destCanvas, 0, 0);
+};
 
+function downloadChartAction(e) {
+  customMessageTextEdited();
+  const imageCanvas = $('#shareChartContainerCanvas')[0];
+  const dataURL = imageCanvas.toDataURL('image/jpeg', 1);
+  e.target.href = dataURL;
+}
+
+const restoreGraphState = () => {
+  const page2 = $('#shareChartContainerHiddenCanvas1')[0];
+  destCtx.drawImage(page2, 0, 0);
+};
+
+const customMessageTextEdited = () => {
+  restoreGraphState();
+
+  // clear custom text area
+  destCtx.fillStyle = 'white';
+  destCtx.fillRect(0, 0, 660, 20);
+
+  // custom text label
+  const pos = config.textPosition;
+  destCtx.fillStyle = config.canvas.customMessageText.color;
+  destCtx.font = config.canvas.customMessageText.font;
+  const txt = $('#share_chart_text').val();
+  destCtx.fillText(txt, pos.x, pos.y);
+};
+
+const drawText = (txt, x, fontStyle, disableNewLine) => {
+  const color = fontStyle.color || '#737373';
+  const font = fontStyle.font || '12px Arial';
+  const fontSize = parseInt(fontStyle.font.split('px')[0]) || 12;
+
+  destCtx.fillStyle = color;
+  destCtx.font = font;
+  destCtx.fillText(txt, x, yCursor);
+
+  if (disableNewLine !== true)
+    yCursor += fontSize;
+};
+
+function renderChangeText(changeVal, changePercentVal, xOffset, fontStyle, sameLine) {
+  let changeFontStyle = fontStyle;
+  let change = parseFloat(changeVal);
+  let changeColor = change < 0 ? fontStyle.color.negative : fontStyle.color.positive;
+  changeColor = change === 0 ? fontStyle.color.noChange : changeColor;
+  changeFontStyle.color = changeColor;
+  const percentVal = changePercentVal.replace(/[\+|\-]/gi, '');
+  const txt = `${changeVal} (${percentVal}%)`;
+  drawText(txt, xOffset, changeFontStyle, sameLine);    
+}
+
+
+/**
+ * Download chart popup window component
+ * @param {
+ *  quoteDate,
+ *  timeSpan,
+ *  chartCanvas
+ * } props
+ */
 const DownloadChart = (props) => {
-  const { quoteData, timeSpan } = props;
-  chartCanvas = props.chartCanvas;
-
-  const captureGraphState = () => {
-    const page2 = $('#shareChartContainerHiddenCanvas1')[0].getContext('2d');
-    const destCanvas = $('#shareChartContainerCanvas')[0];
-    page2.drawImage(destCanvas, 0, 0);
-  };
+  const { quoteData } = props;
 
   const initDrawing = () => {
     captureGraphState();
@@ -189,56 +256,12 @@ const DownloadChart = (props) => {
     }
   };
 
-  const restoreGraphState = () => {
-    const page2 = $('#shareChartContainerHiddenCanvas1')[0];
-    destCtx.drawImage(page2, 0, 0);
-  };
-
-  const customMessageTextEdited = () => {
-    restoreGraphState();
-
-    // clear custom text area
-    destCtx.fillStyle = 'white';
-    destCtx.fillRect(0, 0, 660, 20);
-
-    // custom text label
-    const pos = config.textPosition;
-    destCtx.fillStyle = config.canvas.customMessageText.color;
-    destCtx.font = config.canvas.customMessageText.font;
-    const txt = $('#share_chart_text').val();
-    destCtx.fillText(txt, pos.x, pos.y);
-  };
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // attach export image action
-      const button = $('#download-chart-image')[0];
-      button.addEventListener('click', () => {
-        customMessageTextEdited();
-        const imageCanvas = $('#shareChartContainerCanvas')[0];
-        const dataURL = imageCanvas.toDataURL('image/jpeg', 1);
-        button.href = dataURL;
-        $('.pico-content.quotes-moodle').remove();
-        $('.pico-overlay').css('display', 'none');
-      });
-
       generateChartShareImage();
       initDrawing();
     }
   });
-
-  const drawText = (txt, x, fontStyle, disableNewLine) => {
-    const color = fontStyle.color || '#737373';
-    const font = fontStyle.font || '12px Arial';
-    const fontSize = parseInt(fontStyle.font.split('px')[0]) || 12;
-
-    destCtx.fillStyle = color;
-    destCtx.font = font;
-    destCtx.fillText(txt, x, yCursor);
-
-    if (disableNewLine !== true)
-      yCursor += fontSize;
-  };
 
   function scaleIt(source, scaleFactor) {
     const c = document.createElement('canvas');
@@ -250,13 +273,13 @@ const DownloadChart = (props) => {
     ctx.drawImage(source, 0, 0, w, h);
     return (c);
   };
- 
+
   /**
    * generateChartShareImage
    */
   const generateChartShareImage = () => {
     const isRetina = window.devicePixelRatio > 1;
-
+    const chartCanvas = $('.chartContainer canvas')[0];
     const destCanvas = $('#shareChartContainerCanvas')[0];
 
     if (chartCanvas.getContext) {
@@ -316,47 +339,38 @@ const DownloadChart = (props) => {
         drawText(txt, pos.x, config.canvas.extendedHours, true);
 
         // Close Timestamp
-        const last = quoteData.curmktstatus === 'POST_MKT' ? 'Close' : 'Last';
-        txt = `${last} | ${quoteData.last_timedate}`;
+        txt = `Close | ${quoteData.last_timedate}`;
         drawText(txt, pos.x + 200, config.canvas.extendedHours);
 
-        // same line
         yCursor += 10;
         // Last Price
         drawText(quoteData.ExtendedMktQuote.last, pos.x, config.canvas.priceLabels, true);
 
         // ext hours change %
-        let change = parseFloat(quoteData.ExtendedMktQuote.change);
-        let changeColor = change < 0 ? config.canvas.change.color.negative : config.canvas.change.color.positive;
-        changeColor = change === 0 ? config.canvas.change.noChange : changeColor;
-
-        txt = `${quoteData.ExtendedMktQuote.change} (${quoteData.ExtendedMktQuote.change_pct})`;
-        const changeSettings = {
-          font: config.canvas.change.font,
-          color: changeColor
-        };
-
-        drawText(txt, pos.x + 100, changeSettings, true);
-
-        // change since close %
-        change = parseFloat(quoteData.change);
-        changeColor = change < 0 ? config.canvas.change.color.negative : config.canvas.change.color.positive;
-        changeColor = change === 0 ? config.canvas.change.noChange : changeColor;
-        changeSettings.color = changeColor;
-
-        txt = `${quoteData.change} (${quoteData.change_pct})`;
-        drawText(txt, pos.x + 300, changeSettings, true);
+        renderChangeText(quoteData.ExtendedMktQuote.change, quoteData.ExtendedMktQuote.change_pct, 100, config.canvas.change, true);
 
         // Close Price
-        drawText(quoteData.last, pos.x + 200, config.canvas.priceLabels);
-      } else {
+        drawText(quoteData.last, pos.x + 200, config.canvas.priceLabels, true);
+
+        // Close %
+        renderChangeText(quoteData.change, quoteData.change_pct, pos.x + 290, config.canvas.change, false);
+      } 
+      else {
+        // ** Regular market hours **
+
+        // Last Timestamp
+        txt = `Last | ${quoteData.last_timedate}`;
+        drawText(txt, pos.x, config.canvas.extendedHours, false);
+        yCursor += 10;
+        // Price 
+        drawText(quoteData.last, pos.x, config.canvas.priceLabels, true);
+
         // Close Timestamp
-        txt = `Close | ${quoteData.ExtendedMktQuote.last_timedate}`;
-        drawText(txt, pos.x, config.canvas.extendedHours);
+        renderChangeText(quoteData.change, quoteData.change_pct, 100, config.canvas.change, false);
       }
 
       // Time span label
-      const globaltimespan = timeSpan;
+      const globaltimespan = $('.chartTimeIntervalSelected')[0].innerHTML;
       let selector = globaltimespan;
       // let counter = 0;
       const lengtharr = [];
@@ -374,7 +388,7 @@ const DownloadChart = (props) => {
       // draw time range
       drawText(selector, pos.x, config.canvas.timeSpan);
     }
-  };  
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -395,7 +409,7 @@ const DownloadChart = (props) => {
           </p>
         </span>
         <div className={styles.downloadButton}>
-          <a href="#" download={exportFileName} id="download-chart-image">DOWNLOAD</a>
+          <a href="#" download={exportFileName} onClick={ (e) => { downloadChartAction(e) } } id="download-chart-image">DOWNLOAD</a>
         </div>
       </div>
     </div>

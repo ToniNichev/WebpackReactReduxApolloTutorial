@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import DownloadChartPopup from './';
+import DownloadChartButton from '../DownloadChartButton';
 import toJson from 'enzyme-to-json';
 
 const quoteData =  {
@@ -14,7 +15,7 @@ const quoteData =  {
   last_timedate: "4:00 PM EDT",
 }
 
-let chartCanvas;
+let chartCanvas = {};
 
 let downloadImagePopupVisible = false;
 const setValueOfDownloadImagePopupVisible = (val) => {
@@ -30,7 +31,7 @@ describe('Testing Header component', () => {
           chartCanvas={chartCanvas} 
           timeSpan="1D"
           sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} />);
-     expect(toJson(wrapper)).toMatchSnapshot();
-   });  
+      expect(toJson(wrapper)).toMatchSnapshot();
+   });    
  
 });
