@@ -138,115 +138,105 @@ const renderChangeText = (changeVal, changePercentVal, xOffset, fontStyle, sameL
   drawText(txt, xOffset, changeFontStyle, sameLine);    
 }
 
+const getMouseCoordinates = (e) => {
+  const container = $('#shareChartContainerCanvas').offset();
+  const x = e.pageX - container.left;
+  const y = e.pageY - container.top;
+  return {
+    x,
+    y
+  };
+}
+
+const drawArow = (ctx, x1, y1, x2, y2, lineWidth, arrowDiamer, arowAngle, color, fillColor) => {
+  const angle = Math.PI / arowAngle;
+
+  const dist = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  const ratio = (dist - arrowDiamer) / dist;
+  const ratio2 = (dist - arrowDiamer / 3) / dist;
+  const fromx = x1 + (x2 - x1) * (1 - ratio2);
+  const fromy = y1 + (y2 - y1) * (1 - ratio2);
+
+  const tox = Math.round(x1 + (x2 - x1) * ratio);
+  const toy = Math.round(y1 + (y2 - y1) * ratio);
+
+  ctx.beginPath();
+  ctx.lineWidth = lineWidth;
+  ctx.strokeStyle = color;
+  ctx.moveTo(fromx, fromy);
+  ctx.lineTo(tox, toy);
+  ctx.stroke();
+
+  // calculate the angle of the line
+  const lineangle = Math.atan2(y2 - y1, x2 - x1);
+  // h is the line length of a side of the arrow head
+  const h = Math.abs(arrowDiamer / Math.cos(angle));
+
+  const angle1 = lineangle + Math.PI + angle;
+  const topx = x2 + Math.cos(angle1) * h;
+  const topy = y2 + Math.sin(angle1) * h;
+  const angle2 = lineangle + Math.PI - angle;
+  const botx = x2 + Math.cos(angle2) * h;
+  const boty = y2 + Math.sin(angle2) * h;
+
+  ctx.beginPath();
+  ctx.moveTo(topx, topy);
+  ctx.lineTo(botx, boty);
+
+  ctx.lineTo(x2, y2);
+  ctx.lineTo(topx, topy);
+
+  if (fillColor == null) {
+    ctx.stroke();
+
+  } else {
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
+
+  ctx.beginPath();
+  ctx.arc(x1, y1, 4, 0, 2 * Math.PI);
+  ctx.stroke();
+}
+
+const drawAnnotations = (e) => {
+  const page2 = $('#shareChartContainerHiddenCanvas1')[0];
+  destCtx.drawImage(page2, 0, 0);
+
+  const destinationCtx = destCtx;
+
+  if (draw.mode === 1) {
+    draw.x = getMouseCoordinates(e).x;
+    draw.y = getMouseCoordinates(e).y;
+
+    draw.mode = 2;
+  } else if (draw.mode === 2) {
+    const x = getMouseCoordinates(e).x;
+    const y = getMouseCoordinates(e).y;
+    destinationCtx.fillStyle = 'black';
+    destinationCtx.beginPath();
+    destinationCtx.moveTo(draw.x, draw.y);
+    destinationCtx.lineTo(x, y);
+
+    drawArow(destinationCtx, draw.x, draw.y, x, y, 2, 15, 8, '#3DA5ED', null);
+  }
+}
+
 const initDrawing = () => {
   captureGraphState();
-
-  $('#shareChartContainerCanvas').mousedown( () => {
-    draw.mode = 1;
-  });
-
-  $('#shareChartContainerCanvas').mouseup( () => {
-    captureGraphState();
-    draw.mode = 0;
-  });
-
-  const getMouseCoordinates = (e) => {
-    const container = $('#shareChartContainerCanvas').offset();
-    const x = e.pageX - container.left;
-    const y = e.pageY - container.top;
-    return {
-      x,
-      y
-    };
-  }
-
-  const drawAnnotations = (e) => {
-    const page2 = $('#shareChartContainerHiddenCanvas1')[0];
-    destCtx.drawImage(page2, 0, 0);
-
-    const destinationCtx = destCtx;
-
-    if (draw.mode === 1) {
-      draw.x = getMouseCoordinates(e).x;
-      draw.y = getMouseCoordinates(e).y;
-
-      draw.mode = 2;
-    } else if (draw.mode === 2) {
-      const x = getMouseCoordinates(e).x;
-      const y = getMouseCoordinates(e).y;
-      destinationCtx.fillStyle = 'black';
-      destinationCtx.beginPath();
-      destinationCtx.moveTo(draw.x, draw.y);
-      destinationCtx.lineTo(x, y);
-
-      drawArow(destinationCtx, draw.x, draw.y, x, y, 2, 15, 8, '#3DA5ED', null);
-    }
-  }
-
+  /*
   $('#shareChartContainerCanvas').mousemove( (e) => {
     drawAnnotations(e);
   });
+  */
 
-  // Drawing Helper methods
-  const drawArow = (ctx, x1, y1, x2, y2, lineWidth, arrowDiamer, arowAngle, color, fillColor) => {
-    const angle = Math.PI / arowAngle;
-
-    const dist = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-    const ratio = (dist - arrowDiamer) / dist;
-    const ratio2 = (dist - arrowDiamer / 3) / dist;
-    const fromx = x1 + (x2 - x1) * (1 - ratio2);
-    const fromy = y1 + (y2 - y1) * (1 - ratio2);
-
-    const tox = Math.round(x1 + (x2 - x1) * ratio);
-    const toy = Math.round(y1 + (y2 - y1) * ratio);
-
-    ctx.beginPath();
-    ctx.lineWidth = lineWidth;
-    ctx.strokeStyle = color;
-    ctx.moveTo(fromx, fromy);
-    ctx.lineTo(tox, toy);
-    ctx.stroke();
-
-    // calculate the angle of the line
-    const lineangle = Math.atan2(y2 - y1, x2 - x1);
-    // h is the line length of a side of the arrow head
-    const h = Math.abs(arrowDiamer / Math.cos(angle));
-
-    const angle1 = lineangle + Math.PI + angle;
-    const topx = x2 + Math.cos(angle1) * h;
-    const topy = y2 + Math.sin(angle1) * h;
-    const angle2 = lineangle + Math.PI - angle;
-    const botx = x2 + Math.cos(angle2) * h;
-    const boty = y2 + Math.sin(angle2) * h;
-
-    ctx.beginPath();
-    ctx.moveTo(topx, topy);
-    ctx.lineTo(botx, boty);
-
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(topx, topy);
-
-    if (fillColor == null) {
-      ctx.stroke();
-
-    } else {
-      ctx.fillStyle = fillColor;
-      ctx.fill();
-    }
-
-    ctx.beginPath();
-    ctx.arc(x1, y1, 4, 0, 2 * Math.PI);
-    ctx.stroke();
-  }
 };
 
 
 /**
  * Download chart popup window component
  * @param {
- *  quoteDate,
- *  timeSpan,
- *  chartCanvas
+ *  quoteData - an object representing the quote data
  * } props
  */
 const DownloadChart = (props) => {
@@ -401,7 +391,7 @@ const DownloadChart = (props) => {
             <canvas id="shareChartContainerHiddenCanvas2" className={styles.hiddenCanvas} />
           </p>
           <p>
-            <canvas width={config.canvas.width} className={styles.visibleCanvas} height={config.canvas.height} id="shareChartContainerCanvas" />
+            <canvas width={config.canvas.width} onMouseMove={ (e) => { drawAnnotations(e) } } onMouseUp={ (e) => { captureGraphState();draw.mode = 0; } } onMouseDown={ () => { draw.mode = 1 } } className={styles.visibleCanvas} height={config.canvas.height} id="shareChartContainerCanvas" />
           </p>
         </span>
         <div className={styles.downloadButton}>
