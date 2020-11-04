@@ -13,7 +13,7 @@ import $ from "jquery";
 /* ---------- */
 
 
-const config = {
+const chartDrawConfig = {
   canvas: {
     width: 670,
     height: 450,
@@ -71,17 +71,6 @@ const config = {
   }
 };
 
-const exportFileName = typeof window !== 'undefined' ? '_chart.jpeg' : null;
-
-let destCtx;
-//let yCursor;
-/*
-const draw = {
-  mode: 0,
-  x: 0,
-  y: 0
-};
-*/
 
 
 /**
@@ -95,12 +84,17 @@ const DownloadChart = (props) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      chartDrawing.init('#shareChartContainerCanvas', config, watermark, logo);
+      const destCanvas = document.getElementById('shareChartContainerCanvas');
+      const srcCanvas = document.getElementById('chartCanvas');
+      chartDrawing.init(srcCanvas,
+                        destCanvas, 
+                        chartDrawConfig, 
+                        watermark, 
+                        logo);
       chartDrawing.generateChartShareImage(quoteData);
       chartDrawing.captureGraphState();
     }
   });
-
 
   return (
     <div className={styles.wrapper}>
@@ -113,15 +107,18 @@ const DownloadChart = (props) => {
             <input className={styles.message} type="text" id="share_chart_text" placeholder="Add your headline (optional)" maxLength="72" />
           </p>
           <p>
-            <canvas id="shareChartContainerHiddenCanvas1" className={styles.hiddenCanvas} width={config.canvas.width} height={config.canvas.height} />
-            <canvas id="shareChartContainerHiddenCanvas2" className={styles.hiddenCanvas} />
-          </p>
-          <p>
-            <canvas width={config.canvas.width} onMouseMove={ (e) => { chartDrawing.drawAnnotations(e) } } onMouseUp={ (e) => { chartDrawing.captureGraphState(); chartDrawing.setDrawMode(0); } } onMouseDown={ () => { chartDrawing.setDrawMode(1) } } className={styles.visibleCanvas} height={config.canvas.height} id="shareChartContainerCanvas" />
+            <canvas 
+              width={chartDrawConfig.canvas.width} 
+              height={chartDrawConfig.canvas.height} 
+              onMouseMove={ (e) => { chartDrawing.drawAnnotations(e) } } 
+              onMouseUp={ (e) => { chartDrawing.captureGraphState(); chartDrawing.setDrawMode(0); } } 
+              onMouseDown={ () => { chartDrawing.setDrawMode(1) } } 
+              className={styles.visibleCanvas} 
+              id="shareChartContainerCanvas" />
           </p>
         </span>
         <div className={styles.downloadButton}>
-          <a href="#" download={exportFileName} onClick={ (e) => { chartDrawing.downloadChartAction(e) } } id="download-chart-image">DOWNLOAD</a>
+          <a href="#" download={chartDrawing.exportFileName} onClick={ (e) => { chartDrawing.downloadChartAction(e) } } id="download-chart-image">DOWNLOAD</a>
         </div>
       </div>
     </div>

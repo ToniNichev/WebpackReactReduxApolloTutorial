@@ -2,8 +2,7 @@
 import $ from "jquery";
 /* ----------------- */
 
-const exportFileName = typeof window !== 'undefined' ? '_chart.jpeg' : null;
-
+let exportFileName = `chart.jpeg`;
 let destCtx;
 let yCursor = 55;
 let page2Canvas;
@@ -18,7 +17,6 @@ const draw = {
 };
 
 const captureGraphState = () => {
-  console.log("!!!!!!!!!");
   const page2 = page2Canvas.getContext('2d');
   const destCanvas = $('#shareChartContainerCanvas')[0];
   page2.drawImage(destCanvas, 0, 0);
@@ -29,10 +27,10 @@ const downloadChartAction = (e) => {
   const imageCanvas = $('#shareChartContainerCanvas')[0];
   const dataURL = imageCanvas.toDataURL('image/jpeg', 1);
   e.target.href = dataURL;
+  e.download = "test.jpeg";
 }
 
 const restoreGraphState = () => {
-  //const page2 = $('#shareChartContainerHiddenCanvas1')[0];
   destCtx.drawImage(page2Canvas, 0, 0);
 };
 
@@ -75,19 +73,10 @@ function scaleIt(source, scaleFactor) {
   return (c);
 };
 
-const renderChangeText = (changeVal, changePercentVal, xOffset, fontStyle, sameLine) => {
-  let changeFontStyle = fontStyle;
-  let change = parseFloat(changeVal);
-  let changeColor = change < 0 ? fontStyle.color.negative : fontStyle.color.positive;
-  changeColor = change === 0 ? fontStyle.color.noChange : changeColor;
-  changeFontStyle.color = changeColor;
-  const percentVal = changePercentVal.replace(/[\+|\-]/gi, '');
-  const txt = `${changeVal} (${percentVal}%)`;
-  drawText(txt, xOffset, changeFontStyle, sameLine);    
-}
-
 const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sameLine) => {
-  let changeFontStyle = fontStyle;
+  const changeFontStyle = {
+    ...fontStyle
+  };
   let change = parseFloat(changeVal);
   let changeColor = change < 0 ? fontStyle.color.negative : fontStyle.color.positive;
   changeColor = change === 0 ? fontStyle.color.noChange : changeColor;
@@ -160,7 +149,6 @@ const drawArow = (ctx, x1, y1, x2, y2, lineWidth, arrowDiamer, arowAngle, color,
 }
 
 const drawAnnotations = (e) => {
-  //const page2 = $('#shareChartContainerHiddenCanvas1')[0];
   destCtx.drawImage(page2Canvas, 0, 0);
 
   const destinationCtx = destCtx;
@@ -184,7 +172,6 @@ const drawAnnotations = (e) => {
 
 const generateChartShareImage = (quoteData) => {
   const isRetina = window.devicePixelRatio > 1;
-  const chartCanvas = $('.chartContainer canvas')[0];
   const destCanvas = $('#shareChartContainerCanvas')[0];
 
   if (chartCanvas.getContext) {
@@ -254,14 +241,12 @@ const generateChartShareImage = (quoteData) => {
 
       // ext hours change %
       renderChangePctText(quoteData.ExtendedMktQuote.change, quoteData.ExtendedMktQuote.change_pct, 100, config.canvas.change, true);
-      //chartDrawing.renderChangeText(quoteData.ExtendedMktQuote.change, quoteData.ExtendedMktQuote.change_pct, 100, config.canvas.change, true);
 
       // Close Price
       chartDrawing.drawText(quoteData.last, pos.x + 200, config.canvas.priceLabels, true);
 
       // Close %
       renderChangePctText(quoteData.change, quoteData.change_pct, pos.x + 290, config.canvas.change, false);
-      //chartDrawing.renderChangeText(quoteData.change, quoteData.change_pct, pos.x + 290, config.canvas.change, false);
     } 
     else {
       // ** Regular market hours **
@@ -275,14 +260,11 @@ const generateChartShareImage = (quoteData) => {
 
       // Close Timestamp
       renderChangePctText(quoteData.change, quoteData.change_pct, 100, config.canvas.change, false);
-      //chartDrawing.renderChangeText(quoteData.change, quoteData.change_pct, 100, config.canvas.change, false);
     }
 
     // Time span label
     const globaltimespan = $('.chartTimeIntervalSelected')[0].innerHTML;
     let selector = globaltimespan;
-    // let counter = 0;
-    const lengtharr = [];
 
     if (selector.indexOf('D') > -1 && selector.length < 3)
       selector = `${selector[0]} Day`;
@@ -292,14 +274,14 @@ const generateChartShareImage = (quoteData) => {
       selector = `${selector[0]} Year`;
     else
       selector = selector.toUpperCase();
-
-    lengtharr.push(selector.length);
     // draw time range
     chartDrawing.drawText(selector, pos.x, config.canvas.timeSpan);
   }
 };
 
-const init = (chartContainerId, configSettings, watermarkPic, logoPic) => {
+const init = (destCanvas, configSettings, watermarkPic, logoPic) => {
+  if(typeof config !== 'undefined')
+    return;
   config = configSettings;
   watermark = watermarkPic;
   logo = logoPic;
@@ -310,15 +292,11 @@ const init = (chartContainerId, configSettings, watermarkPic, logoPic) => {
   page2Canvas.width = 1224;
   page2Canvas.height = 768;
   page2Canvas.style = "display:none";
-  
-  
   var body = document.getElementsByTagName("body")[0];
   body.appendChild(page2Canvas);
 
-
-  const destCanvas = $(chartContainerId)[0];
-  if (chartCanvas.getContext) {
-    // get fresh canvas instance since after clopsing the popup canvas is destroyed
+  if (destCanvas.getContext) {
+    // get fresh canvas instance since after clossing the popup canvas is destroyed
     destCtx = destCanvas.getContext('2d');  
   }
   else {
@@ -341,17 +319,22 @@ const setDrawMode = (val) => {
   draw.mode = val;
 }
 
+const test = () => {
+  return "111";
+}
+
 const chartDrawing = {
+  test,
   init,
   setYCursor,
   getYCursor,
   drawText,
-  renderChangeText,
   captureGraphState,
   generateChartShareImage,
   drawAnnotations,
   downloadChartAction,
-  setDrawMode
+  setDrawMode,
+  exportFileName
 }
 
 export default chartDrawing;
