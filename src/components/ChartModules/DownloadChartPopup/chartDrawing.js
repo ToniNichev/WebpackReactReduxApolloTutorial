@@ -3,6 +3,7 @@ import $ from "jquery";
 /* ----------------- */
 
 let exportFileName = `chart.jpeg`;
+let srcCanvas;
 let destCtx;
 let yCursor = 55;
 let page2Canvas;
@@ -173,6 +174,7 @@ const drawAnnotations = (e) => {
 const generateChartShareImage = (quoteData) => {
   const isRetina = window.devicePixelRatio > 1;
   const destCanvas = $('#shareChartContainerCanvas')[0];
+  const chartCanvas = srcCanvas;
 
   if (chartCanvas.getContext) {
     // get fresh canvas instance since after clopsing the popup canvas is destroyed
@@ -277,31 +279,6 @@ const generateChartShareImage = (quoteData) => {
     // draw time range
     chartDrawing.drawText(selector, pos.x, config.canvas.timeSpan);
   }
-};
-
-const init = (destCanvas, configSettings, watermarkPic, logoPic) => {
-  if(typeof config !== 'undefined')
-    return;
-  config = configSettings;
-  watermark = watermarkPic;
-  logo = logoPic;
-
-  page2Canvas = document.createElement('canvas');
-
-  page2Canvas.id = "shareChartContainerHiddenCanvas1";
-  page2Canvas.width = 1224;
-  page2Canvas.height = 768;
-  page2Canvas.style = "display:none";
-  var body = document.getElementsByTagName("body")[0];
-  body.appendChild(page2Canvas);
-
-  if (destCanvas.getContext) {
-    // get fresh canvas instance since after clossing the popup canvas is destroyed
-    destCtx = destCanvas.getContext('2d');  
-  }
-  else {
-    return -1;
-  }
 }
 
 const setYCursor = (newYCursor, absoluteValue) => {
@@ -321,6 +298,26 @@ const setDrawMode = (val) => {
 
 const test = () => {
   return "111";
+}
+
+const init = (srcCanvasObj, destCanvasObj, configSettings, watermarkPic, logoPic) => {
+  if(typeof config !== 'undefined' || !srcCanvasObj.getContext || !destCanvasObj.getContext)
+    return false;
+  srcCanvas = srcCanvasObj;
+  config = configSettings;
+  watermark = watermarkPic;
+  logo = logoPic;
+
+  // create hidden canvas for intermediate drawing operations
+  page2Canvas = document.createElement('canvas');
+  page2Canvas.id = "shareChartContainerHiddenCanvas1";
+  page2Canvas.width = config.canvas.width;
+  page2Canvas.height = config.canvas.height;
+  page2Canvas.style = "display:none";
+  var body = document.getElementsByTagName("body")[0];
+  body.appendChild(page2Canvas);
+  // get fresh canvas instance since after clossing the popup canvas is destroyed
+  destCtx = destCanvasObj.getContext('2d');  
 }
 
 const chartDrawing = {
