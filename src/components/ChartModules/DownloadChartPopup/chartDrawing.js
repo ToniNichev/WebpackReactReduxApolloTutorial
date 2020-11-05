@@ -1,5 +1,5 @@
 /* -- delete this -- */
-// import $ from "jquery";
+//import $ from "jquery";
 /* ----------------- */
 
 let exportFileName = `chart.jpeg`;
@@ -21,7 +21,6 @@ const draw = {
 };
 
 const captureGraphState = () => {
-  console.log(">>>>>>>>", page2Canvas);
   const page2 = page2Canvas.getContext('2d');
   page2.drawImage(destCtx.canvas, 0, 0);
   return page2;
@@ -69,8 +68,11 @@ const drawText = (txt, x, fontStyle, disableNewLine) => {
 };
 
 const scaleIt = (source, scaleFactor) => {
-    //if(typeof isJestEnv !==  'undefined') {
-  const c = document.createElement('canvas');
+  let c;
+  if(typeof isJestEnv !==  'undefined')
+    c = mockCanvas;
+  else
+    c = document.createElement('canvas');
   const ctx = c.getContext('2d');
   const w  = source.width*scaleFactor;
   const h = source.height*scaleFactor;
@@ -92,7 +94,6 @@ const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sa
   const txt = `${changeVal} (${percentVal}%)`;
   chartDrawing.drawText(txt, xOffset, changeFontStyle, sameLine);    
 }
-
 
 const getMouseCoordinates = (e) => {
   const container = $(`#${destCtx.canvas.id}`).offset();
@@ -315,14 +316,12 @@ const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, co
   timeInterval = timeIntervalObj;
   watermark = watermarkPic;
   logo = logoPic;
-  console.log("WWWWWWW", mockCanvasObj);
   mockCanvas = mockCanvasObj;
   yCursor = config.textPosition.y;
 
 
   if(typeof isJestEnv !==  'undefined') {
     //if there is no window, create mock paceCanvas for testing purposes 
-    console.log("#######################>", mockCanvas);
     page2Canvas = mockCanvas;
   }
   else {
@@ -354,4 +353,5 @@ const chartDrawing = {
 }
 
 export const scaleItTest = scaleIt;
+export const getMouseCoordinatesTest = getMouseCoordinates;
 export default chartDrawing;

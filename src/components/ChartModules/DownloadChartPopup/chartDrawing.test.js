@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import chartDrawing, { scaleIt } from './chartDrawing';
+import chartDrawing, { scaleItTest, getMouseCoordinatesTest } from './chartDrawing';
 import toJson from 'enzyme-to-json';
 
 const quoteData =  {
@@ -79,6 +79,16 @@ const chartDrawConfig = {
   }
 };
 
+const mockCanvasTwo = {
+  getContext: () => {
+    return {
+      canvas: {
+        id: 'mock-id-two',
+      },
+    }
+  }
+}
+
 const mockCanvas = {
   getContext: () => {
     return {
@@ -110,7 +120,13 @@ const mockCanvas = {
   },
   toDataURL: () => {
     return 'data url';
-  }
+  },
+  offset: () => {
+    return {
+      left: 10,
+      top: 10
+    }
+  }  
 };
 
 const mockInputtext = {
@@ -185,11 +201,15 @@ describe('draw init', () => {
       chartDrawConfig, 
       null, 
       null,
-      null);
+      mockCanvas);
 
     expect(result).toBe(true);
   });
 });
+
+
+
+
 
 describe('draw functions', () => {
   it('setDrawMode sets the right value', () => {
@@ -201,7 +221,7 @@ describe('draw functions', () => {
       chartDrawConfig, 
       null, 
       null,
-      null);
+      mockCanvas);
 
     const result = chartDrawing.setDrawMode(true);
     expect(result).toBe(true);
@@ -267,7 +287,7 @@ describe('draw functions', () => {
       mockInputtext,
       mockTimeSpan1M,
       chartDrawConfig, 
-      null, 
+      null,
       null,
       mockCanvas
     );
@@ -284,10 +304,7 @@ describe('draw functions', () => {
   });    
 
   it('1 drawText to have deawImage and drawImage id to return mock-id', () => {
-    //scaleIt(mockCanvas, 20);
-    //expect(mockEvent.target.href).toBe('data url');
-  }); 
-
-  
-
+    scaleItTest(mockCanvas, 20);
+    expect(mockEvent.target.href).toBe('data url');
+  });   
 });
