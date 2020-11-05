@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import chartDrawing, { scaleItTest, getMouseCoordinatesTest } from './chartDrawing';
+import chartDrawing, { scaleItTest, getMouseCoordinatesTest, drawArowTest, drawModeTest } from './chartDrawing';
 import toJson from 'enzyme-to-json';
 
 const quoteData =  {
@@ -85,8 +85,20 @@ const mockCanvasTwo = {
       canvas: {
         id: 'mock-id-two',
       },
+      drawImage: (canvas, x, y, width, height) => {
+        return [canvas,x,y];
+      }
     }
-  }
+  },
+  drawImage: (canvas, x, y, width, height) => {
+    return {
+      canvas,
+      x,
+      y,
+      width,
+      height
+    }
+  },  
 }
 
 const mockCanvas = {
@@ -126,7 +138,13 @@ const mockCanvas = {
       left: 10,
       top: 10
     }
-  }  
+  },
+  beginPath: () => {},
+  moveTo: () => {},
+  lineTo: () => {},
+  stroke: () => {},
+  fill: () => {},
+  arc: (x, y, radius, sAngle, eAngle) => {}
 };
 
 const mockInputtext = {
@@ -181,7 +199,7 @@ global.$ = (objectId) => {
 
 describe('draw init', () => {
 
-  it('draw init fails gracefully', () => {
+  it('test getMouseCoordinatesTest', () => {
     chartDrawing.init(
       mockCanvas,
       mockCanvasTwo, 
@@ -198,4 +216,28 @@ describe('draw init', () => {
     expect(mockEvent.y).toBe(20);
     expect(mockEvent.target.href).toBe('mock href');
   });  
+
+  it('test drawArrow', () => {
+    const result = drawArowTest(mockCanvas, 1, 2, 55, 81, 100, 10, 2, 'red', 'green');
+    strokeStyle:
+    expect(mockCanvas.strokeStyle).toBe('red');
+    expect(mockCanvas.fillStyle).toBe('green');
+    expect(mockCanvas.lineWidth).toBe(100);
+    expect(mockCanvas.getContext().canvas.id).toBe('mock-id');
+    //console.log("AAAAAAA>>>", mockCanvas.getContext().canvas.id);
+  });
+
+  it('drawModeTest 11212', () => {
+    drawModeTest(1);
+    const result = chartDrawing.drawAnnotations(mockEvent);
+  }); 
+
+  /*
+  it('drawModeTest 2', () => {  
+    drawModeTest(1);
+    const resultTwo = chartDrawing.drawAnnotations(mockEvent);    
+    expect(result.canvas.id).toBe('mock-id');  
+  });  
+  */
+  
 });

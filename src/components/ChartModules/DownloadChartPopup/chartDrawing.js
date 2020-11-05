@@ -96,6 +96,7 @@ const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sa
 }
 
 const getMouseCoordinates = (e) => {
+  console.log(">>>>>>>>>>>>>>>>", destCtx.canvas.id);
   const container = $(`#${destCtx.canvas.id}`).offset();
   const x = e.pageX - container.left;
   const y = e.pageY - container.top;
@@ -157,6 +158,7 @@ const drawArow = (ctx, x1, y1, x2, y2, lineWidth, arrowDiamer, arowAngle, color,
 }
 
 const drawAnnotations = (e) => {
+  console.log("destCtx>>>", destCtx);
   destCtx.drawImage(page2Canvas, 0, 0);
 
   const destinationCtx = destCtx;
@@ -176,6 +178,7 @@ const drawAnnotations = (e) => {
 
     drawArow(destinationCtx, draw.x, draw.y, x, y, 2, 15, 8, '#3DA5ED', null);
   }
+  return destinationCtx;
 }
 
 const generateChartShareImage = (quoteData) => {
@@ -339,6 +342,10 @@ const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, co
   return true;
 }
 
+const drawModeTestFunc = (val) => {
+  draw.mode = val;
+}
+
 const chartDrawing = {
   init,
   setYCursor,
@@ -354,4 +361,6 @@ const chartDrawing = {
 
 export const scaleItTest = scaleIt;
 export const getMouseCoordinatesTest = getMouseCoordinates;
+export const drawArowTest = drawArow;
+export const drawModeTest = drawModeTestFunc;
 export default chartDrawing;

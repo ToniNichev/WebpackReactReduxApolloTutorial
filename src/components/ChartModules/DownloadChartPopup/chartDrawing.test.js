@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import chartDrawing, { scaleItTest, getMouseCoordinatesTest } from './chartDrawing';
+import chartDrawing, { scaleItTest, drawModeTest, getMouseCoordinatesTest } from './chartDrawing';
 import toJson from 'enzyme-to-json';
 
 const quoteData =  {
@@ -307,4 +307,14 @@ describe('draw functions', () => {
     scaleItTest(mockCanvas, 20);
     expect(mockEvent.target.href).toBe('data url');
   });   
+
+  it('drownAnnotations', () => {
+    const result = chartDrawing.drawAnnotations(mockEvent);
+    expect(result.canvas.id).toBe('mock-id');
+  });  
+
+  it('drawModeTest 0', () => {
+    drawModeTest(0);
+    const result = chartDrawing.drawAnnotations(mockEvent);
+  });    
 });
