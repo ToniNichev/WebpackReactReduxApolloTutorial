@@ -71,8 +71,6 @@ const chartDrawConfig = {
   }
 };
 
-
-
 /**
  * Download chart popup window component
  * @param {
@@ -86,11 +84,17 @@ const DownloadChart = (props) => {
     if (typeof window !== 'undefined') {
       const destCanvas = document.getElementById('shareChartContainerCanvas');
       const srcCanvas = document.getElementById('chartCanvas');
-      chartDrawing.init(srcCanvas,
-                        destCanvas, 
-                        chartDrawConfig, 
-                        watermark, 
-                        logo);
+      const shareChartText = document.getElementById('share_chart_text');
+      const timeInterval = $('.chartTimeIntervalSelected')[0];
+      chartDrawing.init(
+        srcCanvas,
+        destCanvas,
+        shareChartText,
+        timeInterval,
+        chartDrawConfig,
+        watermark,
+        logo,
+        null);
       chartDrawing.generateChartShareImage(quoteData);
       chartDrawing.captureGraphState();
     }
@@ -118,7 +122,7 @@ const DownloadChart = (props) => {
           </p>
         </span>
         <div className={styles.downloadButton}>
-          <a href="#" download={chartDrawing.exportFileName} onClick={ (e) => { chartDrawing.downloadChartAction(e) } } id="download-chart-image">DOWNLOAD</a>
+          <a href="#" download={chartDrawing.exportFileName} onClick={ (e) => { chartDrawing.downloadChartAction(e);props.sendData() } } id="download-chart-image">DOWNLOAD</a>
         </div>
       </div>
     </div>

@@ -1,15 +1,18 @@
 /* -- delete this -- */
-import $ from "jquery";
+// import $ from "jquery";
 /* ----------------- */
 
 let exportFileName = `chart.jpeg`;
 let srcCanvas;
 let destCtx;
-let yCursor = 55;
+let shareChartText;
+let timeInterval;
+let yCursor;
 let page2Canvas;
 let config;
 let watermark;
 let logo;
+let mockCanvas;
 
 const draw = {
   mode: 0,
@@ -18,14 +21,15 @@ const draw = {
 };
 
 const captureGraphState = () => {
+  console.log(">>>>>>>>", page2Canvas);
   const page2 = page2Canvas.getContext('2d');
-  const destCanvas = $('#shareChartContainerCanvas')[0];
-  page2.drawImage(destCanvas, 0, 0);
+  page2.drawImage(destCtx.canvas, 0, 0);
+  return page2;
 };
 
 const downloadChartAction = (e) => {
   customMessageTextEdited();
-  const imageCanvas = $('#shareChartContainerCanvas')[0];
+  const imageCanvas = $(`#${destCtx.canvas.id}`)[0];
   const dataURL = imageCanvas.toDataURL('image/jpeg', 1);
   e.target.href = dataURL;
   e.download = "test.jpeg";
@@ -46,14 +50,14 @@ const customMessageTextEdited = () => {
   const pos = config.textPosition;
   destCtx.fillStyle = config.canvas.customMessageText.color;
   destCtx.font = config.canvas.customMessageText.font;
-  const txt = $('#share_chart_text').val();
+  const txt = $(`#${shareChartText.id}`).val();
   destCtx.fillText(txt, pos.x, pos.y);
 };
 
 const drawText = (txt, x, fontStyle, disableNewLine) => {
   const color = fontStyle.color || '#737373';
   const font = fontStyle.font || '12px Arial';
-  const fontSize = parseInt(fontStyle.font.split('px')[0]) || 12;
+  const fontSize = fontStyle.font > 0 ? parseInt(fontStyle.font.split('px')[0]) : 12;
 
   destCtx.fillStyle = color;
   destCtx.font = font;
@@ -61,9 +65,11 @@ const drawText = (txt, x, fontStyle, disableNewLine) => {
 
   if (disableNewLine !== true)
     yCursor += fontSize;
+  return destCtx;
 };
 
-function scaleIt(source, scaleFactor) {
+const scaleIt = (source, scaleFactor) => {
+    //if(typeof isJestEnv !==  'undefined') {
   const c = document.createElement('canvas');
   const ctx = c.getContext('2d');
   const w  = source.width*scaleFactor;
@@ -89,7 +95,7 @@ const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sa
 
 
 const getMouseCoordinates = (e) => {
-  const container = $('#shareChartContainerCanvas').offset();
+  const container = $(`#${destCtx.canvas.id}`).offset();
   const x = e.pageX - container.left;
   const y = e.pageY - container.top;
   return {
@@ -173,7 +179,7 @@ const drawAnnotations = (e) => {
 
 const generateChartShareImage = (quoteData) => {
   const isRetina = window.devicePixelRatio > 1;
-  const destCanvas = $('#shareChartContainerCanvas')[0];
+  const destCanvas = $(`#${destCtx.canvas.id}`)[0];
   const chartCanvas = srcCanvas;
 
   if (chartCanvas.getContext) {
@@ -213,7 +219,8 @@ const generateChartShareImage = (quoteData) => {
 
     chartDrawing.setYCursor(pos.y, true);
     // custom text label
-    let txt = $('#share_chart_text').val();
+    let txt = $(`#${shareChartText.id}`).val();
+
     //drawText(txt, pos.x, config.canvas.boldText);
     chartDrawing.drawText(txt, pos.x, config.canvas.boldText);
 
@@ -265,7 +272,7 @@ const generateChartShareImage = (quoteData) => {
     }
 
     // Time span label
-    const globaltimespan = $('.chartTimeIntervalSelected')[0].innerHTML;
+    const globaltimespan = timeInterval.innerHTML;
     let selector = globaltimespan;
 
     if (selector.indexOf('D') > -1 && selector.length < 3)
@@ -279,6 +286,7 @@ const generateChartShareImage = (quoteData) => {
     // draw time range
     chartDrawing.drawText(selector, pos.x, config.canvas.timeSpan);
   }
+  return chartDrawing;
 }
 
 const setYCursor = (newYCursor, absoluteValue) => {
@@ -294,34 +302,45 @@ const getYCursor = () => {
 
 const setDrawMode = (val) => {
   draw.mode = val;
+  return draw.mode;
 }
 
-const test = () => {
-  return "111";
-}
-
-const init = (srcCanvasObj, destCanvasObj, configSettings, watermarkPic, logoPic) => {
+const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, configSettings, watermarkPic, logoPic, mockCanvasObj) => {
+  
   if(typeof config !== 'undefined' || !srcCanvasObj.getContext || !destCanvasObj.getContext)
-    return false;
+    return null;
   srcCanvas = srcCanvasObj;
   config = configSettings;
+  shareChartText = shareChartTextObj;
+  timeInterval = timeIntervalObj;
   watermark = watermarkPic;
   logo = logoPic;
+  console.log("WWWWWWW", mockCanvasObj);
+  mockCanvas = mockCanvasObj;
+  yCursor = config.textPosition.y;
 
-  // create hidden canvas for intermediate drawing operations
-  page2Canvas = document.createElement('canvas');
-  page2Canvas.id = "shareChartContainerHiddenCanvas1";
-  page2Canvas.width = config.canvas.width;
-  page2Canvas.height = config.canvas.height;
-  page2Canvas.style = "display:none";
-  var body = document.getElementsByTagName("body")[0];
-  body.appendChild(page2Canvas);
+
+  if(typeof isJestEnv !==  'undefined') {
+    //if there is no window, create mock paceCanvas for testing purposes 
+    console.log("#######################>", mockCanvas);
+    page2Canvas = mockCanvas;
+  }
+  else {
+  // create hidden canvas for intermediate drawing operations    
+    page2Canvas = document.createElement('canvas');
+    page2Canvas.id = "shareChartContainerHiddenCanvas1";
+    page2Canvas.width = config.canvas.width;
+    page2Canvas.height = config.canvas.height;
+    page2Canvas.style = "display:none";
+    var body = document.getElementsByTagName("body")[0];
+    body.appendChild(page2Canvas);
+  }    
   // get fresh canvas instance since after clossing the popup canvas is destroyed
   destCtx = destCanvasObj.getContext('2d');  
+  return true;
 }
 
 const chartDrawing = {
-  test,
   init,
   setYCursor,
   getYCursor,
@@ -334,4 +353,5 @@ const chartDrawing = {
   exportFileName
 }
 
+export const scaleItTest = scaleIt;
 export default chartDrawing;
