@@ -213,10 +213,6 @@ describe('draw init', () => {
   });
 });
 
-
-
-
-
 describe('draw functions', () => {
   it('setDrawMode sets the right value', () => {
     chartDrawing.init(
@@ -291,6 +287,24 @@ describe('draw functions', () => {
       srcCanvas,
       destCanvas, 
       mockInputtext,
+      mockTimeSpan1D,
+      chartDrawConfig, 
+      null,
+      null,
+      mockCanvas
+    );
+
+    chartDrawing.generateChartShareImage(quoteData);
+    const result = chartDrawing.captureGraphState().drawImage(srcCanvas, 10,40);
+    expect(result.x).toBe(10);
+    expect(result.y).toBe(40);
+  });  
+
+  it('3 drawText to have deawImage and drawImage id to return mock-id', () => {
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
       mockTimeSpan1M,
       chartDrawConfig, 
       null,
@@ -304,6 +318,24 @@ describe('draw functions', () => {
     expect(result.y).toBe(40);
   });   
   
+  it('3 drawText to have deawImage and drawImage id to return mock-id', () => {
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      mockTimeSpan1Y,
+      chartDrawConfig, 
+      null,
+      null,
+      mockCanvas
+    );
+
+    chartDrawing.generateChartShareImage(quoteData);
+    const result = chartDrawing.captureGraphState().drawImage(srcCanvas, 10,40);
+    expect(result.x).toBe(10);
+    expect(result.y).toBe(40);
+  });  
+
   it('2 drawText to have deawImage and drawImage id to return mock-id', () => {
     chartDrawing.downloadChartAction(mockEvent);
     expect(mockEvent.target.href).toBe('data url');
