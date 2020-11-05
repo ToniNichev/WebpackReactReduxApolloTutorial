@@ -67,7 +67,7 @@ const chartDrawConfig = {
   },
   textPosition: {
     x: 15,
-    y: 29
+    y: 35
   }
 };
 

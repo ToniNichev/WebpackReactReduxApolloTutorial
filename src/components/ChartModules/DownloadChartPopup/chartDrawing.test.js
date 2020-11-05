@@ -118,7 +118,13 @@ const mockCanvas = {
           height
         }
       },
-      fillText: (a, b, c) => {}
+      fillText: (txt, x, y) => {
+        return {
+          txt,
+          x,
+          y
+        }
+      }
     }
   },
   val: () => {
@@ -148,7 +154,7 @@ const mockTimeSpan1M = {
 }
 
 const mockTimeSpan1Y = {
-  innerHTML : '1y'
+  innerHTML : '1Y'
 }
 
 const mockFontStyle = {
@@ -168,8 +174,13 @@ const mockEvent = {
   }
 }
 
+
+
+
+
 global.isJestEnv = true;
 
+// Mock jQuery object
 global.$ = (objectId) => {
   if(objectId == '#chartCustomText') {
     return {
@@ -183,183 +194,98 @@ global.$ = (objectId) => {
 }
 
 
-describe('draw init', () => {
-
-  it('draw init fails gracefully', () => {
-    const result = chartDrawing.init(
-        {},
-        {}, 
-        undefined, 
-        null, 
-        null,
-        null);
-
-    expect(result).toBe(null);
-  });  
-
-
-  it('draw init passes', () => {
-    const result = chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1D,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas);
-
-    expect(result).toBe(true);
-  });
-});
-
 describe('draw functions', () => {
-  it('setDrawMode sets the right value', () => {
-    chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1M,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas);
 
-    const result = chartDrawing.setDrawMode(true);
-    expect(result).toBe(true);
-  }); 
-});
-
-describe('draw functions', () => {
-  it('setDrawMode sets the right value', () => {
-    chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1M,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas
-      );
-
-    const result = chartDrawing.setDrawMode(true);
-    expect(result).toBe(true);
-  }); 
-
-  it('setYCursor sets the right value and getYCursor returns the right value', () => {
-    chartDrawing.setYCursor(10, true);
-    const result = chartDrawing.getYCursor();
-    expect(result).toBe(10);
-  }); 
-
-  it('setYCursor sets the right value and getYCursor returns the right value', () => {
-    chartDrawing.setYCursor(10);
-    const result = chartDrawing.getYCursor();
-    expect(result).toBe(20);
-  });   
-  
-  it('generateChartShareImage to return valid chartDrawingResult object, fillRect to return the right properties', () => {
-    const chartDrawingResult = chartDrawing.generateChartShareImage(quoteData);
-    const result = chartDrawingResult.drawText('test text', 10, mockFontStyle, false).fillRect(1,10,100, 110);
-    expect(result.x).toBe(1);
-    expect(result.y).toBe(10);
-    expect(result.width).toBe(100);
-    expect(result.height).toBe(110);
-  });    
-  
-  it('drawText to have deawImage and drawImage id to return mock-id', () => {
-    const chartDrawingResult = chartDrawing.generateChartShareImage(quoteData);
-    const result = chartDrawingResult.drawText('test text', 10, mockFontStyle, false).drawImage(mockCanvas, 0,0, 100, 100);
-    expect(result.canvas.getContext().canvas.id).toBe('mock-id');
-    //console.log(">>", result.canvas.getContext().fillRect(5,5, 15,15) );
-    expect(result.canvas.getContext().fillRect(5,5, 15,15)).toStrictEqual({x:5, y:5, width:15, height: 15});
-    //expect(result.width).toBe(100);
-    //expect(result.height).toBe(110);
-  });  
-
-  it('4 drawText to have deawImage and drawImage id to return mock-id', () => {
-    chartDrawing.generateChartShareImage(quoteData);
-  });    
-
-  it('3 drawText to have deawImage and drawImage id to return mock-id', () => {
-    chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1D,
-      chartDrawConfig, 
-      null,
-      null,
-      mockCanvas
-    );
-
-    chartDrawing.generateChartShareImage(quoteData);
-    const result = chartDrawing.captureGraphState().drawImage(srcCanvas, 10,40);
-    expect(result.x).toBe(10);
-    expect(result.y).toBe(40);
-  });  
-
-  it('3 drawText to have deawImage and drawImage id to return mock-id', () => {
-    chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1M,
-      chartDrawConfig, 
-      null,
-      null,
-      mockCanvas
-    );
-
-    chartDrawing.generateChartShareImage(quoteData);
-    const result = chartDrawing.captureGraphState().drawImage(srcCanvas, 10,40);
-    expect(result.x).toBe(10);
-    expect(result.y).toBe(40);
-  });   
-  
-  it('3 drawText to have deawImage and drawImage id to return mock-id', () => {
-    chartDrawing.init(
+  beforeEach(() => {
+    return chartDrawing.init(
       srcCanvas,
       destCanvas, 
       mockInputtext,
       mockTimeSpan1Y,
       chartDrawConfig, 
+      null, 
       null,
+      mockCanvas);    
+  });
+
+  it('generateChartShareImage, drawImage, fillText to return mock canvas with the right parameters.', () => {
+    const { destCtx:mockTestCanvas, img:testImageWatermark, imgLogo:testImageLogo } = chartDrawing.generateChartShareImage(quoteData);
+    testImageWatermark.onload();
+    testImageLogo.onload();
+    const mockTestCanvasTwo = mockTestCanvas.drawImage(mockCanvas, 10,20, 100,120);
+    expect(mockTestCanvas.canvas.id).toBe('mock-id');
+    expect(mockTestCanvas.fillText('test', 10, 20)).toStrictEqual({ txt: 'test', x: 10, y: 20 });
+    expect(mockTestCanvas.fillRect(1, 2, 110, 120)).toStrictEqual({ x: 1, y: 2, width: 110, height: 120 });
+    expect(mockTestCanvasTwo.x).toBe(10);
+    expect(mockTestCanvasTwo.y).toBe(20);
+    expect(mockTestCanvasTwo.width).toBe(100);
+    expect(mockTestCanvasTwo.height).toBe(120);    
+  });
+
+});
+
+
+describe('chart drawing time span', () => {
+
+  it('1 draw init passes', () => {  
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      mockTimeSpan1D,
+      chartDrawConfig, 
+      null, 
       null,
-      mockCanvas
-    );
+      mockCanvas);    
 
-    chartDrawing.generateChartShareImage(quoteData);
-    const result = chartDrawing.captureGraphState().drawImage(srcCanvas, 10,40);
-    expect(result.x).toBe(10);
-    expect(result.y).toBe(40);
-  });  
+    const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
+  });
 
-  it('2 drawText to have deawImage and drawImage id to return mock-id', () => {
-    chartDrawing.downloadChartAction(mockEvent);
-    expect(mockEvent.target.href).toBe('data url');
-  });    
+  it('1 draw init passes', () => {  
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      mockTimeSpan1M,
+      chartDrawConfig, 
+      null, 
+      null,
+      mockCanvas);    
 
-  it('1 drawText to have deawImage and drawImage id to return mock-id', () => {
-    scaleItTest(mockCanvas, 20);
-    expect(mockEvent.target.href).toBe('data url');
-  });   
+      const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
+  }); 
 
-  it('drownAnnotations', () => {
-    const result = chartDrawing.drawAnnotations(mockEvent);
-    expect(result.canvas.id).toBe('mock-id');
-  });  
+  it('1 draw init passes', () => {  
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      {innerHTML: 'something else'},
+      chartDrawConfig, 
+      null, 
+      null,
+      mockCanvas);    
 
-  it('drawModeTest 0', () => {
-    drawModeTest(0);
-    const result = chartDrawing.drawAnnotations(mockEvent);
+      const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
   });   
   
-  /*
-  it('drawModeTest 2', () => {
-    drawModeTest(2);
-    const result = chartDrawing.drawAnnotations(mockEvent);
-  });    
-  */
+});
+
+
+describe('post market', () => {
+
+  it('post market test', () => {  
+    chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      mockTimeSpan1D,
+      chartDrawConfig, 
+      null, 
+      null,
+      mockCanvas);    
+
+  quoteData.curmktstatus = 'POST_MKT';
+  const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
+  });
 });

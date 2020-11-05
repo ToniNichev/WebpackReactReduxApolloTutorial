@@ -56,7 +56,7 @@ const customMessageTextEdited = () => {
 const drawText = (txt, x, fontStyle, disableNewLine) => {
   const color = fontStyle.color || '#737373';
   const font = fontStyle.font || '12px Arial';
-  const fontSize = fontStyle.font > 0 ? parseInt(fontStyle.font.split('px')[0]) : 12;
+  const fontSize = parseInt(fontStyle.font.split('px')[0]) || 12;
 
   destCtx.fillStyle = color;
   destCtx.font = font;
@@ -92,11 +92,10 @@ const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sa
   changeFontStyle.color = changeColor;
   const percentVal = changePercentVal.replace(/[\+|\-]/gi, '');
   const txt = `${changeVal} (${percentVal}%)`;
-  chartDrawing.drawText(txt, xOffset, changeFontStyle, sameLine);    
+  drawText(txt, xOffset, changeFontStyle, sameLine);    
 }
 
 const getMouseCoordinates = (e) => {
-  console.log(">>>>>>>>offset >>>>>>>>", $(`#${destCtx.canvas.id}`) );
   const container = $(`#${destCtx.canvas.id}`).offset();
   const x = e.pageX - container.left;
   const y = e.pageY - container.top;
@@ -158,7 +157,6 @@ const drawArow = (ctx, x1, y1, x2, y2, lineWidth, arrowDiamer, arowAngle, color,
 }
 
 const drawAnnotations = (e) => {
-  console.log("destCtx>>>", destCtx);
   destCtx.drawImage(page2Canvas, 0, 0);
 
   const destinationCtx = destCtx;
@@ -185,6 +183,8 @@ const generateChartShareImage = (quoteData) => {
   const isRetina = window.devicePixelRatio > 1;
   const destCanvas = $(`#${destCtx.canvas.id}`)[0];
   const chartCanvas = srcCanvas;
+  let img;
+  let imgLogo;
 
   if (chartCanvas.getContext) {
     // get fresh canvas instance since after clopsing the popup canvas is destroyed
@@ -201,7 +201,7 @@ const generateChartShareImage = (quoteData) => {
     const pos = config.textPosition;
 
     // pic watermark
-    const img = new Image();
+    img = new Image();
     img.setAttribute('crossOrigin', 'anonymous');
     img.src = watermark;
     img.onload = () => {
@@ -212,7 +212,7 @@ const generateChartShareImage = (quoteData) => {
     };
 
     // logo
-    const imgLogo = new Image();
+    imgLogo = new Image();
     imgLogo.setAttribute('crossOrigin', 'anonymous');
     imgLogo.src = logo;
     imgLogo.onload = () => {
@@ -221,42 +221,42 @@ const generateChartShareImage = (quoteData) => {
       captureGraphState();
     };
 
-    chartDrawing.setYCursor(pos.y, true);
+    setYCursor(pos.y, true);
     // custom text label
     let txt = $(`#${shareChartText.id}`).val();
 
     //drawText(txt, pos.x, config.canvas.boldText);
-    chartDrawing.drawText(txt, pos.x, config.canvas.boldText);
+    drawText(txt, pos.x, config.canvas.boldText);
 
     // quote name
     txt = `${quoteData.name} (${quoteData.symbol}:${quoteData.exchange})`;
-    chartDrawing.drawText(txt, pos.x, config.canvas.boldText);
+    drawText(txt, pos.x, config.canvas.boldText);
 
     // curency code
-    chartDrawing.drawText(quoteData.currencyCode, pos.x, config.canvas.regularText);
+    drawText(quoteData.currencyCode, pos.x, config.canvas.regularText);
 
     // **** After hours ****
     if (quoteData.curmktstatus === 'POST_MKT' ) {
       // Extended hours label
-      chartDrawing.drawText(config.canvas.extendedHoursLabel.labelText, pos.x, config.canvas.extendedHoursLabel);
+      drawText(config.canvas.extendedHoursLabel.labelText, pos.x, config.canvas.extendedHoursLabel);
 
       // Timestamp
       txt = `Last | ${quoteData.ExtendedMktQuote.last_timedate}`;
-      chartDrawing.drawText(txt, pos.x, config.canvas.extendedHours, true);
+      drawText(txt, pos.x, config.canvas.extendedHours, true);
 
       // Close Timestamp
       txt = `Close | ${quoteData.last_timedate}`;
-      chartDrawing.drawText(txt, pos.x + 200, config.canvas.extendedHours);
+      drawText(txt, pos.x + 200, config.canvas.extendedHours);
 
-      chartDrawing.setYCursor(+10);
+      setYCursor(+10);
       // Last Price
-      chartDrawing.drawText(quoteData.ExtendedMktQuote.last, pos.x, config.canvas.priceLabels, true);
+      drawText(quoteData.ExtendedMktQuote.last, pos.x, config.canvas.priceLabels, true);
 
       // ext hours change %
       renderChangePctText(quoteData.ExtendedMktQuote.change, quoteData.ExtendedMktQuote.change_pct, 100, config.canvas.change, true);
 
       // Close Price
-      chartDrawing.drawText(quoteData.last, pos.x + 200, config.canvas.priceLabels, true);
+      drawText(quoteData.last, pos.x + 200, config.canvas.priceLabels, true);
 
       // Close %
       renderChangePctText(quoteData.change, quoteData.change_pct, pos.x + 290, config.canvas.change, false);
@@ -266,10 +266,10 @@ const generateChartShareImage = (quoteData) => {
 
       // Last Timestamp
       txt = `Last | ${quoteData.last_timedate}`;
-      chartDrawing.drawText(txt, pos.x, config.canvas.extendedHours, false);
-      chartDrawing.setYCursor(+10);
+      drawText(txt, pos.x, config.canvas.extendedHours, false);
+      setYCursor(+10);
       // Price 
-      chartDrawing.drawText(quoteData.last, pos.x, config.canvas.priceLabels, true);
+      drawText(quoteData.last, pos.x, config.canvas.priceLabels, true);
 
       // Close Timestamp
       renderChangePctText(quoteData.change, quoteData.change_pct, 100, config.canvas.change, false);
@@ -279,7 +279,7 @@ const generateChartShareImage = (quoteData) => {
     const globaltimespan = timeInterval.innerHTML;
     let selector = globaltimespan;
 
-    if (selector.indexOf('D') > -1 && selector.length < 3)
+    if (selector.indexOf('D') > -1 && selector.length < 3) 
       selector = `${selector[0]} Day`;
     else if ( selector.indexOf('M') > -1 )
       selector = `${selector[0]} Month`;
@@ -288,9 +288,13 @@ const generateChartShareImage = (quoteData) => {
     else
       selector = selector.toUpperCase();
     // draw time range
-    chartDrawing.drawText(selector, pos.x, config.canvas.timeSpan);
+    drawText(selector, pos.x, config.canvas.timeSpan);
   }
-  return chartDrawing;
+  return {
+    destCtx,
+    img,
+    imgLogo
+  }
 }
 
 const setYCursor = (newYCursor, absoluteValue) => {
@@ -309,9 +313,8 @@ const setDrawMode = (val) => {
   return draw.mode;
 }
 
-const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, configSettings, watermarkPic, logoPic, mockCanvasObj) => {
-  
-  if(typeof config !== 'undefined' || !srcCanvasObj.getContext || !destCanvasObj.getContext)
+const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, configSettings, watermarkPic, logoPic, mockCanvasObj) => {  
+  if(typeof configSettings === 'undefined' || !srcCanvasObj.getContext || !destCanvasObj.getContext)
     return null;
   srcCanvas = srcCanvasObj;
   config = configSettings;
@@ -321,7 +324,6 @@ const init = (srcCanvasObj, destCanvasObj, shareChartTextObj,timeIntervalObj, co
   logo = logoPic;
   mockCanvas = mockCanvasObj;
   yCursor = config.textPosition.y;
-
 
   if(typeof isJestEnv !==  'undefined') {
     //if there is no window, create mock paceCanvas for testing purposes 
@@ -358,7 +360,6 @@ const chartDrawing = {
   setDrawMode,
   exportFileName
 }
-
 export const scaleItTest = scaleIt;
 export const getMouseCoordinatesTest = getMouseCoordinates;
 export const drawArowTest = drawArow;
