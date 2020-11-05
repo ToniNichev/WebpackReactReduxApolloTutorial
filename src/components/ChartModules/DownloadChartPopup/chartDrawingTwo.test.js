@@ -224,7 +224,6 @@ describe('draw init', () => {
     expect(mockCanvas.fillStyle).toBe('green');
     expect(mockCanvas.lineWidth).toBe(100);
     expect(mockCanvas.getContext().canvas.id).toBe('mock-id');
-    //console.log("AAAAAAA>>>", mockCanvas.getContext().canvas.id);
   });
 
   it('drawModeTest 11212', () => {
@@ -239,5 +238,6 @@ describe('draw init', () => {
     expect(result.canvas.id).toBe('mock-id');  
   });  
   */
+ 
   
 });

@@ -90,6 +90,12 @@ const mockCanvasTwo = {
 }
 
 const mockCanvas = {
+  offset: () => {
+    return {
+      left: 10,
+      top: 10
+    }
+  },
   getContext: () => {
     return {
       canvas: {
@@ -126,7 +132,7 @@ const mockCanvas = {
       left: 10,
       top: 10
     }
-  }  
+  }
 };
 
 const mockInputtext = {
@@ -316,5 +322,12 @@ describe('draw functions', () => {
   it('drawModeTest 0', () => {
     drawModeTest(0);
     const result = chartDrawing.drawAnnotations(mockEvent);
+  });   
+  
+  /*
+  it('drawModeTest 2', () => {
+    drawModeTest(2);
+    const result = chartDrawing.drawAnnotations(mockEvent);
   });    
+  */
 });
