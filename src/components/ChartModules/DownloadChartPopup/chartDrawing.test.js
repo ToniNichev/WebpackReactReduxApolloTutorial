@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import chartDrawing, { scaleItTest, drawModeTest, getMouseCoordinatesTest } from './chartDrawing';
+import chartDrawing, { scaleItTest, drawModeTest, getMouseCoordinatesTest, drawArowTest } from './chartDrawing';
 import toJson from 'enzyme-to-json';
 
 const quoteData =  {
@@ -86,7 +86,21 @@ const mockCanvasTwo = {
         id: 'mock-id-two',
       },
     }
-  }
+  },
+  beginPath: () => {
+    return 'beginPath';
+  },
+  moveTo: (x, y) => {
+
+  },
+  lineTo: (tox, toy) => {
+
+  },
+  stroke: () => {},
+  fill: () => {},
+  arc: (x, y, radius, sAngle, eAngle, counterclockwise) => {}
+
+
 }
 
 const mockCanvas = {
@@ -174,14 +188,13 @@ const mockEvent = {
   }
 }
 
-
-
-
-
 global.isJestEnv = true;
 
 // Mock jQuery object
 global.$ = (objectId) => {
+  if(objectId == '#mock-id-two') {  
+    return destCanvas;
+  }
   if(objectId == '#chartCustomText') {
     return {
       val: () => {
@@ -192,7 +205,6 @@ global.$ = (objectId) => {
   else
     return [destCanvas,destCanvas];
 }
-
 
 describe('draw functions', () => {
 
@@ -221,9 +233,7 @@ describe('draw functions', () => {
     expect(mockTestCanvasTwo.width).toBe(100);
     expect(mockTestCanvasTwo.height).toBe(120);    
   });
-
 });
-
 
 describe('chart drawing time span', () => {
 
@@ -255,7 +265,7 @@ describe('chart drawing time span', () => {
       const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
   }); 
 
-  it('1 draw init passes', () => {  
+  it('draw init passes', () => {  
     chartDrawing.init(
       srcCanvas,
       destCanvas, 
@@ -270,7 +280,6 @@ describe('chart drawing time span', () => {
   });   
   
 });
-
 
 describe('post market', () => {
 
@@ -287,5 +296,50 @@ describe('post market', () => {
 
   quoteData.curmktstatus = 'POST_MKT';
   const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
+  quoteData.curmktstatus = 'REG_MKT';
+  });
+});
+
+describe('testing private methods', () => {
+  
+  beforeEach(() => {
+    return chartDrawing.init(
+      srcCanvas,
+      destCanvas, 
+      mockInputtext,
+      mockTimeSpan1Y,
+      chartDrawConfig, 
+      null, 
+      null,
+      mockCanvas);    
+  });
+
+  it('downloadChartAction test', () => {  
+    chartDrawing.downloadChartAction(mockEvent);
+    expect(mockEvent.download).toBe('test.jpeg');
+  });  
+});
+
+describe('testing private methods', () => {
+  
+  beforeEach(() => {
+    return chartDrawing.init(
+      mockCanvasTwo,
+      mockCanvasTwo, 
+      mockInputtext,
+      mockTimeSpan1Y,
+      chartDrawConfig, 
+      null, 
+      null,
+      mockCanvas);    
+  });
+
+  it('downloadChartAction test', () => {  
+    getMouseCoordinatesTest(mockEvent);
+    expect(mockEvent.download).toBe('test.jpeg');
+  });
+
+  it('downloadChartAction test', () => {  
+    drawArowTest(mockCanvasTwo, 1, 1, 100, 110, 5, 10, 20, 'red', 'silver');
   });
 });

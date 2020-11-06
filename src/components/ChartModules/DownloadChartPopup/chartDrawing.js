@@ -96,6 +96,10 @@ const renderChangePctText = (changeVal, changePercentVal, xOffset, fontStyle, sa
 }
 
 const getMouseCoordinates = (e) => {
+
+  //console.log("111####>>>",destCtx.canvas.id);
+  console.log("222####>>>",$(`#${destCtx.canvas.id}`));
+
   const container = $(`#${destCtx.canvas.id}`).offset();
   const x = e.pageX - container.left;
   const y = e.pageY - container.top;
