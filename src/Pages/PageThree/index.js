@@ -45,7 +45,10 @@ function PageThree() {
   return(
     <div className={styles.wrapper}>
       <div className={chartTimeIntervalSelected}>1D</div>
-      <DownloadChartButton sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} />
+      <div className={styles.QuoteStrip}>
+        <div className={styles.symbolTitle}>Apple Inc</div>
+        <DownloadChartButton sendData={() => { setValueOfDownloadImagePopupVisible(!downloadImagePopupVisible); }} />
+      </div>
       <div className={chartContainer}>
         <canvas height="350" width="678" id="chartCanvas" className={styles.canvas}/>
       </div>        

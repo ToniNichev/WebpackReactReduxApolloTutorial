@@ -25,6 +25,8 @@ describe('Testing Header component', () => {
      expect(toJson(wrapper)).toMatchSnapshot();
    });  
 
+   global.isJestEnv = true;
+
    it('button click adds window.location.hash', () => {
      const wrapper = mount(
       <PageThree />

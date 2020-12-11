@@ -6,7 +6,7 @@ import styles from './styles.scss';
 const DownloadChartButton = (props) => (
   <div className={styles.wrapper}>
     <button onClick={() => { props.sendData(); }}>
-      <img alt="download chart" src={DownloadChartImg} />
+      <img alt="download chart" src={DownloadChartImg} />EXPORT
     </button>
   </div>
 );

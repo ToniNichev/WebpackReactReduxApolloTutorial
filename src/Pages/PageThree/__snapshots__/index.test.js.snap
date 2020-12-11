@@ -3,25 +3,40 @@
 exports[`Testing Header component renders as the snapshot 1`] = `
 <PageThree>
   <div>
-    <DownloadChartButton
-      sendData={[Function]}
+    <div
+      className="chartTimeIntervalSelected"
     >
+      1D
+    </div>
+    <div>
       <div>
-        <button
-          onClick={[Function]}
-        >
-          <img
-            alt="download chart"
-            src={Object {}}
-          />
-        </button>
+        Apple Inc
       </div>
-    </DownloadChartButton>
-    <canvas
-      height="350"
-      id="chartCanvas"
-      width="678"
-    />
+      <DownloadChartButton
+        sendData={[Function]}
+      >
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            <img
+              alt="download chart"
+              src={Object {}}
+            />
+            EXPORT
+          </button>
+        </div>
+      </DownloadChartButton>
+    </div>
+    <div
+      className="chartContainer"
+    >
+      <canvas
+        height="350"
+        id="chartCanvas"
+        width="678"
+      />
+    </div>
   </div>
 </PageThree>
 `;

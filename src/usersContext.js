@@ -13,11 +13,13 @@ class UsersContextProvider extends Component {
       };
     });
   };
-
+  
   render() {
+
+    console.log(">>>>", this.props.children);
     return (
       <Provider
-        value={{ username: this.state.username, setUsername: this.setUsername }}
+        value={{ test: '123', username: this.state.username, setUsername: this.setUsername }}
       >
         {this.props.children}
       </Provider>

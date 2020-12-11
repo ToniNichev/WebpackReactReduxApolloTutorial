@@ -1,25 +1,23 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import chartDrawing, { scaleItTest, drawModeTest, getMouseCoordinatesTest, drawArowTest } from './chartDrawing';
-import toJson from 'enzyme-to-json';
+
+import chartDrawing, {  getMouseCoordinatesTest, drawArowTest } from './chartDrawing';
 
 const quoteData =  {
   curmktstatus: 'REG_MKT',
   ExtendedMktQuote: {
     last: '115.80',
-    last_timedate: "7:59 PM EDT",
+    last_timedate: '7:59 PM EDT',
     change: '+10.5',
     change_pct: '+12.4'
   },
   last: '110.78',
-  change: "+1.34",
-  change_pct: "+1.23",
-  name: "Apple Inc",
-  symbol: "AAPL",
-  exchange: "NASDAQ",
-  currencyCode: "USD",
-  last_timedate: "4:00 PM EDT",
-}
+  change: '+1.34',
+  change_pct: '+1.23',
+  name: 'Apple Inc',
+  symbol: 'AAPL',
+  exchange: 'NASDAQ',
+  currencyCode: 'USD',
+  last_timedate: '4:00 PM EDT',
+};
 
 const chartDrawConfig = {
   canvas: {
@@ -79,267 +77,281 @@ const chartDrawConfig = {
   }
 };
 
-const mockCanvasTwo = {
-  getContext: () => {
-    return {
-      canvas: {
-        id: 'mock-id-two',
-      },
-    }
-  },
-  beginPath: () => {
-    return 'beginPath';
-  },
-  moveTo: (x, y) => {
-
-  },
-  lineTo: (tox, toy) => {
-
-  },
+const mockCanvasTwoTest = {
+  getContext: () => ({
+    canvas: {
+      id: 'mock-id-two',
+    },
+    drawImage: () => {},
+    beginPath: () => 'beginPath',
+    moveTo: (x, y) => ({ x, y }),
+    lineTo: (tox, toy) => ({ tox, toy }),
+    stroke: () => {},
+    fill: () => {},
+    arc: (x, y, radius, sAngle, eAngle, counterclockwise) => ({ x, y, radius, sAngle, counterclockwise })    
+  }),
+  drawImage: () => {},
+  beginPath: () => 'beginPath',
+  moveTo: (x, y) => ({ x, y }),
+  lineTo: (tox, toy) => ({ tox, toy }),
   stroke: () => {},
   fill: () => {},
-  arc: (x, y, radius, sAngle, eAngle, counterclockwise) => {}
-
-
-}
+  arc: (x, y, radius, sAngle, eAngle, counterclockwise) => ({ x, y, radius, sAngle, counterclockwise })
+};
 
 const mockCanvas = {
-  offset: () => {
-    return {
-      left: 10,
-      top: 10
-    }
-  },
-  getContext: () => {
-    return {
-      canvas: {
-        id: 'mock-id',
-      },
-      fillRect: (x, y, width, height) => {
-        return {
-          x,
-          y,
-          width,
-          height
-        }
-      },
-      drawImage: (canvas, x, y, width, height) => {
-        return {
-          canvas,
-          x,
-          y,
-          width,
-          height
-        }
-      },
-      fillText: (txt, x, y) => {
-        return {
-          txt,
-          x,
-          y
-        }
-      }
-    }
-  },
-  val: () => {
-    return "test message";
-  },
-  toDataURL: () => {
-    return 'data url';
-  },
-  offset: () => {
-    return {
-      left: 10,
-      top: 10
-    }
-  }
+  getContext: () => ({
+    canvas: {
+      id: 'mock-id',
+    },
+    fillRect: (x, y, width, height) => ({
+      x,
+      y,
+      width,
+      height
+    }),
+    drawImage: (canvas, x, y, width, height) => ({
+      canvas,
+      x,
+      y,
+      width,
+      height
+    }),
+    fillText: (txt, x, y) => ({
+      txt,
+      x,
+      y
+    })
+  }),
+  val: () => 'test message',
+  toDataURL: () => 'data url',
+  offset: () => ({
+    left: 10,
+    top: 10
+  })
+};
+
+const mockCanvasTwo = {
+  getContext: () => ({
+    canvas: {
+      id: 'mock-id-two',
+    },
+    drawImage: () => {},
+    beginPath: () => 'beginPath',
+    moveTo: (x, y) => ({ x, y }),
+    lineTo: (tox, toy) => ({ tox, toy }),
+    stroke: () => {},
+    fill: () => {},
+    arc: (x, y, radius, sAngle, eAngle, counterclockwise) => ({ x, y, radius, sAngle, counterclockwise })    
+  }),
+  drawImage: () => {},
+  beginPath: () => 'beginPath',
+  moveTo: (x, y) => ({ x, y }),
+  lineTo: (tox, toy) => ({ tox, toy }),
+  stroke: () => {},
+  fill: () => {},
+  arc: (x, y, radius, sAngle, eAngle, counterclockwise) => ({ x, y, radius, sAngle, counterclockwise })
 };
 
 const mockInputtext = {
   id: 'chartCustomText'
-}
+};
 
 const mockTimeSpan1D = {
-  innerHTML : '1D'
-}
+  innerHTML: '1D'
+};
 
 const mockTimeSpan1M = {
-  innerHTML : '1M'
-}
+  innerHTML: '1M'
+};
 
 const mockTimeSpan1Y = {
-  innerHTML : '1Y'
-}
-
-const mockFontStyle = {
-  ...chartDrawConfig
-}
+  innerHTML: '1Y'
+};
 
 const srcCanvas = {
   ...mockCanvas
 };
 const destCanvas = {
-  ...mockCanvas
+  ...mockCanvas,
 };
 
 const mockEvent = {
   target: {
     href: 'mock href'
   }
-}
+};
 
 global.isJestEnv = true;
 
 // Mock jQuery object
 global.$ = (objectId) => {
-  if(objectId == '#mock-id-two') {  
+  if (objectId === '#mock-id-two') {
     return destCanvas;
   }
-  if(objectId == '#chartCustomText') {
+  if (objectId === '#chartCustomText') {
     return {
-      val: () => {
-        return 'some chart custom text';
-      }
-    }
+      val: () => 'some chart custom text'
+    };
   }
-  else
-    return [destCanvas,destCanvas];
-}
+  return [destCanvas, destCanvas];
+};
 
 describe('draw functions', () => {
 
-  beforeEach(() => {
-    return chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1Y,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas);    
-  });
+  beforeEach(() => chartDrawing.init(
+    srcCanvas,
+    destCanvas,
+    mockInputtext,
+    mockTimeSpan1Y,
+    chartDrawConfig,
+    null,
+    null,
+    mockCanvas));
 
   it('generateChartShareImage, drawImage, fillText to return mock canvas with the right parameters.', () => {
-    const { destCtx:mockTestCanvas, img:testImageWatermark, imgLogo:testImageLogo } = chartDrawing.generateChartShareImage(quoteData);
+    const { destCtx: mockTestCanvas, img: testImageWatermark, imgLogo: testImageLogo } = chartDrawing.generateChartShareImage(quoteData);
     testImageWatermark.onload();
     testImageLogo.onload();
-    const mockTestCanvasTwo = mockTestCanvas.drawImage(mockCanvas, 10,20, 100,120);
+    const mockTestCanvasTwo = mockTestCanvas.drawImage(mockCanvas, 10, 20, 100, 120);
     expect(mockTestCanvas.canvas.id).toBe('mock-id');
     expect(mockTestCanvas.fillText('test', 10, 20)).toStrictEqual({ txt: 'test', x: 10, y: 20 });
     expect(mockTestCanvas.fillRect(1, 2, 110, 120)).toStrictEqual({ x: 1, y: 2, width: 110, height: 120 });
     expect(mockTestCanvasTwo.x).toBe(10);
     expect(mockTestCanvasTwo.y).toBe(20);
     expect(mockTestCanvasTwo.width).toBe(100);
-    expect(mockTestCanvasTwo.height).toBe(120);    
+    expect(mockTestCanvasTwo.height).toBe(120);
   });
 });
 
 describe('chart drawing time span', () => {
 
-  it('1 draw init passes', () => {  
+  it('1Day', () => {
     chartDrawing.init(
       srcCanvas,
-      destCanvas, 
+      destCanvas,
       mockInputtext,
       mockTimeSpan1D,
-      chartDrawConfig, 
-      null, 
+      chartDrawConfig,
       null,
-      mockCanvas);    
+      null,
+      mockCanvas);
 
-    const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
+    chartDrawing.generateChartShareImage(quoteData);
   });
 
-  it('1 draw init passes', () => {  
+  it('1Month', () => {
     chartDrawing.init(
       srcCanvas,
-      destCanvas, 
+      destCanvas,
       mockInputtext,
       mockTimeSpan1M,
-      chartDrawConfig, 
-      null, 
+      chartDrawConfig,
       null,
-      mockCanvas);    
+      null,
+      mockCanvas);
 
-      const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
-  }); 
+    chartDrawing.generateChartShareImage(quoteData);
+  });
 
-  it('draw init passes', () => {  
+  it('Something else time span', () => {
     chartDrawing.init(
       srcCanvas,
-      destCanvas, 
+      destCanvas,
       mockInputtext,
-      {innerHTML: 'something else'},
-      chartDrawConfig, 
-      null, 
+      { innerHTML: 'something else' },
+      chartDrawConfig,
       null,
-      mockCanvas);    
+      null,
+      mockCanvas);
 
-      const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
-  });   
-  
+    chartDrawing.generateChartShareImage(quoteData);
+  });
+
 });
 
 describe('post market', () => {
 
-  it('post market test', () => {  
+  it('post market test', () => {
     chartDrawing.init(
       srcCanvas,
-      destCanvas, 
+      destCanvas,
       mockInputtext,
       mockTimeSpan1D,
-      chartDrawConfig, 
-      null, 
+      chartDrawConfig,
       null,
-      mockCanvas);    
+      null,
+      mockCanvas);
 
-  quoteData.curmktstatus = 'POST_MKT';
-  const { destCtx:mockTestCanvas } = chartDrawing.generateChartShareImage(quoteData);
-  quoteData.curmktstatus = 'REG_MKT';
+    quoteData.curmktstatus = 'POST_MKT';
+    chartDrawing.generateChartShareImage(quoteData);
+    quoteData.curmktstatus = 'REG_MKT';
   });
 });
 
 describe('testing private methods', () => {
-  
-  beforeEach(() => {
-    return chartDrawing.init(
-      srcCanvas,
-      destCanvas, 
-      mockInputtext,
-      mockTimeSpan1Y,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas);    
-  });
 
-  it('downloadChartAction test', () => {  
+  beforeEach(() => chartDrawing.init(
+    srcCanvas,
+    destCanvas,
+    mockInputtext,
+    mockTimeSpan1Y,
+    chartDrawConfig,
+    null,
+    null,
+    mockCanvas));
+
+  it('downloadChartAction test', () => {
     chartDrawing.downloadChartAction(mockEvent);
     expect(mockEvent.download).toBe('test.jpeg');
-  });  
+  });
+
+  it('downloadChartAction test', () => {
+    chartDrawing.drawAnnotations(mockEvent);
+  });
 });
 
 describe('testing private methods', () => {
-  
-  beforeEach(() => {
-    return chartDrawing.init(
-      mockCanvasTwo,
-      mockCanvasTwo, 
-      mockInputtext,
-      mockTimeSpan1Y,
-      chartDrawConfig, 
-      null, 
-      null,
-      mockCanvas);    
-  });
 
-  it('downloadChartAction test', () => {  
+  beforeEach(() => chartDrawing.init(
+    mockCanvasTwo,
+    mockCanvasTwo,
+    mockInputtext,
+    mockTimeSpan1Y,
+    chartDrawConfig,
+    null,
+    null,
+    mockCanvas));
+
+  it('downloadChartAction test', () => {
     getMouseCoordinatesTest(mockEvent);
     expect(mockEvent.download).toBe('test.jpeg');
   });
 
-  it('downloadChartAction test', () => {  
+  it('downloadChartAction test', () => {
     drawArowTest(mockCanvasTwo, 1, 1, 100, 110, 5, 10, 20, 'red', 'silver');
+  });
+
+  it('downloadChartAction test', () => {
+    drawArowTest(mockCanvasTwo, 1, 1, 100, 110, 5, 10, 20, 'red', null);
+  });
+});
+
+describe('testing private methods', () => {
+  beforeEach(() => chartDrawing.init(
+    mockCanvasTwo,
+    mockCanvasTwo,
+    mockInputtext,
+    mockTimeSpan1Y,
+    chartDrawConfig,
+    null,
+    null,
+    mockCanvas));
+
+  it('downloadChartAction test 1243', () => {
+    chartDrawing.setDrawMode(1);
+    chartDrawing.drawAnnotations(mockEvent);    
+    chartDrawing.setDrawMode(2);
+    chartDrawing.drawAnnotations(mockEvent);
   });
 });

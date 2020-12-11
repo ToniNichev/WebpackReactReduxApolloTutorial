@@ -1,16 +1,12 @@
-/* eslint-disable no-use-before-define, radix */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import chartDrawing from './chartDrawing';
-// import CnbcWatermark from 'assets/images/quotePage/CNBC_logo_grey.png';
-// import CnbcLogo from 'assets/images/quotePage/cnbc-logo-transp-for-light-bg.png';
-import styles from './styles.scss';
-
-/* remove this */
 import watermark from '../../../images/CNBC_logo_grey.png';
 import logo from '../../../images/cnbc-logo-transp-for-light-bg.png';
-import $ from "jquery";
-/* ---------- */
+import chartDrawing from './chartDrawing';
+import $ from 'jQuery';
+
+
+import styles from './styles.scss';
 
 
 const chartDrawConfig = {
@@ -67,7 +63,7 @@ const chartDrawConfig = {
   },
   textPosition: {
     x: 15,
-    y: 35
+    y: 29
   }
 };
 
@@ -80,25 +76,30 @@ const chartDrawConfig = {
 const DownloadChart = (props) => {
   const { quoteData } = props;
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const destCanvas = document.getElementById('shareChartContainerCanvas');
-      const srcCanvas = document.getElementById('chartCanvas');
-      const shareChartText = document.getElementById('share_chart_text');
-      const timeInterval = $('.chartTimeIntervalSelected')[0];
-      chartDrawing.init(
-        srcCanvas,
-        destCanvas,
-        shareChartText,
-        timeInterval,
-        chartDrawConfig,
-        watermark,
-        logo,
-        null);
-      chartDrawing.generateChartShareImage(quoteData);
-      chartDrawing.captureGraphState();
-    }
-  });
+  if (typeof isJestEnv !==  'undefined') {
+    // if this is a test environment, don't set up a real canvas.
+  } else {
+    // Jest doesn't support useEffect, so for now there is no way (neither a need) to test this
+    useEffect(() => {
+      if (typeof window !== 'undefined' && !chartPopupActive) {
+        chartPopupActive = true;
+        const srcCanvas = $('.chartContainer canvas')[0];
+        const destCanvas = document.getElementById('shareChartContainerCanvas');
+        const shareChartText = document.getElementById('share_chart_text');
+        const timeInterval = $('.chartTimeIntervalSelected')[0];
+        chartDrawing.init(
+          srcCanvas,
+          destCanvas,
+          shareChartText,
+          timeInterval,
+          chartDrawConfig,
+          watermark,
+          logo);
+        chartDrawing.generateChartShareImage(quoteData);
+        chartDrawing.captureGraphState();
+      }
+    });
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -111,18 +112,18 @@ const DownloadChart = (props) => {
             <input className={styles.message} type="text" id="share_chart_text" placeholder="Add your headline (optional)" maxLength="72" />
           </p>
           <p>
-            <canvas 
-              width={chartDrawConfig.canvas.width} 
-              height={chartDrawConfig.canvas.height} 
-              onMouseMove={ (e) => { chartDrawing.drawAnnotations(e) } } 
-              onMouseUp={ (e) => { chartDrawing.captureGraphState(); chartDrawing.setDrawMode(0); } } 
-              onMouseDown={ () => { chartDrawing.setDrawMode(1) } } 
-              className={styles.visibleCanvas} 
+            <canvas
+              width={chartDrawConfig.canvas.width}
+              height={chartDrawConfig.canvas.height}
+              onMouseMove={(e) => { chartDrawing.drawAnnotations(e); }}
+              onMouseUp={() => { chartDrawing.captureGraphState(); chartDrawing.setDrawMode(0); }}
+              onMouseDown={() => { chartDrawing.setDrawMode(1); }}
+              className={styles.visibleCanvas}
               id="shareChartContainerCanvas" />
           </p>
         </span>
         <div className={styles.downloadButton}>
-          <a href="#" download={chartDrawing.exportFileName} onClick={ (e) => { chartDrawing.downloadChartAction(e);props.sendData() } } id="download-chart-image">DOWNLOAD</a>
+          <a href="#" download={chartDrawing.exportFileName} onClick={(e) => { chartDrawing.downloadChartAction(e);props.sendData(); }} id="download-chart-image">DOWNLOAD</a>
         </div>
       </div>
     </div>
