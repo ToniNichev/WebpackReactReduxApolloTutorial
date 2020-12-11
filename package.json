@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot --history-api-fallback",
+    "start": "webpack-dev-server --hot --history-api-fallback --mode development",
     "clean": "rm -rf ./dist",
     "lint": "eslint .",
     "build-dev": "webpack --mode development",

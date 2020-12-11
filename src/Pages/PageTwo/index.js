@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './styles.scss';
 
+let init = false;
 
-
-function PageTwo(props) {
+const PageTwo = (props) => {
   const [labelData, setLabelData] = useState('no data');
 
+  useEffect(() => {
+    if(init)
+      return;
+    init = true;
+    setLabelData("Initial state");
+  });
 
   function setTest(val) {
     window.location.hash = val;
