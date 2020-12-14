@@ -1,7 +1,38 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import PageTwo from './';
 import toJson from 'enzyme-to-json';
+
+global.setLabelData = (data) => {};
+  
+global.fetch = (url) => {
+  return new Promise((resolve) => {
+
+      resolve({
+        json: () => {
+          return new Promise((resolve) => {
+            resolve("Test 121211");            
+          });
+        }
+      });
+  })
+}
+
+
+describe('test useEffect and mock fetch', () => {
+
+  
+
+  it('should call useEffect for multiquote', async () => {  
+    act( () => {
+      const wrapper = mount(<PageTwo />);
+      wrapper.update();
+    });
+  });
+
+});
+
 describe('Testing Header component', () => {
 
     it('renders as the snapshot', () => {
@@ -33,6 +64,6 @@ describe('Testing Header component', () => {
     );
     wrapper.find('li > a').at(1).simulate('click');
     expect(wrapper.find('input').props().placeholder).toBe('two');
-   });    
+   });   
 
 });
