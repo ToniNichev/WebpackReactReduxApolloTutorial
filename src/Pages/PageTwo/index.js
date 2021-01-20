@@ -15,22 +15,23 @@ const PageTwo = (props) => {
     fetch(url)
       .then((res) => res.json())
       .then((newData) => {
-        console.log("!@!@!@!@!@");
+        console.log("useEffect:",1);
         const welcomeText = `Welcome ${newData[0].first_name}`;
         setLabelData(welcomeText);
+        console.log("useEffect:",2);
+        if( document.querySelector("input") != null ) {
+          console.log("useEffect:",3);
+          document.querySelector("input").style.display = "";
+        }
         return welcomeText;
-      });
+      });      
   }, [init]);
 
-  function setTest(val) {
-    window.location.hash = val;
-  }
 
   return(<div data-text={labelData} className={styles.wrapper}>
           {labelData}
           <hr />
           <input type="text" placeholder={labelData} />
-          <button onClick={ () => { setTest('TEST'); } }>TEST</button>
           <ul>
             <li><a href="#" onClick={ () => { setLabelData('one') } }>ONE</a></li>
             <li><a href="#" onClick={ () => { setLabelData('two') } }>TWO</a></li>

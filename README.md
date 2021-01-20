@@ -1,4 +1,4 @@
-Simple playground to test Webpack, Babel, React and Unit tests
+Simple playground to test Webpack, Babel, React and Unit tests, React Context
 
 
 # WebpackReactReduxApolloTutorial
