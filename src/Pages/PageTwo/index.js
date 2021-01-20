@@ -4,10 +4,15 @@ import styles from './styles.scss';
 let init = false;
 
 const PageTwo = (props) => {
+  const {
+    testOne,
+    testTwo
+  } = props;
+
   const [labelData, setLabelData] = useState('no data');
 
   React.useEffect(() => {
-    console.log(">>>> USE EFFECT CALLED !");
+    console.log("USE EFFECT CALLED !");
     init = true;
 
     const url = 'https://www.toni-develops.com/external-files/examples/sample-apis/users.json.php';
@@ -15,12 +20,14 @@ const PageTwo = (props) => {
     fetch(url)
       .then((res) => res.json())
       .then((newData) => {
-        console.log("useEffect:",1);
+
         const welcomeText = `Welcome ${newData[0].first_name}`;
         setLabelData(welcomeText);
-        console.log("useEffect:",2);
+
         if( document.querySelector("input") != null ) {
           console.log("useEffect:",3);
+
+          document.querySelector("input").value = `${testOne} ${testTwo}`;
           document.querySelector("input").style.display = "";
         }
         return welcomeText;

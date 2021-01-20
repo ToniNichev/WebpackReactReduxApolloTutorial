@@ -1,5 +1,16 @@
-Simple playground to test Webpack, Babel, React and Unit tests, React Context
+# Testing Playground for
+- Webpack, 
+- Babel, 
+- React
+- Unit tests
+- React Context
 
+Running:
+$ yarn install
+$ yarn start-dev
+
+Testing:
+$ yarn test
 
 # WebpackReactReduxApolloTutorial
 
