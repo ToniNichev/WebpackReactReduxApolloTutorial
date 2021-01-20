@@ -16,7 +16,7 @@ const quoteData =  {
 
 let chartCanvas;
 
-describe('Testing Header component', () => {
+describe('Testing PageThree component', () => {
 
     it('renders as the snapshot', () => {
       const wrapper = mount(

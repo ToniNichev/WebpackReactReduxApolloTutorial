@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`links click test renders as expected 1`] = `
+<PageTwo
+  testOne="One"
+  testTwo="Two"
+>
+  <div
+    data-text="no data"
+  >
+    no data
+    <hr />
+    <input
+      placeholder="no data"
+      type="text"
+    />
+    <ul>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          ONE
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          TWO
+        </a>
+      </li>
+    </ul>
+  </div>
+</PageTwo>
+`;
+
 exports[`snapshot match Ads input element 1`] = `
 <PageTwo>
   <div

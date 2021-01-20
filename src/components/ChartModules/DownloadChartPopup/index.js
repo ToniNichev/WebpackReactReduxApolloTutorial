@@ -67,6 +67,8 @@ const chartDrawConfig = {
   }
 };
 
+let chartPopupActive = false;
+
 /**
  * Download chart popup window component
  * @param {

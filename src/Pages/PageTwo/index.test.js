@@ -19,12 +19,17 @@ global.fetch = (url) => {
   })
 }
 
+
+
+/*
 beforeAll(() => {
-  const inputTag = document.createElement('input');
-  document.body.appendChild(inputTag);
 })
 
 describe('snapshot match', () => {
+
+  const inputTag = document.createElement('input');
+  document.body.appendChild(inputTag);
+
   let wrapper = mount(<PageTwo />);
 
   it('renders as expected',async () => {
@@ -34,5 +39,24 @@ describe('snapshot match', () => {
   });
   
 });
+*/
 
+describe('links click test', () => {
+
+  //const inputTag = document.createElement('input');
+  //document.body.appendChild(inputTag);
+    
+  let wrapper = mount(<PageTwo testOne="One" testTwo="Two"/>);
+
+  console.log("!!!!>>>>", wrapper.html());
+
+  it('renders as expected',async () => {
+      await waitFor(() => {
+        var a = wrapper.find('a');
+        
+        expect(toJson(wrapper)).toMatchSnapshot();
+      });
+  });
+  
+});
 
