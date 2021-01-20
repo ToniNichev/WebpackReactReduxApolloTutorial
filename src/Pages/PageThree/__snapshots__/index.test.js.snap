@@ -40,3 +40,44 @@ exports[`Testing Header component renders as the snapshot 1`] = `
   </div>
 </PageThree>
 `;
+
+exports[`Testing PageThree component renders as the snapshot 1`] = `
+<PageThree>
+  <div>
+    <div
+      className="chartTimeIntervalSelected"
+    >
+      1D
+    </div>
+    <div>
+      <div>
+        Apple Inc
+      </div>
+      <DownloadChartButton
+        sendData={[Function]}
+      >
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            <img
+              alt="download chart"
+              src={Object {}}
+            />
+            EXPORT
+          </button>
+        </div>
+      </DownloadChartButton>
+    </div>
+    <div
+      className="chartContainer"
+    >
+      <canvas
+        height="350"
+        id="chartCanvas"
+        width="678"
+      />
+    </div>
+  </div>
+</PageThree>
+`;

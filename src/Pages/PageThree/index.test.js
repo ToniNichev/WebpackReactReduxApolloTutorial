@@ -16,6 +16,8 @@ const quoteData =  {
 
 let chartCanvas;
 
+global.isJestEnv = true;
+
 describe('Testing PageThree component', () => {
 
     it('renders as the snapshot', () => {
@@ -25,7 +27,7 @@ describe('Testing PageThree component', () => {
      expect(toJson(wrapper)).toMatchSnapshot();
    });  
 
-   global.isJestEnv = true;
+
 
    it('button click adds window.location.hash', () => {
      const wrapper = mount(
@@ -33,8 +35,8 @@ describe('Testing PageThree component', () => {
      );
 
      
-     wrapper.find('button').simulate('click');
-     console.log(">>>", wrapper.html());
+     //wrapper.find('button').simulate('click');
+     console.log("!!>>>", wrapper.find('button'));
      //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());     
      //wrapper.find('button').simulate('click');
      //console.log(">>>>", wrapper.find('.DownloadChartPopup-downloadChartModal').html());

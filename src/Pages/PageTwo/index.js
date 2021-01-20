@@ -38,6 +38,7 @@ const PageTwo = (props) => {
   return(<div data-text={labelData} className={styles.wrapper}>
           {labelData}
           <hr />
+          <p>Test P tag</p>
           <input type="text" placeholder={labelData} />
           <ul>
             <li><a href="#" onClick={ () => { setLabelData('one') } }>ONE</a></li>
