@@ -42,15 +42,16 @@ describe('snapshot match', () => {
 });
 */
 
-describe('links click test', () => {
+describe('PageTwo component', () => {
 
-  //const inputTag = document.createElement('input');
-  //document.body.appendChild(inputTag);
-  //console.log("!!!!>>>>", wrapper.html());
+  // covers: if( document.querySelector("input") != null ) { ... }
+  const inputTag = document.createElement('input');
+  document.body.appendChild(inputTag);
 
   let wrapper;
 
-  it('renders as expected',async () => {
+  // wrapping with `act` to prevent warning messages
+  it('test a links',async () => {
     await act(async () => {
       wrapper = mount(<PageTwo testOne="One" testTwo="Two"/>);
     });
@@ -62,8 +63,14 @@ describe('links click test', () => {
 
     console.log(wrapper.debug());
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.find('a').at(0).simulate('click');
+
+    console.log(wrapper.debug());    
   });
+
+  it('renders as expected',async () => {
+    expect(toJson(wrapper)).toMatchSnapshot();
+});  
 
   
 });
