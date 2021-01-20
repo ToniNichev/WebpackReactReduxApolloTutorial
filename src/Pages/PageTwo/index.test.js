@@ -49,9 +49,13 @@ describe('PageTwo component', () => {
   document.body.appendChild(inputTag);
 
   let wrapper;
+  //jest.mock('./TestLabel', () => () => <div id="mockComponent2">Hello Mock Component2</div>);  
 
   // wrapping with `act` to prevent warning messages
   it('test a links',async () => {
+
+
+    
     await act(async () => {
       wrapper = mount(<PageTwo testOne="One" testTwo="Two"/>);
     });
@@ -70,7 +74,14 @@ describe('PageTwo component', () => {
 
   it('renders as expected',async () => {
     expect(toJson(wrapper)).toMatchSnapshot();
-});  
+  });  
+
+
+  it('test mock event listener',async () => {  
+    jest.spyOn(window, 'addEventListener').mockImplementationOnce((event, handler, options) => {
+      console.log("#######################");
+    }); 
+  });
 
   
 });

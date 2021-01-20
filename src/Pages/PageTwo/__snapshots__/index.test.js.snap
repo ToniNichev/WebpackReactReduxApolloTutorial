@@ -10,89 +10,22 @@ exports[`PageTwo component renders as expected 1`] = `
   >
     one
     <hr />
+    <PageTwo
+      testOne="TEST"
+    >
+      <div>
+        TEST
+      </div>
+    </PageTwo>
     <p>
-      Test P tag
+      <button
+        onClick={[Function]}
+      >
+        Click Test
+      </button>
     </p>
     <input
       placeholder="one"
-      type="text"
-    />
-    <ul>
-      <li>
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-          ONE
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-          TWO
-        </a>
-      </li>
-    </ul>
-  </div>
-</PageTwo>
-`;
-
-exports[`links click test renders as expected 1`] = `
-<PageTwo
-  testOne="One"
-  testTwo="Two"
->
-  <div
-    data-text="two"
-  >
-    two
-    <hr />
-    <p>
-      Test P tag
-    </p>
-    <input
-      placeholder="two"
-      type="text"
-    />
-    <ul>
-      <li>
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-          ONE
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-          TWO
-        </a>
-      </li>
-    </ul>
-  </div>
-</PageTwo>
-`;
-
-exports[`links click test renders as expected 2`] = `
-<PageTwo
-  testOne="One"
-  testTwo="Two"
->
-  <div
-    data-text="two"
-  >
-    two
-    <hr />
-    <p>
-      Test P tag
-    </p>
-    <input
-      placeholder="two"
       type="text"
     />
     <ul>

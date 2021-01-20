@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import TestLabel from './TestLabel';
 import styles from './styles.scss';
 
 let init = false;
+
+const MOD_URL_BASE = 'apps.cnbc.com';
 
 const PageTwo = (props) => {
   const {
@@ -11,9 +14,20 @@ const PageTwo = (props) => {
 
   const [labelData, setLabelData] = useState('no data');
 
+  const clickTest = () => {
+    setLabelData('click test');
+  }
+
   React.useEffect(() => {
     console.log("USE EFFECT CALLED !");
     init = true;
+
+    window.addEventListener('message', function(event) {
+      console.log("!!!!!!!!!!!!!!!!!!!!");
+      if(event.origin.indexOf(MOD_URL_BASE) === -1) {
+        document.querySelector("input").value = "Message received";
+      }
+    });   
 
     const url = 'https://www.toni-develops.com/external-files/examples/sample-apis/users.json.php';
 
@@ -38,7 +52,8 @@ const PageTwo = (props) => {
   return(<div data-text={labelData} className={styles.wrapper}>
           {labelData}
           <hr />
-          <p>Test P tag</p>
+          <TestLabel testOne="TEST"/>
+          <p><button onClick={ () => { clickTest() } }>Click Test</button></p>
           <input type="text" placeholder={labelData} />
           <ul>
             <li><a href="#" onClick={ () => { setLabelData('one') } }>ONE</a></li>
