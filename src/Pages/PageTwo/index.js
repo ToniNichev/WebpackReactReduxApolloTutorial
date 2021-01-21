@@ -23,7 +23,7 @@ const PageTwo = (props) => {
     init = true;
 
     window.addEventListener('message', function(event) {
-      console.log("!!!!!!!!!!!!!!!!!!!!");
+      console.log("Message received!");
       if(event.origin.indexOf(MOD_URL_BASE) === -1) {
         document.querySelector("input").value = "Message received";
       }
@@ -41,7 +41,6 @@ const PageTwo = (props) => {
         if( document.querySelector("input") != null ) {
           console.log("useEffect:",3);
 
-          document.querySelector("input").value = `${testOne} ${testTwo}`;
           document.querySelector("input").style.display = "";
         }
         return welcomeText;
@@ -52,9 +51,9 @@ const PageTwo = (props) => {
   return(<div data-text={labelData} className={styles.wrapper}>
           {labelData}
           <hr />
-          <TestLabel testOne="TEST"/>
+          <TestLabel testOne={labelData}/>
           <p><button onClick={ () => { clickTest() } }>Click Test</button></p>
-          <input type="text" placeholder={labelData} />
+          <input type="text" placeholder={labelData} value={labelData} />
           <ul>
             <li><a href="#" onClick={ () => { setLabelData('one') } }>ONE</a></li>
             <li><a href="#" onClick={ () => { setLabelData('two') } }>TWO</a></li>
