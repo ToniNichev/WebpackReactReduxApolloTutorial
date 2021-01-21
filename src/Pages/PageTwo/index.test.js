@@ -64,12 +64,13 @@ describe('PageTwo component', () => {
     window.dispatchEvent(event);
   });
   
-
+  /*
   it('test mock event listener',async () => {  
     jest.spyOn(window, 'addEventListener').mockImplementationOnce((event, handler, options) => {
       console.log("#######################");
     }); 
   });
+  */
 
   
 });
