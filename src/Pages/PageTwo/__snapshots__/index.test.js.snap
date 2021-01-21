@@ -11,10 +11,10 @@ exports[`PageTwo component renders as expected 1`] = `
     one
     <hr />
     <PageTwo
-      testOne="TEST"
+      testOne="one"
     >
       <div>
-        TEST
+        one
       </div>
     </PageTwo>
     <p>
@@ -26,7 +26,9 @@ exports[`PageTwo component renders as expected 1`] = `
     </p>
     <input
       placeholder="one"
+      readOnly={true}
       type="text"
+      value="one"
     />
     <ul>
       <li>

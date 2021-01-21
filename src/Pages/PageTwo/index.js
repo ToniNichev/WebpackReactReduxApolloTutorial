@@ -53,7 +53,7 @@ const PageTwo = (props) => {
           <hr />
           <TestLabel testOne={labelData}/>
           <p><button onClick={ () => { clickTest() } }>Click Test</button></p>
-          <input type="text" placeholder={labelData} value={labelData} />
+          <input type="text" placeholder={labelData} readOnly value={labelData} />
           <ul>
             <li><a href="#" onClick={ () => { setLabelData('one') } }>ONE</a></li>
             <li><a href="#" onClick={ () => { setLabelData('two') } }>TWO</a></li>

@@ -21,27 +21,6 @@ global.fetch = (url) => {
 }
 
 
-
-/*
-beforeAll(() => {
-})
-
-describe('snapshot match', () => {
-
-  const inputTag = document.createElement('input');
-  document.body.appendChild(inputTag);
-
-  let wrapper = mount(<PageTwo />);
-
-  it('renders as expected',async () => {
-      await waitFor(() => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-  });
-  
-});
-*/
-
 describe('PageTwo component', () => {
 
   // covers: if( document.querySelector("input") != null ) { ... }
@@ -76,6 +55,9 @@ describe('PageTwo component', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });  
 
+  //if('click button test', () => {
+  //  wrapper.find('button').debug();
+  //});
 
   it('test mock event listener',async () => {  
     jest.spyOn(window, 'addEventListener').mockImplementationOnce((event, handler, options) => {
