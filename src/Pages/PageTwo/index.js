@@ -23,7 +23,7 @@ const PageTwo = (props) => {
     init = true;
 
     window.addEventListener('message', function(event) {
-      console.log("Message received!");
+      console.log("Message received:", event);
       if(event.origin.indexOf(MOD_URL_BASE) === -1) {
         document.querySelector("input").value = "Message received";
       }
