@@ -52,8 +52,7 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/src/setupTests.js",
-      "jest-canvas-mock"
+      "<rootDir>/src/setupTests.js"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss|jpg|jpeg|svg|ttf|woff|woff2|png)$": "<rootDir>/src/__mocks__/styleMock.js"
