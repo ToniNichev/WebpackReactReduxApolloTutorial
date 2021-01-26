@@ -14,7 +14,7 @@ global.fetch = (url) => {
         json: () => {
           return new Promise((resolve) => {
             
-            resolve(`url: ${url}`);            
+            resolve([{url: url, first_name: 'Tony' } ] );            
           });
         }
       });
@@ -32,6 +32,11 @@ describe('PageTwo component', () => {
   const inputTag = document.createElement('input');
   document.body.appendChild(inputTag);
 
+  const divTag = document.createElement('div');
+  divTag.setAttribute('data-id', "test-id");
+  document.body.appendChild(divTag);
+
+
   let wrapper;
 
   // wrapping with `act` to prevent warning messages
@@ -47,8 +52,14 @@ describe('PageTwo component', () => {
     console.log(wrapper.debug());
 
     wrapper.find('a').at(0).simulate('click');
-    console.log(wrapper.debug());    
+    console.log(wrapper.debug());
   });
+
+  /*
+  it('renders as expected',async () => {
+    wrapper.find('[data-id]').text().toBe('');
+  });
+  */
 
   it('renders as expected',async () => {
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -62,6 +73,8 @@ describe('PageTwo component', () => {
   
   it('test mock event listener',async () => {  
     window.dispatchEvent(event);
+    console.log(">>>>>", wrapper.find('[data-id]').text());
+    expect( document.querySelector('[data-id]').innerText).toBe('Welcome Tony');
   });
   
   /*

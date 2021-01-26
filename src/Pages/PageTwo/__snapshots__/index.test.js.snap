@@ -30,6 +30,11 @@ exports[`PageTwo component renders as expected 1`] = `
       type="text"
       value="one"
     />
+    <div
+      data-id="test1"
+    >
+      test div
+    </div>
     <ul>
       <li>
         <a
