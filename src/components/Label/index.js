@@ -5,9 +5,9 @@ import { UsersContextConsumer } from "../../usersContext";
 function Label(props) {
   return(
     <UsersContextConsumer>
-      {context => (
+      {contextProperty => (
         <div className={styles.wrapper}>
-            <h2>{context.username}</h2>
+            <h2>{contextProperty.username}</h2>
         </div>
       )}
     </UsersContextConsumer>

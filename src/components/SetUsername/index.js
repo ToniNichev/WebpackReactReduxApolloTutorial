@@ -3,7 +3,7 @@ import { UsersContextConsumer } from "../../usersContext";
 
 import styles from './styles.scss';
 
-function SetUsername() {
+function SetUsername(props) {
 
   function inputChanged(context) {
     const newUserName = document.querySelector('div.SetUsername-wrapper > input[type=text]').value;
@@ -14,7 +14,7 @@ function SetUsername() {
     <UsersContextConsumer>
       {context => (    
         <div className={styles.wrapper}>
-          user:<input type="text" onChange={ () => { inputChanged(context) } } />
+          Add user name here: <input type="text" onChange={ () => { inputChanged(context) } } />
         </div>
       )}
     </UsersContextConsumer>

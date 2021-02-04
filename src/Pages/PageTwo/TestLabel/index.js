@@ -2,10 +2,9 @@ import React from 'react';
 
 const MOD_URL_BASE = 'apps.cnbc.com';
 
-const PageTwo = (props) => {
+const TestLabel = (props) => {
   const {
     testOne,
-    testTwo
   } = props;
 
   
@@ -13,4 +12,4 @@ const PageTwo = (props) => {
         {testOne}  
         </div>);
 }
-export default PageTwo;
+export default TestLabel;

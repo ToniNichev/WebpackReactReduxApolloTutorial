@@ -3,10 +3,10 @@ const { Provider, Consumer } = React.createContext();
 
 class UsersContextProvider extends Component {
   state = {
-    username: "no username!"
+    username: "initial username: no username!"
   };
 
-  setUsername = (newUsername) => {
+  setUsernameFunc = (newUsername) => {
     this.setState(prevState => {
       return {
         username: newUsername
@@ -19,7 +19,7 @@ class UsersContextProvider extends Component {
     console.log(">>>>", this.props.children);
     return (
       <Provider
-        value={{ test: '123', username: this.state.username, setUsername: this.setUsername }}
+        value={{ test: '123', username: this.state.username, setUsername: this.setUsernameFunc }}
       >
         {this.props.children}
       </Provider>

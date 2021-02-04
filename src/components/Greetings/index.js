@@ -5,7 +5,6 @@ import Label from '../Label';
 function Greetings() {
   return(<div className={styles.wrapper}>
           <Label/>
-          <input type="tet"/>
         </div>);
 }
 export default Greetings;

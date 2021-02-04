@@ -4,6 +4,7 @@
 - React
 - Unit tests
 - React Context
+- React HOC
 
 Running:
 $ yarn install
