@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DownloadChartPopup should have yield and not last nor close since bond 1`] = `
+<div>
+  <div>
+    <p>
+      <span>
+        <button
+          onClick={[Function]}
+        >
+          ×
+        </button>
+      </span>
+    </p>
+    <span>
+      <p>
+        <input
+          id="share_chart_text"
+          maxLength="72"
+          placeholder="Add your headline (optional)"
+          type="text"
+        />
+      </p>
+      <p>
+        <canvas
+          height={450}
+          id="shareChartContainerCanvas"
+          onMouseDown={[Function]}
+          onMouseMove={[Function]}
+          onMouseUp={[Function]}
+          width={670}
+        />
+      </p>
+    </span>
+    <div>
+      <a
+        download="chart.jpeg"
+        href="#"
+        id="download-chart-image"
+        onClick={[Function]}
+      >
+        DOWNLOAD
+      </a>
+    </div>
+  </div>
+</div>
+`;

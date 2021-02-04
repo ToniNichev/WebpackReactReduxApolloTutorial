@@ -1,0 +1,15 @@
+.wrapper {
+  .canvas {
+    border: 1px solid blue;
+  }
+
+  .symbolTitle {
+    color:blue;
+  }
+
+  .QuoteStrip {
+    background-color: black;
+    border: 1px solid red;
+    display: flex;
+  }
+}

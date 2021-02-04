@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTwo component renders as expected 1`] = `
+<PageTwo
+  testOne="One"
+  testTwo="Two"
+>
+  <div
+    data-text="one"
+  >
+    one
+    <hr />
+    <PageTwo
+      testOne="one"
+    >
+      <div>
+        one
+      </div>
+    </PageTwo>
+    <p>
+      <button
+        onClick={[Function]}
+      >
+        Click Test
+      </button>
+    </p>
+    <input
+      placeholder="one"
+      readOnly={true}
+      type="text"
+      value="one"
+    />
+    <div
+      data-id="test1"
+    >
+      test div
+    </div>
+    <ul>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          ONE
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          TWO
+        </a>
+      </li>
+    </ul>
+  </div>
+</PageTwo>
+`;
